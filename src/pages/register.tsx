@@ -1,6 +1,9 @@
+// src/pages/register.tsx
+
 import { useState } from "react";
-import { auth } from "../lib/firebaseConfig";
+import { auth, db } from "../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 
 const Register = () => {
@@ -14,9 +17,21 @@ const Register = () => {
     setError("");
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Salva l'utente su Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        email: user.email,
+      });
+
       alert("Registrazione completata con successo!");
-      router.push("/login"); // Reindirizza l'utente dopo la registrazione
+      router.push("/login"); // Reindirizza l'utente alla pagina di login
     } catch (err) {
       setError("Errore durante la registrazione. Riprova.");
     }

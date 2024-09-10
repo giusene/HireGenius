@@ -1,8 +1,9 @@
 // src/pages/login.tsx
 
 import { useState } from "react";
-import { auth, googleProvider } from "../lib/firebaseConfig";
+import { auth, googleProvider, db } from "../lib/firebaseConfig";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
 
 const Login = () => {
@@ -24,10 +25,18 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      // Salva l'utente in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        email: user.email,
+      });
+
       alert("Login con Google effettuato con successo!");
     } catch (err) {
-      setError("Errore durante l'accesso con Google. Riprova.");
+      setError("Errore durante il login con Google. Riprova.");
     }
   };
 
