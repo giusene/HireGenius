@@ -1,7 +1,7 @@
 // src/lib/firebaseConfig.ts
 
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -24,5 +24,6 @@ if (typeof window !== "undefined") {
 }
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
-export { auth, analytics };
+export { auth, googleProvider, analytics };

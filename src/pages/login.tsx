@@ -1,8 +1,8 @@
 // src/pages/login.tsx
 
 import { useState } from "react";
-import { auth } from "../lib/firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, googleProvider } from "../lib/firebaseConfig";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 
 const Login = () => {
@@ -19,6 +19,15 @@ const Login = () => {
       alert("Login effettuato con successo!");
     } catch (err) {
       setError("Errore durante il login. Verifica le tue credenziali.");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      alert("Login con Google effettuato con successo!");
+    } catch (err) {
+      setError("Errore durante l'accesso con Google. Riprova.");
     }
   };
 
@@ -41,6 +50,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {error && <p>{error}</p>}
+      <button onClick={handleGoogleLogin}>Accedi con Google</button>
       <p>
         Non hai un account? <Link href="/register">Registrati</Link>
       </p>
