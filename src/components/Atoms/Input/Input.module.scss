@@ -1,0 +1,11 @@
+.input {
+	background: var(--elements-bg);
+	font-size: var(--fs-md);
+	padding: var(--elements-padding);
+	border-radius: var(--border-radius);
+	color: var(--light);
+
+	&::placeholder {
+		color: var(--light);
+	}
+}

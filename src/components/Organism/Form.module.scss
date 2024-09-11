@@ -1,0 +1,24 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--gap-md);
+
+	.forgotPassword {
+		color: var(--light);
+		text-decoration: underline;
+		font-weight: var(--fw-regular);
+		text-align: right;
+	}
+
+	mark.invalid {
+		background: var(--tertiary);
+		color: var(--white);
+		font-weight: var(--fw-regular);
+		padding: var(--elements-padding);
+		border-radius: var(--border-radius);
+	}
+
+	& > :last-child {
+		margin-top: var(--gap-md);
+	}
+}

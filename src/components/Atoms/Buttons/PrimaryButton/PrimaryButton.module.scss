@@ -1,0 +1,16 @@
+.primaryButton {
+	padding: var(--elements-padding);
+	border-radius: var(--border-radius);
+	color: var(--dark);
+	font-size: var(--fs-md);
+	font-weight: var(--fw-bold);
+	cursor: pointer;
+
+	&.ctaA {
+		background: var(--accent);
+	}
+
+	&.ctaB {
+		background: var(--light);
+	}
+}

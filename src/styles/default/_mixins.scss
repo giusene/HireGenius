@@ -3,3 +3,9 @@
 	background-color: $bgColor;
 	font-weight: $fontWeight;
 }
+
+@mixin flex-column($gap) {
+	display: flex;
+	flex-direction: column;
+	row-gap: $gap;
+}
