@@ -1,0 +1,5 @@
+@mixin btn-details($color, $bgColor, $fontWeight) {
+	color: $color;
+	background-color: $bgColor;
+	font-weight: $fontWeight;
+}

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "./default/index.scss";
+
+:root {
+	// GAP
+	--gap-sm: rem(9px);
+	--gap-md: rem(18px);
+	--gap-lg: rem(36px);
+
+	// COLORI
+	--accent: #f9ff00; //cta, timer, badge, risultati
+	--primary: #7f5af0; //menu, background
+	--secondary: #2cb67d; //badge e risultati
+	--tertiary: #ff6091; //badge e risultati
+
+	// COLORI NEUTRI
+	--white: #fffffe; //titoli (sfondo popup?)
+	--light: #d3d3d3; //paragrafi, label e button CTA B (es "accedi con google")
+	--dark: #362763; //background e button CTA C (es "avanti")
+
+	// MODIFICATE
+	--background: linear-gradient(to bottom, var(--dark), var(--primary));
+	--elementsBg: rgba(211, 211, 211, 0.8);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-family: "Hanken Grotesk", sans-serif;
+	max-width: 100vw;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
