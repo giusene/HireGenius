@@ -1,7 +1,12 @@
 // src/lib/firebaseConfig.ts
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  setPersistence,
+  browserSessionPersistence,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
@@ -24,6 +29,11 @@ if (typeof window !== "undefined") {
 }
 
 const auth = getAuth(app);
+
+setPersistence(auth, browserSessionPersistence).catch((error) => {
+  console.error("Errore durante l'impostazione della persistenza:", error);
+});
+
 const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
 

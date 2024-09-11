@@ -1,9 +1,7 @@
 // src/pages/login.tsx
 
 import { useState } from "react";
-import { auth, googleProvider, db } from "../lib/firebaseConfig";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { useAuth } from "../context/AuthContext";
 import Link from "next/link";
 
 const Login = () => {
@@ -11,12 +9,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const { login, loginWithGoogle, user } = useAuth();
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await login(email, password);
       alert("Login effettuato con successo!");
     } catch (err) {
       setError("Errore durante il login. Verifica le tue credenziali.");
@@ -25,15 +25,7 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-
-      // Salva l'utente in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        email: user.email,
-      });
-
+      await loginWithGoogle();
       alert("Login con Google effettuato con successo!");
     } catch (err) {
       setError("Errore durante il login con Google. Riprova.");
@@ -63,6 +55,7 @@ const Login = () => {
       <p>
         Non hai un account? <Link href="/register">Registrati</Link>
       </p>
+      {user && <Link href="/protected">test</Link>}
     </div>
   );
 };
