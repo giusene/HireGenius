@@ -38,6 +38,13 @@
 
 		.registerLink {
 			font-weight: var(--fw-bold);
+			transition: all 0.35s ease;
+
+			&:active,
+			&:focus,
+			&:hover {
+				color: var(--dark);
+			}
 		}
 	}
 }

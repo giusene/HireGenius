@@ -5,9 +5,17 @@
 
 	.forgotPassword {
 		color: var(--light);
-		text-decoration: underline;
 		font-weight: var(--fw-regular);
 		text-align: right;
+		cursor: pointer;
+
+		transition: all 0.35s ease;
+		&:active,
+		&:focus,
+		&:hover {
+			color: var(--dark);
+			font-weight: var(--fw-bold);
+		}
 	}
 
 	mark.invalid {
