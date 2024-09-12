@@ -20,3 +20,5 @@ const Input = (props: InputProps) => {
 };
 
 export default Input;
+
+//  minlength="3" maxlength="20"

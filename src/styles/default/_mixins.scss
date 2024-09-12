@@ -1,8 +1,8 @@
-@mixin btn-details($color, $bgColor, $fontWeight) {
-	color: $color;
-	background-color: $bgColor;
-	font-weight: $fontWeight;
-}
+// @mixin btn-details($color, $bgColor, $fontWeight) {
+// 	color: $color;
+// 	background-color: $bgColor;
+// 	font-weight: $fontWeight;
+// }
 
 @mixin flex-column($gap) {
 	display: flex;

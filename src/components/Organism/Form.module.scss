@@ -1,7 +1,8 @@
 .form {
-	display: flex;
-	flex-direction: column;
-	row-gap: var(--gap-md);
+	// display: flex;
+	// flex-direction: column;
+	// row-gap: var(--gap-md);
+	@include flex-column(var(--gap-md));
 
 	.forgotPassword {
 		color: var(--light);
@@ -28,5 +29,23 @@
 
 	& > :last-child {
 		margin-top: var(--gap-md);
+	}
+
+	input:focus,
+	select:focus {
+		outline: 2px solid var(--light);
+	}
+
+	input:not(:placeholder-shown):valid,
+	input:focus:user-valid:not(:required) {
+		outline: 2px solid var(--secondary);
+	}
+
+	input:not(:placeholder-shown):invalid {
+		outline: 2px solid var(--tertiary);
+	}
+
+	input:focus:invalid {
+		outline: 2px solid var(--accent);
 	}
 }
