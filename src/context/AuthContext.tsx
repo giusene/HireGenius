@@ -14,6 +14,7 @@ import {
   sendPasswordResetEmail,
   User,
 } from "firebase/auth";
+import { FirebaseError } from "firebase/app"; // Importa il tipo FirebaseError
 import { doc, setDoc } from "firebase/firestore";
 
 interface AuthContextType {
@@ -21,7 +22,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
-  resetPassword: (email: string) => Promise<void>; // Aggiungi questa funzione
+  resetPassword: (email: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -32,8 +33,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string): Promise<void> => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (error: any) {
-      throw new Error(error);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        // Mostra un messaggio generico per qualsiasi errore di login
+        throw new Error("Le credenziali inserite non sono corrette.");
+      } else {
+        throw new Error("Errore sconosciuto durante il login.");
+      }
     }
   };
 
@@ -66,16 +72,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       await sendPasswordResetEmail(auth, email);
       console.log("Email di recupero password inviata con successo!");
-    } catch (error: any) {
-      throw new Error(
-        "Errore durante il recupero della password: " + error.message
-      );
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        throw new Error("Errore durante il recupero della password.");
+      } else {
+        throw new Error(
+          "Errore sconosciuto durante il recupero della password."
+        );
+      }
     }
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      console.log("Utente aggiornato nel context:", firebaseUser); // Debug log
+      console.log("Utente aggiornato nel context:", firebaseUser);
       setUser(firebaseUser);
     });
 

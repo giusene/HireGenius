@@ -22,11 +22,9 @@ const LoginForm = () => {
 
     try {
       await login(email, password);
-    } catch (error: any) {
-      // console.error(error);
-      error.message ===
-        "FirebaseError: Firebase: Error (auth/invalid-credential)." &&
-        setError("Credenziali invalide!");
+    } catch (error) {
+      // Mostra un messaggio generico di errore
+      setError("Le credenziali inserite non sono corrette.");
     }
   };
 

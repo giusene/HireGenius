@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <main className={style.main}>
       <div className={style.hero}>
-        <Image src={Hero} alt="Hero image" width={545} height={204} />
+        <Image src={Hero} alt="Hero image" width={545} height={204} priority />
       </div>
 
       <div className={style.header}>
