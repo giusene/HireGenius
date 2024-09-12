@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import style from "./NavBar.module.scss";
-import {navMenu} from "@/constants/menuData";
-import {footerMenu} from "@/constants/menuData";
+import { navMenu } from "@/constants/labels";
+import { footerMenu } from "@/constants/labels";
 
 
 const menuData = [

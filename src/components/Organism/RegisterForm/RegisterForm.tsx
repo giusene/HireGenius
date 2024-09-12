@@ -3,6 +3,7 @@ import { auth, db } from "../../../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
+import { registrationFormLabels } from "@/constants/labels";
 
 // COMPONENTS
 
@@ -63,19 +64,19 @@ const RegisterForm = () => {
 
 	return (
 		<form className={style.form} onSubmit={handleRegister}>
-			<InputBox type='text' name='userName' label='Username' value={userName} onChange={(e) => setUserName(e.target.value)} required={true} />
+			<InputBox type='text' name='userName' label={registrationFormLabels.usernameLabel} value={userName} onChange={(e) => setUserName(e.target.value)} required={true} />
 
-			<InputBox type='text' name='userRole' label='Role' value={userRole} onChange={(e) => setUserRole(e.target.value)} required={false} />
+			<InputBox type='text' name='userRole' label={registrationFormLabels.roleLabel} value={userRole} onChange={(e) => setUserRole(e.target.value)} required={false} />
 
-			<SelectBox name='seniority' label='Seniority' value={userSeniority} onChange={(e) => setUserSeniority(e.target.value)} required={false} options={options} />
+			<SelectBox name='seniority' label={registrationFormLabels.seniorityLabel} value={userSeniority} onChange={(e) => setUserSeniority(e.target.value)} required={false} options={options} />
 
-			<InputBox type='email' name='userEmail' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
+			<InputBox type='email' name='userEmail' label={registrationFormLabels.email} value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
 
-			<InputBox type='password' name='userPassword' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+			<InputBox type='password' name='userPassword' label={registrationFormLabels.password} value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
 
 			{error && <mark className={style.invalid}>{error}</mark>}
 
-			<PrimaryButton label='Registrati' className='ctaA' type='submit' />
+			<PrimaryButton label={registrationFormLabels.buttonsRegister} className='ctaA' type='submit' />
 		</form>
 	);
 };

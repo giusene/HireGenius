@@ -1,5 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
+import { loginLabels } from "@/constants/labels";
 
 // COMPONENTS
 import PrimaryButton from "@/components/Atoms/Buttons/PrimaryButton/PrimaryButton";
@@ -35,7 +36,7 @@ const LoginForm = () => {
       <InputBox
         type="email"
         name="userEmail"
-        label="Email"
+        label={loginLabels.emailLabel} 
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required={true}
@@ -44,19 +45,19 @@ const LoginForm = () => {
       <InputBox
         type="password"
         name="userPassword"
-        label="Password"
+        label={loginLabels.passwordLabel}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required={true}
       />
 
       <p className={style.forgotPassword}>
-        <Link href="/forgot-password">Hai dimenticato la password?</Link>
+        <Link href="/forgot-password">{loginLabels.forgotPasswordLink}</Link>
       </p>
 
       {error && <mark className={style.invalid}>{error}</mark>}
 
-      <PrimaryButton label="Accedi" className="ctaA" type="submit" />
+      <PrimaryButton label={loginLabels.buttonLogin} className="ctaA" type="submit" />
     </form>
   );
 };

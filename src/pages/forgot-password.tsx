@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { recoveryPasswordLabels } from "@/constants/labels";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -15,32 +16,28 @@ const ForgotPassword = () => {
 
     try {
       await resetPassword(email);
-      setMessage(
-        "Email di recupero password inviata con successo. Controlla la tua casella di posta."
-      );
+      setMessage(recoveryPasswordLabels.loginLabel);
     } catch (err: any) {
-      setError(
-        "Errore durante l'invio dell'email di recupero. Verifica l'indirizzo email."
-      );
+      setError(recoveryPasswordLabels.messagesSuccess);
     }
   };
 
   return (
     <div>
-      <h1>Recupero Password</h1>
+      <h1>{recoveryPasswordLabels.title}</h1>
       <form onSubmit={handleResetPassword}>
         <input
           type="email"
-          placeholder="Inserisci la tua email"
+          placeholder={recoveryPasswordLabels.placeholder}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit">Recupera Password</button>
+        <button type="submit">{recoveryPasswordLabels.buttonRecovery}</button>
       </form>
       {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <p>
-        Torna al <Link href="/login">Login</Link>
+        {recoveryPasswordLabels.linkText} <Link href={recoveryPasswordLabels.linkText}>{recoveryPasswordLabels.linkText}</Link>
       </p>
     </div>
   );

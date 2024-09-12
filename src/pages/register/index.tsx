@@ -2,6 +2,7 @@
 
 // COMPONENTS
 import RegisterForm from "@/components/Organism/RegisterForm/RegisterForm";
+import { registrationFormLabels } from "@/constants/labels";
 
 // STYLE
 import style from "./register.module.scss";
@@ -13,7 +14,7 @@ const Register = () => {
 
 			<RegisterForm />
 
-			<p className={style.privacyInfo}>I tuoi dati saranno protetti secondo GDPR e usati soltanto per personalizzare la tua esperienza</p>
+			<p className={style.privacyInfo}>{registrationFormLabels.privacyNote}</p>
 
 			{/* {error && <p>{error}</p>} */}
 		</main>

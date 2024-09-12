@@ -2,6 +2,7 @@
 import Input from "@/components/Atoms/Input/Input";
 import Label from "@/components/Atoms/Label/Label";
 
+
 // STYLE
 import style from "./InputBox.module.scss";
 

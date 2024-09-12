@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
+import { loginLabels } from "@/constants/labels";
 
 // COMPONENTS
 import LoginForm from "@/components/Organism/LoginForm/LoginForm";
@@ -33,8 +34,8 @@ const Login = () => {
       </div>
 
       <div className={style.header}>
-        <h1>interViewer</h1>
-        <h2>Testa le tue competenze</h2>
+        <h1>{loginLabels.appName}</h1>
+        <h2>{loginLabels.tagline}</h2>
       </div>
 
       <LoginForm />
@@ -42,15 +43,15 @@ const Login = () => {
       <hr />
 
       <PrimaryButton
-        label="Accedi con Google"
+        label={loginLabels.loginWithGoogle}
         className="ctaB"
         onClick={handleGoogleLogin}
       />
 
       <p className={style.register}>
-        Non hai un account?{" "}
+      {loginLabels.text}{" "}
         <Link className={style.registerLink} href="/register">
-          Registrati
+        {loginLabels.action}
         </Link>
       </p>
 
