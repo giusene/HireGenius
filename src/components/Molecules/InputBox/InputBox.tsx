@@ -5,7 +5,7 @@ import Label from "@/components/Atoms/Label/Label";
 // STYLE
 import style from "./InputBox.module.scss";
 
-interface InputBoxProps {
+export interface InputBoxProps {
 	type: string;
 	name: string;
 	label: string;
@@ -21,7 +21,7 @@ const InputBox = (props: InputBoxProps) => {
 		<>
 			<div className={style.inputBox}>
 				<Label label={label} name={name} />
-				<Input type={type} name={name} placeholder={label} value={value} onChange={onChange} required={required} />
+				<Input type={type} name={name} label={label} value={value} onChange={onChange} required={required} />
 			</div>
 		</>
 	);

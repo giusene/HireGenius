@@ -10,7 +10,7 @@ export interface OptionsInterface {
 	value: string;
 }
 
-interface SelectBoxProps {
+export interface SelectBoxProps {
 	name: string;
 	label: string;
 	value: string;
@@ -26,7 +26,7 @@ const SelectBox = (props: SelectBoxProps) => {
 		<>
 			<div className={style.selectBox}>
 				<Label label={label} name={name} />
-				<Select name={name} value={value} onChange={onChange} required={required} options={options} />
+				<Select name={name} label={label} value={value} onChange={onChange} required={required} options={options} />
 			</div>
 		</>
 	);

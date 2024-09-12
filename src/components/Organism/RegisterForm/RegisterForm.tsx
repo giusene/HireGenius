@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 // STYLE
 import style from "../Form.module.scss";
 import InputBox from "@/components/Molecules/InputBox/InputBox";
-import PrimaryButton from "@/components/Atoms/Buttons/PrimaryButton/PrimaryButton";
+import PrimaryButton from "@/components/Atoms/Buttons/CtaButton/CtaButton";
 import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 
 const options = [
