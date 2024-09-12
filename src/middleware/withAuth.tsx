@@ -1,3 +1,5 @@
+//src/middleware/withAuth.tsx
+
 import React, { ComponentType, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";

@@ -1,31 +1,37 @@
 .form {
+
+
+
 	// display: flex;
 	// flex-direction: column;
 	// row-gap: var(--gap-md);
 	@include flex-column(var(--gap-md));
 
-	.forgotPassword {
-		color: var(--light);
-		font-weight: var(--fw-regular);
-		text-align: right;
-		cursor: pointer;
 
-		transition: all 0.35s ease;
-		&:active,
-		&:focus,
-		&:hover {
-			color: var(--dark);
-			font-weight: var(--fw-bold);
-		}
-	}
+  .forgotPassword {
+    color: var(--light);
+    font-weight: var(--fw-regular);
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
 
-	mark.invalid {
-		background: var(--tertiary);
-		color: var(--white);
-		font-weight: var(--fw-regular);
-		padding: var(--elements-padding);
-		border-radius: var(--border-radius);
-	}
+    transition: all 0.35s ease;
+    &:active,
+    &:focus,
+    &:hover {
+      color: var(--dark);
+      font-weight: var(--fw-bold);
+    }
+  }
+
+  mark.invalid {
+    background: var(--tertiary);
+    color: var(--white);
+    font-weight: var(--fw-regular);
+    padding: var(--elements-padding);
+    border-radius: var(--border-radius);
+  }
+
 
 	& > :last-child {
 		margin-top: var(--gap-md);
@@ -48,4 +54,5 @@
 	input:focus:invalid {
 		outline: 2px solid var(--accent);
 	}
+
 }
