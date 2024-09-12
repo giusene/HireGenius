@@ -49,6 +49,9 @@ const RegisterForm = () => {
 			await setDoc(doc(db, "users", user.uid), {
 				uid: user.uid,
 				email: user.email,
+				userName: userName,
+				userRole: userRole,
+				userSeniority: userSeniority,
 			});
 
 			alert("Registrazione completata con successo!");
