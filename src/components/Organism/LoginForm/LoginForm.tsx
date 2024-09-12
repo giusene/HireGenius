@@ -23,7 +23,6 @@ const LoginForm = () => {
     try {
       await login(email, password);
     } catch (error) {
-      // Mostra un messaggio generico di errore
       setError("Le credenziali inserite non sono corrette.");
     }
   };

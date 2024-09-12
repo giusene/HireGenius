@@ -14,7 +14,7 @@ import {
   sendPasswordResetEmail,
   User,
 } from "firebase/auth";
-import { FirebaseError } from "firebase/app"; // Importa il tipo FirebaseError
+import { FirebaseError } from "firebase/app";
 import { doc, setDoc } from "firebase/firestore";
 
 interface AuthContextType {
@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       if (error instanceof FirebaseError) {
-        // Mostra un messaggio generico per qualsiasi errore di login
         throw new Error("Le credenziali inserite non sono corrette.");
       } else {
         throw new Error("Errore sconosciuto durante il login.");

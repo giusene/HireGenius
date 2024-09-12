@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { FirebaseError } from "firebase/app";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -18,10 +19,14 @@ const ForgotPassword = () => {
       setMessage(
         "Email di recupero password inviata con successo. Controlla la tua casella di posta."
       );
-    } catch (err: any) {
-      setError(
-        "Errore durante l'invio dell'email di recupero. Verifica l'indirizzo email."
-      );
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        setError(
+          "Errore durante l'invio dell'email di recupero. Verifica l'indirizzo email."
+        );
+      } else {
+        setError("Errore sconosciuto durante il recupero della password.");
+      }
     }
   };
 
