@@ -1,4 +1,4 @@
-[
+export const navMenu = [
   {
     "label": "Home",
     "link": "/"
@@ -23,12 +23,15 @@
     "label": "Logout",
     "link": "/logout"
   },
-  {
-    "label": "Il progetto",
-    "link": "/il-progetto"
-  },
-  {
-    "label": "Github",
-    "link": "#"
-  }
+]
+
+export const footerMenu = [
+{
+  "label": "Il progetto",
+  "link": "/il-progetto"
+},
+{
+  "label": "Github",
+  "link": "#"
+}
 ]

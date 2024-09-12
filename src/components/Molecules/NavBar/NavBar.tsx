@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import style from "./NavBar.module.scss";
+import {navMenu} from "@/constants/menuData";
+import {footerMenu} from "@/constants/menuData";
+
 
 const menuData = [
   {
@@ -56,7 +59,7 @@ const NavBar = () => {
       {isOpen && (
         <nav className={style.sidebar}>
           <ul className={style.menuList}>
-            {menuData.map((item) => (
+            {navMenu.map((item) => (
               <li className={style.menuItem}>
                 <Link href={item.link}>{item.label}</Link>
               </li>
@@ -65,7 +68,7 @@ const NavBar = () => {
 
           <div className={style.footer}>
             <ul className={style.footerList}>
-              {menuFooter.map((item) => (
+              {footerMenu.map((item) => (
                 <li className={style.menuItem}>
                   <Link href={item.link}>{item.label}</Link>
                 </li>
