@@ -14,7 +14,6 @@ import style from "./login.module.scss";
 import Hero from "../../../public/hero.png";
 
 const Login = () => {
-
   const [error, setError] = useState("");
   const { loginWithGoogle, user } = useAuth();
 
@@ -42,7 +41,7 @@ const Login = () => {
 
       <hr />
 
-      <PrimaryButton
+      <CtaButton
         label="Accedi con Google"
         className="ctaB"
         onClick={handleGoogleLogin}
@@ -58,8 +57,6 @@ const Login = () => {
       {/* {user && <Link href='/protected'>test</Link>} */}
     </main>
   );
-
-	
 };
 
 export default Login;
