@@ -5,11 +5,11 @@ export const navMenu = [
   },
   {
     "label": "Nuovo argomento",
-    "link": "/nuovo-argomento"
+    "link": "/new-topic"
   },
   {
     "label": "Nuovo colloquio",
-    "link": "/nuovo-colloquio"
+    "link": "/new-interview"
   },
   {
     "label": "Profilo",
@@ -35,3 +35,97 @@ export const footerMenu = [
   "link": "#"
 }
 ]
+
+
+export const loginLabels = {
+  appName: "interViewer",
+  tagline: "Testa le tue competenze",
+  emailLabel:"Email",
+  passwordLabel: "Password",
+  forgotPasswordLink: "Hai dimenticato la password?",
+  buttonLogin: "Accedi",
+  loginWithGoogle: "Accedi con Google",
+  text: "Non hai un account?",
+  action: "Registrati"
+  };
+
+export const registrationFormLabels = {
+  usernameLabel: "Username",
+  roleLabel: "Role",
+  seniorityLabel: "Seniority",
+  email: "Email",
+  password: "Password",
+  confirmPassword: "Confirm password",
+  buttonsRegister: "Registrati",
+  privacyNote: "I tuoi dati saranno protetti secondo GDPR e usati soltanto per personalizzare la tua esperienza."
+  };
+
+  export const recoveryPasswordLabels = {
+      title: "Recupero Password",
+        placeholder: "Inserisci la tua email",
+        buttonRecovery: "Recupera Password",
+      messagesSuccess: "La tua richiesta è stata inviata con successo. Controlla la tua email per ulteriori istruzioni.",
+        messagesError: "Si è verificato un errore durante il recupero della password. Per favore, riprova.",
+      linkText: "Torna al",
+        loginLabel: "Login",
+        href: "/login"
+  };
+
+  export const newInterviewFormLabels = {
+    newInterviewTitle: "Nuovo colloquio",
+    roleLabel: "Ruolo",
+    seniorityLabel: "Seniority",
+    numberOfQuestionsLabel: "Numero di domande",
+    testDurationLabel: "Durata del test",
+    buttonsNext: "Avanti",
+  };
+
+  export const interviewFormOptions = {
+    role: [
+      "Sviluppatore Frontend",
+      "Analista Dati",
+      "Project Manager"
+    ],
+    seniority: [
+      "Junior",
+      "Mid-level",
+      "Senior"
+    ],
+    numberOfQuestions: [
+      "5 domande",
+      "10 domande",
+      "15 domande"
+    ],
+    testDuration: [
+      "10 minuti",
+      "20 minuti",
+      "30 minuti"
+    ]
+  };
+
+  export const customFormLabels = {
+    title: "Nuovo Argomento",
+    topicLabel: "Argomento",
+    level: "Livello",
+    numberOfQuestionsLabel: "Numero di domande",
+    testDurationLabel: "Durata del test",
+    button: "Avanti",
+    };
+
+    export const customFormOptions = {
+      optionsLevel: [
+        "Base",
+        "Intermedio",
+        "Avanzato"
+        ],
+        optionsQuestion: [
+          "5 domande",
+          "10 domande",
+          "15 domande"
+          ],
+          optionsDuration: [
+            "10 minuti",
+            "20 minuti",
+            "30 minuti"
+            ],
+    };
