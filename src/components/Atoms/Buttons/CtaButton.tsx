@@ -1,4 +1,4 @@
-import style from "./PrimaryButton.module.scss";
+import style from "./Button.module.scss";
 
 interface ButtonProps {
 	label: string;
@@ -7,16 +7,16 @@ interface ButtonProps {
 	type?: "submit" | "reset" | "button" | undefined;
 }
 
-const PrimaryButton = (props: ButtonProps) => {
+const CtaButton = (props: ButtonProps) => {
 	const { label, className, onClick, type } = props;
 
 	return (
 		<>
-			<button className={`${style.primaryButton} ${style[className]}`} onClick={onClick} type={type}>
+			<button className={`${style.button} ${style.ctaButton} ${className && style[className]}`} onClick={onClick} type={type}>
 				{label}
 			</button>
 		</>
 	);
 };
 
-export default PrimaryButton;
+export default CtaButton;

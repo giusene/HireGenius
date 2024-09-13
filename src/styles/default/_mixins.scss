@@ -1,11 +1,99 @@
-// @mixin btn-details($color, $bgColor, $fontWeight) {
-// 	color: $color;
-// 	background-color: $bgColor;
-// 	font-weight: $fontWeight;
-// }
-
 @mixin flex-column($gap) {
 	display: flex;
 	flex-direction: column;
 	row-gap: $gap;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin main {
+	width: 100vw;
+	max-width: 600px;
+	margin: 0 auto;
+	min-height: 100dvh;
+	padding: var(--page-padding);
+	@include flex-column(var(--gap-md));
+}
+
+@mixin base-element {
+	padding: var(--elements-padding);
+	border-radius: var(--border-radius);
+
+	&:not(.textarea) {
+		font-size: var(--fs-md);
+	}
+
+	&.select,
+	&.input,
+	&.textarea {
+		background: var(--elements-bg);
+		color: var(--light);
+		&::placeholder {
+			color: var(--light);
+		}
+	}
+
+	&.textarea {
+		font-size: var(--fs-sm);
+	}
+}
+
+@mixin button {
+	font-size: var(--fs-md);
+	font-weight: var(--fw-bold);
+	cursor: pointer;
+	@include flex-center;
+
+	&:not(.round) {
+		padding: var(--elements-padding);
+	}
+
+	&.actionButton {
+		background: var(--elements-bg);
+		transition: box-shadow 0.1s ease;
+
+		&.round {
+			padding: 15px;
+			border-radius: 50%;
+		}
+
+		&:active,
+		&:focus,
+		&:hover {
+			box-shadow: inset 4px 4px 3px 0px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	&.ctaButton {
+		border-radius: var(--border-radius);
+		transition: box-shadow 0.35s ease, opacity 0.35s ease, font-size 0.3ms 0.05s, padding 0.3ms 0.05s;
+
+		&.ctaA {
+			background: var(--accent);
+			color: var(--dark);
+		}
+
+		&.ctaB {
+			background: var(--light);
+			color: var(--dark);
+		}
+
+		&.ctaC {
+			background: var(--dark);
+			color: var(--light);
+		}
+
+		&:active,
+		&:focus,
+		&:hover {
+			opacity: 0.9;
+			box-shadow: inset 4px 4px 3px 0px rgba(0, 0, 0, 0.2);
+			font-size: calc(var(--fs-md) - 1px);
+			padding: calc(var(--elements-padding) + 0.5px) var(--elements-padding);
+		}
+	}
 }

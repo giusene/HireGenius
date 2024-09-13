@@ -1,24 +1,13 @@
 .main {
-	width: 100vw;
-	max-width: 600px;
-	margin: 0 auto;
-	min-height: 100dvh;
-	padding: var(--page-padding);
-	display: flex;
-	flex-direction: column;
-	row-gap: var(--gap-md);
+	@include main;
 
 	.hero {
 		flex-grow: 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include flex-center;
 	}
 
 	.header {
-		display: flex;
-		flex-direction: column;
-		row-gap: var(--gap-md);
+		@include flex-column(var(--gap-md));
 		margin-bottom: var(--gap-md);
 
 		h1 {
