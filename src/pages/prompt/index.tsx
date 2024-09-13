@@ -1,5 +1,8 @@
-import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
+
+const PROMPT = `Immagina di essere  l'esaminatore per un colloquio tecnico per una posizione di Junior Front End Developer. 
+  Ponimi 5 domande tecniche di difficoltà crescente, partendo da domande di base fino a domande più avanzate. 
+  I requisiti sono: HTML, CSS, JavaScript e React.`;
 
 const Prompt = () => {
   const [error, setError] = useState<string | null>(null);
@@ -17,8 +20,7 @@ const Prompt = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt:
-            "Ponimi 5 domande tecniche come se mi stessi candidando per la posizione di Junior Front End Developer.",
+          prompt: PROMPT,
         }),
       });
 
@@ -46,16 +48,16 @@ const Prompt = () => {
     <>
       <div>
         <button onClick={handleGenerate} disabled={loading}>
-          {loading ? "Generazione in corso..." : "Genera Domande"}{" "}
+          {loading ? "Generazione in corso..." : "Genera Domande"}
         </button>
-        {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-        {loading && <p>Caricamento in corso...</p>}{" "}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading && <p>Caricamento in corso...</p>}
         {data.length > 0 && (
-          <ul>
+          <ol>
             {data.map((item, index) => (
               <li key={index}>{item.question}</li>
             ))}
-          </ul>
+          </ol>
         )}
       </div>
     </>
