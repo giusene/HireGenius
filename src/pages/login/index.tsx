@@ -19,7 +19,7 @@ const Login = () => {
 	const handleGoogleLogin = async () => {
 		try {
 			await loginWithGoogle();
-			alert("Login con Google effettuato con successo!");
+			console.log("Login con Google effettuato con successo!");
 		} catch (err) {
 			// setError("Errore durante il login con Google. Riprova.");
 			console.error(err);
