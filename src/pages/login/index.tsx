@@ -7,13 +7,14 @@ import Image from "next/image";
 
 // COMPONENTS
 import LoginForm from "@/components/Organism/LoginForm/LoginForm";
-import PrimaryButton from "@/components/Atoms/Buttons/PrimaryButton/PrimaryButton";
+import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 // STYLE
 import style from "./login.module.scss";
 import Hero from "../../../public/hero.png";
 
 const Login = () => {
+
   const [error, setError] = useState("");
   const { loginWithGoogle, user } = useAuth();
 
@@ -57,6 +58,8 @@ const Login = () => {
       {/* {user && <Link href='/protected'>test</Link>} */}
     </main>
   );
+
+	
 };
 
 export default Login;
