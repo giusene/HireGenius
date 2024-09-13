@@ -1,33 +1,34 @@
 .navContainer {
-	position: absolute;
-	padding: var(--page-padding);
+  position: absolute;
+  padding: var(--page-padding);
+  z-index: 10;
 }
 
 .sidebar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 250px;
-	height: 100vh;
-	padding: var(--page-padding);
-	background-color: var(--primary);
-	color: var(--light);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  padding: var(--page-padding);
+  background-color: var(--primary);
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .footerList {
-	margin-top: var(--gap-md);
+  margin-top: var(--gap-md);
 }
 
 .menuList,
 .footerList {
-	@include flex-column(var(--gap-md));
-	font-size: var(--fs-md);
+  @include flex-column(var(--gap-md));
+  font-size: var(--fs-md);
 
-	& > li:hover {
-		font-weight: var(--fw-bold);
-	}
+  & > li:hover {
+    font-weight: var(--fw-bold);
+  }
 }

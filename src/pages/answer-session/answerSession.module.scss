@@ -1,0 +1,32 @@
+.questionCard {
+  @include main;
+
+  .header {
+    height: 40px;
+    @include flex-center;
+
+    .sectionTitle {
+      text-align: center;
+      color: var(--light);
+      font-size: var(--fs-md);
+    }
+  }
+
+  .progress {
+    @include flex-column(var(--gap-sm));
+    h3 {
+      color: var(--light);
+      font-size: var(--fs-md);
+    }
+  }
+
+  //   .questionSection {
+  //     @include flex-column(var(--gap-sm));
+  //     padding: var(--elements-padding);
+  //   }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end; /* O come preferisci posizionare il bottone */
+  }
+}
