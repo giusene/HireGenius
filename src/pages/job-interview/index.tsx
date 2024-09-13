@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-const PROMPT =
-  "Immagina di essere un esaminatore per un colloquio tecnico per una posizione di Junior Front End Developer. Ponimi 5 domande tecniche di difficoltà crescente, partendo da domande di base fino a domande più avanzate. I requisiti sono: HTML, CSS, JavaScript e React.";
+const PROMPT = `Immagina di essere un esaminatore per un colloquio tecnico per una posizione di Junior Front End Developer. 
+  Ponimi 5 domande tecniche di difficoltà crescente, partendo da domande di base fino a domande più avanzate. 
+  I requisiti sono: HTML, CSS, JavaScript e React.`;
 
-const Prompt = () => {
+const JobInterview = () => {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<{ question: string }[]>([]);
   const [loading, setLoading] = useState(false);
@@ -71,4 +72,4 @@ const Prompt = () => {
   );
 };
 
-export default Prompt;
+export default JobInterview;
