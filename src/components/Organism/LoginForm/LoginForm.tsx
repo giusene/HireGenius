@@ -20,13 +20,13 @@ const LoginForm = () => {
 		e.preventDefault();
 		setError("");
 
-		try {
-			await login(email, password);
-		} catch (error: any) {
-			// console.error(error);
-			error.message === "FirebaseError: Firebase: Error (auth/invalid-credential)." && setError("Credenziali invalide!");
-		}
-	};
+
+    try {
+      await login(email, password);
+    } catch (error) {
+      setError("Le credenziali inserite non sono corrette.");
+    }
+  };
 
 	return (
 		<form className={style.form} onSubmit={handleLogin}>
