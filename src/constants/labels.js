@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const navMenu = [
   {
     "label": "Home",
@@ -5,7 +7,7 @@ export const navMenu = [
   },
   {
     "label": "Nuovo argomento",
-    "link": "/nuovo-argomento"
+    "link": "/new-topic"
   },
   {
     "label": "Nuovo colloquio",
@@ -102,3 +104,30 @@ export const registrationFormLabels = {
       "30 minuti"
     ]
   };
+
+  export const customFormLabels = {
+    title: "Nuovo Argomento",
+    topicLabel: "Argomento",
+    level: "Livello",
+    numberOfQuestionsLabel: "Numero di domande",
+    testDurationLabel: "Durata del test",
+    button: "Avanti",
+    };
+
+    export const customFormOptions = {
+      optionsLevel: [
+        "Base",
+        "Intermedio",
+        "Avanzato"
+        ],
+        optionsQuestion: [
+          "5 domande",
+          "10 domande",
+          "15 domande"
+          ],
+          optionsDuration: [
+            "10 minuti",
+            "20 minuti",
+            "30 minuti"
+            ],
+    };
