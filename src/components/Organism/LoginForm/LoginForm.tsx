@@ -2,7 +2,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 
 // COMPONENTS
-import PrimaryButton from "@/components/Atoms/Buttons/CtaButton";
+import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 // STYLE
 import style from "../Form.module.scss";
@@ -40,7 +40,7 @@ const LoginForm = () => {
 
 			{error && <mark className={style.invalid}>{error}</mark>}
 
-			<PrimaryButton label='Accedi' className='ctaA' type='submit' />
+			<CtaButton label='Accedi' className='ctaA' type='submit' />
 		</form>
 	);
 };

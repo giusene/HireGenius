@@ -1,49 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import style from "./NavBar.module.scss";
-import { navMenu } from "@/constants/menuData";
-import { footerMenu } from "@/constants/menuData";
+import { navMenu, footerMenu } from "@/constants/menuData";
 import ActionButton from "@/components/Atoms/Buttons/ActionButton";
 
 import MenuIcon from "../../../../public/menu-icon.png";
-
-const menuData = [
-	{
-		label: "Home",
-		link: "/",
-	},
-	{
-		label: "Nuovo argomento",
-		link: "/nuovo-argomento",
-	},
-	{
-		label: "Nuovo colloquio",
-		link: "/nuovo-colloquio",
-	},
-	{
-		label: "Profilo",
-		link: "/profilo",
-	},
-	{
-		label: "Impostazioni",
-		link: "/impostazioni",
-	},
-	{
-		label: "Logout",
-		link: "/logout",
-	},
-];
-
-const menuFooter = [
-	{
-		label: "Il progetto",
-		link: "/il-progetto",
-	},
-	{
-		label: "GitHub",
-		link: "#",
-	},
-];
 
 const NavBar = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -51,9 +12,8 @@ const NavBar = () => {
 	const toggleMenu = (): void => {
 		setIsOpen(!isOpen);
 	};
-	// onMouseLeave={() => setIsOpen(false)}
 	return (
-		<div className={style.navContainer}>
+		<div className={style.navContainer} onMouseLeave={() => setIsOpen(false)}>
 			{!isOpen && <ActionButton onClick={toggleMenu} className='round' icon={MenuIcon} />}
 
 			{isOpen && (

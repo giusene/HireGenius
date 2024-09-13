@@ -7,7 +7,7 @@ import Image from "next/image";
 
 // COMPONENTS
 import LoginForm from "@/components/Organism/LoginForm/LoginForm";
-import PrimaryButton from "@/components/Atoms/Buttons/CtaButton";
+import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 // STYLE
 import style from "./login.module.scss";
@@ -41,7 +41,7 @@ const Login = () => {
 
 			<hr />
 
-			<PrimaryButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
+			<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
 
 			<p className={style.register}>
 				Non hai un account?{" "}
