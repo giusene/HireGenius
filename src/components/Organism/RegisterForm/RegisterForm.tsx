@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import style from "../Form.module.scss";
 import InputBox from "@/components/Molecules/InputBox/InputBox";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
-import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 
 const RegisterForm = () => {
 	const [userName, setUserName] = useState("");

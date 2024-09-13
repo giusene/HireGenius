@@ -20,7 +20,7 @@ const NavBar = () => {
 				<nav className={style.sidebar}>
 					<ul className={style.menuList}>
 						{navMenu.map((item) => (
-							<li className={style.menuItem}>
+							<li key={item.label} className={style.menuItem}>
 								<Link href={item.link}>{item.label}</Link>
 							</li>
 						))}
@@ -30,7 +30,7 @@ const NavBar = () => {
 						<hr />
 						<ul className={style.footerList}>
 							{footerMenu.map((item) => (
-								<li className={style.menuItem}>
+								<li key={item.label} className={style.menuItem}>
 									<Link href={item.link}>{item.label}</Link>
 								</li>
 							))}
