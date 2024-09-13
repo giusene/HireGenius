@@ -1,0 +1,19 @@
+.badge {
+	padding: 0 var(--elements-padding);
+	border-radius: var(--border-radius);
+	color: var(--dark);
+	font-weight: var(--fw-bold);
+	text-transform: uppercase;
+
+	&.simple {
+		background-color: var(--secondary);
+	}
+
+	&.moderate {
+		background-color: var(--accent);
+	}
+
+	&.advanced {
+		background-color: var(--tertiary);
+	}
+}
