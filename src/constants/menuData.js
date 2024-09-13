@@ -1,3 +1,5 @@
+
+
 export const navMenu = [
   {
     "label": "Home",
@@ -113,19 +115,43 @@ export const registrationFormLabels = {
     };
 
     export const customFormOptions = {
-      optionsLevel: [
-        "Base",
-        "Intermedio",
-        "Avanzato"
+      optionsLevel: [ {
+        label: "Base",
+        value: "Base"
+      },
+        { 
+        label: "Intermedio",
+        value: "Intermedio"
+        },
+        {
+          label: "Avanzato",
+          value: "Avanzato",
+        }
         ],
-        optionsQuestion: [
-          "5 domande",
-          "10 domande",
-          "15 domande"
+        optionsQuestion: [ {
+          label: "5 domande",
+          value: "5 domande"
+        },
+        {
+          label: "10 domande",
+          value: "10 domande"
+        },
+          {
+            label: "15 domande",
+            value: "15 domande"
+          },
           ],
-          optionsDuration: [
-            "10 minuti",
-            "20 minuti",
-            "30 minuti"
+          optionsDuration: [{
+            label: "10 minuti",
+            value: "10 minuti"
+          },
+            {
+              label: "20 minuti",
+              value: "20 minuti"
+            },
+            {
+              label: "30 minuti",
+              value: "30 minuti"
+          },
             ],
     };
