@@ -5,15 +5,20 @@
 	font-weight: var(--fw-bold);
 	text-transform: uppercase;
 
-	&.simple {
+	&.semplice {
 		background-color: var(--secondary);
 	}
 
-	&.moderate {
+	&.equo {
 		background-color: var(--accent);
 	}
 
-	&.advanced {
+	&.arduo {
 		background-color: var(--tertiary);
+	}
+
+	&.avanzato {
+		background-color: var(--dark);
+		color: var(--light);
 	}
 }

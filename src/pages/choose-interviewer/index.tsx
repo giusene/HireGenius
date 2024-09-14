@@ -18,7 +18,7 @@ const profiles = [
 		longBio:
 			"Solare ed empatica, mette gli altri a proprio agio e mantiene un livello semplice e diretto di domande, come: -Puoi parlarmi un po’ di te?- o -Perché ti piacerebbe lavorare qui?-. Si interessa alle motivazioni personali e alle qualità individuali.",
 		level: "semplice",
-		className: "simple",
+		className: "semplice",
 	},
 	{
 		avatarSrc: Avatar2,
@@ -28,7 +28,7 @@ const profiles = [
 		longBio:
 			"Analitico e diretto, con uno stile di comunicazione chiaro e conciso. Le sue domande, come: -Puoi descrivermi una situazione in cui hai affrontato una difficoltà sul lavoro e come l’hai risolta?- riflettono il desiderio di comprendere come gli altri si confrontano con sfide simili e quale approccio adottano per ottenere risultati concreti.",
 		level: "semplice",
-		className: "simple",
+		className: "semplice",
 	},
 	{
 		avatarSrc: Avatar3,
@@ -38,7 +38,7 @@ const profiles = [
 		longBio:
 			"Determinato ed esigente. Domande come: -Qual è stato il tuo più grande fallimento e cosa hai imparato da esso?- o -Perché dovremmo scegliere te rispetto agli altri candidati?- mettono alla prova l'interlocutore. Affronta anche temi come la gestione dei conflitti. Domande, come -Come gestisci un conflitto con un collega o con un superiore?-, mostrano la sua attenzione alla risoluzione di problemi efficace.",
 		level: "equo",
-		className: "moderate",
+		className: "equo",
 	},
 	{
 		avatarSrc: Avatar4,
@@ -47,8 +47,28 @@ const profiles = [
 		shortBio: "Proverà a mettere in luce i tuoi punti di forza e le tue fragilità.",
 		longBio:
 			"Ama mettere alla prova i candidati con domande trabocchetto, come: -Se fossi il mio capo e dovessi valutare questa tua intervista, quale aspetto ritieni sia stato il tuo punto debole?- per testare la capacità di mantenere la calma sotto pressione. Usa queste tecniche per valutare non solo la competenza. È un intervistatore che mira a mettere in luce non solo i punti di forza, ma anche le possibili fragilità.",
+		level: "equo",
+		className: "equo",
+	},
+	{
+		avatarSrc: Avatar2,
+		name: "Ivan",
+		value: "ivan",
+		shortBio: "Proverà a mettere in luce i tuoi punti di forza e le tue fragilità.",
+		longBio:
+			"Ama mettere alla prova i candidati con domande trabocchetto, come: -Se fossi il mio capo e dovessi valutare questa tua intervista, quale aspetto ritieni sia stato il tuo punto debole?- per testare la capacità di mantenere la calma sotto pressione. Usa queste tecniche per valutare non solo la competenza. È un intervistatore che mira a mettere in luce non solo i punti di forza, ma anche le possibili fragilità.",
+		level: "arduo",
+		className: "arduo",
+	},
+	{
+		avatarSrc: Avatar1,
+		name: "Elena",
+		value: "Elena",
+		shortBio: "Proverà a mettere in luce i tuoi punti di forza e le tue fragilità.",
+		longBio:
+			"Una leader capace di vedere oltre l’immediato e di sviluppare strategie che abbiano un impatto duraturo e significativo. Quando chiede di descrivere una decisione impopolare e come è stata gestita dimostra la sua comprensione del fatto che le decisioni difficili sono inevitabili e che il modo in cui vengono affrontate è cruciale per il successo.",
 		level: "avanzato",
-		className: "advanced",
+		className: "avanzato",
 	},
 ];
 
