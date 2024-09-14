@@ -26,7 +26,7 @@
 				@include base-element;
 				@include flex-column(var(--gap-sm));
 				justify-content: space-between;
-				align-items: start;
+				align-items: flex-start;
 				cursor: pointer;
 				transition: all 0.35s ease;
 				color: var(--light);

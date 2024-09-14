@@ -72,7 +72,7 @@ const ChooseInterviewer = () => {
 						<label key={profile.value} className={`${interviewer === profile.value ? `${style.label} ${style.selected}` : style.label}`} htmlFor={profile.value}>
 							<div>
 								<div className={style.avatar}>
-									<Image className={style.avatarImg} src={profile.avatarSrc} alt={`Avatar ${profile.name}`} width={1000} height={1000} />
+									<Image className={style.avatarImg} src={profile.avatarSrc} alt={`Avatar ${profile.name}`} width={1000} height={1000} priority />
 								</div>
 								<h3 className={style.avatarName}>{profile.name}</h3>
 								<p className={style.avatarBio}>{profile.shortBio}</p>
