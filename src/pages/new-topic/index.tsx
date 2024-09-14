@@ -4,9 +4,7 @@ import Input from "@/components/Atoms/Input/Input";
 import Label from "@/components/Atoms/Label/Label";
 import style from "@/pages/new-topic/new-topic.module.scss";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
-import Select from "@/components/Atoms/Select/Select";
 import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
-import Image from "next/image";
 
 interface TopicFormProps {
 	// Qui puoi aggiungere eventuali props che vuoi passare al componente
