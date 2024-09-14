@@ -29,10 +29,11 @@
 
 	&.select,
 	&.input,
-	&.textarea {
+	&.textarea,
+	&.label {
 		background: var(--elements-bg);
 		color: var(--light);
-		&::placeholder {
+		&::placeholder:not(.label) {
 			color: var(--light);
 		}
 	}

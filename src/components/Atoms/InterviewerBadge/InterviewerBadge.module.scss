@@ -1,0 +1,24 @@
+.badge {
+	padding: 0 var(--elements-padding);
+	border-radius: var(--border-radius);
+	color: var(--dark);
+	font-weight: var(--fw-bold);
+	text-transform: uppercase;
+
+	&.semplice {
+		background-color: var(--secondary);
+	}
+
+	&.equo {
+		background-color: var(--accent);
+	}
+
+	&.arduo {
+		background-color: var(--tertiary);
+	}
+
+	&.avanzato {
+		background-color: var(--dark);
+		color: var(--light);
+	}
+}
