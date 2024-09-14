@@ -1,4 +1,3 @@
-// components/AnswerSession/QuestionCard.tsx
 import { useState } from "react";
 import style from "./answerSession.module.scss";
 import ProgressBar from "@/components/Atoms/ProgressBar/ProgressBar";
@@ -12,7 +11,6 @@ interface Question {
 interface QuestionCardProps {
   role: string;
   totalQuestions: number;
-  //   timer: string;
   questions: Question[];
 }
 
@@ -24,10 +22,11 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [responses, setResponses] = useState<{ q: string; a: string }[]>([]);
   const [currentResponse, setCurrentResponse] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleNext = () => {
     if (currentResponse.trim() === "") {
-      alert("Per favore inserisci una risposta.");
+      setErrorMessage("*Per favore inserisci una risposta.");
       return;
     }
 
@@ -37,6 +36,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     ]);
 
     setCurrentResponse("");
+    setErrorMessage(""); // Rimuove il messaggio d'errore quando c'è una risposta valida
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -48,25 +48,31 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCurrentResponse(e.target.value);
+    if (errorMessage) {
+      setErrorMessage(""); // Rimuove il messaggio d'errore quando l'utente inizia a digitare
+    }
+  };
+
   return (
     <div className={style.questionCard}>
       <div className={style.header}>
         <h2 className={style.sectionTitle}>{role}</h2>
-
-        {/* <span>{timer}</span> */}
       </div>
       <div className={style.progress}>
         <h3>
           {currentQuestionIndex + 1}/{totalQuestions}
         </h3>
-
         <ProgressBar
           currentStep={currentQuestionIndex}
           totalSteps={totalQuestions}
         />
       </div>
 
-      {/* <div className={style.questionSection}> */}
+      {/* Messaggio d'errore */}
+      {errorMessage && <p className={style.error}>{errorMessage}</p>}
+
       <TextAreaBox
         name="response"
         label={`${currentQuestionIndex + 1}. ${
@@ -74,10 +80,10 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         }`}
         placeholder="Scrivi la tua risposta qui..."
         value={currentResponse}
-        onChange={(e) => setCurrentResponse(e.target.value)}
+        onChange={handleInputChange} // Usa la nuova funzione per gestire i cambiamenti
         required={true}
       />
-      {/* </div> */}
+
       <div className={style.buttons}>
         <ActionButton onClick={handleNext} label="Next" className="round" />
       </div>
@@ -114,7 +120,6 @@ const AnswerSession: React.FC = () => {
     <QuestionCard
       role="Junior Front End Developer"
       totalQuestions={mockQuestions.length}
-      //   timer="2 min 35s"
       questions={mockQuestions}
     />
   );

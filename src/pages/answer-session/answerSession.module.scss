@@ -20,13 +20,14 @@
     }
   }
 
-  //   .questionSection {
-  //     @include flex-column(var(--gap-sm));
-  //     padding: var(--elements-padding);
-  //   }
+  .error {
+    color: rgb(249, 90, 90);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--gap-sm);
+  }
 
   .buttons {
     display: flex;
-    justify-content: flex-end; /* O come preferisci posizionare il bottone */
+    justify-content: flex-end;
   }
 }

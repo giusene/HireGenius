@@ -1,4 +1,3 @@
-import React from "react";
 import Label from "@/components/Atoms/Label/Label";
 import TextArea from "@/components/Atoms/TextArea/TextArea";
 import style from "./TextAreaBox.module.scss";
