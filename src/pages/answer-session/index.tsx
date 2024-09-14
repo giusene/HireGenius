@@ -26,7 +26,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
   const handleNext = () => {
     if (currentResponse.trim() === "") {
-      setErrorMessage("*Per favore inserisci una risposta.");
+      setErrorMessage("Per favore inserisci una risposta.");
       return;
     }
 
@@ -36,7 +36,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     ]);
 
     setCurrentResponse("");
-    setErrorMessage(""); // Rimuove il messaggio d'errore quando c'è una risposta valida
+    setErrorMessage("");
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -51,7 +51,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCurrentResponse(e.target.value);
     if (errorMessage) {
-      setErrorMessage(""); // Rimuove il messaggio d'errore quando l'utente inizia a digitare
+      setErrorMessage("");
     }
   };
 
@@ -71,7 +71,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       </div>
 
       {/* Messaggio d'errore */}
-      {errorMessage && <p className={style.error}>{errorMessage}</p>}
+
+      {errorMessage && <mark className={style.invalid}>{errorMessage}</mark>}
 
       <TextAreaBox
         name="response"
@@ -80,7 +81,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         }`}
         placeholder="Scrivi la tua risposta qui..."
         value={currentResponse}
-        onChange={handleInputChange} // Usa la nuova funzione per gestire i cambiamenti
+        onChange={handleInputChange}
         required={true}
       />
 

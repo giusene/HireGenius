@@ -20,10 +20,13 @@
     }
   }
 
-  .error {
-    color: rgb(249, 90, 90);
+  mark.invalid {
+    background: var(--tertiary);
+    color: var(--white);
+    font-weight: var(--fw-regular);
+    padding: calc(var(--elements-padding) / 2) var(--elements-padding);
+    width: fit-content;
     font-size: var(--fs-sm);
-    margin-bottom: var(--gap-sm);
   }
 
   .buttons {
