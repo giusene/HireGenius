@@ -1,5 +1,5 @@
 import style from "./choose-interviewer.module.scss";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 
 import Avatar1 from "@/../public/avatar1.png";
 import Avatar2 from "@/../public/avatar2.png";
