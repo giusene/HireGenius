@@ -10,16 +10,15 @@ import InputBox from "@/components/Molecules/InputBox/InputBox";
 import Link from "next/link";
 
 const LoginForm = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-	const { login } = useAuth();
+  const { login } = useAuth();
 
-	const handleLogin = async (e: React.FormEvent) => {
-		e.preventDefault();
-		setError("");
-
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
 
     try {
       await login(email, password);
@@ -51,11 +50,8 @@ const LoginForm = () => {
       <p className={style.forgotPassword}>
         <Link href="/forgot-password">Hai dimenticato la password?</Link>
       </p>
-			<p className={style.forgotPassword}>
-				<Link href='/forgot-password'>Hai dimenticato la password?</Link>
-			</p>
 
-			{error && <mark className={style.invalid}>{error}</mark>}
+      {error && <mark className={style.invalid}>{error}</mark>}
 
       <CtaButton label="Accedi" className="ctaA" type="submit" />
     </form>
