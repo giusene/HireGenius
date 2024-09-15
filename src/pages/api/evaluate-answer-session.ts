@@ -11,13 +11,13 @@ interface BodyI {
   answers: Answer[];
 }
 
-interface EvaluationResult {
-  q: string;
-  a: string;
-  correctAnswer: string;
-  status: "correct" | "average" | "incorrect";
-  evaluation: string;
-}
+// interface EvaluationResult {
+//   q: string;
+//   a: string;
+//   correctAnswer: string;
+//   status: "correct" | "average" | "incorrect";
+//   evaluation: string;
+// }
 
 export default async function handler(
   req: NextApiRequest,

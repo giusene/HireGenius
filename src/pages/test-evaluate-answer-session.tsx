@@ -83,6 +83,10 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
           body: JSON.stringify(payload),
         });
 
+        if (response.status === 429) {
+          throw new Error("Too Many Requests - Rate limit exceeded");
+        }
+
         if (!response.ok) {
           throw new Error("Errore nella richiesta di valutazione.");
         }
@@ -94,7 +98,10 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
       } catch (e) {
         console.error("Errore durante la valutazione:", e);
         attempt++;
-        if (attempt >= maxRetries) {
+        if (attempt < maxRetries) {
+          const delay = Math.pow(2, attempt) * 1000; // Escalazione esponenziale
+          await new Promise((resolve) => setTimeout(resolve, delay));
+        } else {
           setError(
             e instanceof Error
               ? e.message
