@@ -1,0 +1,7 @@
+.textarea {
+  @include base-element;
+  min-height: fit-content;
+  font-size: var(--fs-md);
+  flex-grow: 1;
+  margin-top: var(--gap-sm);
+}
