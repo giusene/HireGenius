@@ -4,7 +4,7 @@ import style from "./NavBar.module.scss";
 import { navMenu, footerMenu } from "@/constants/menuData";
 import ActionButton from "@/components/Atoms/Buttons/ActionButton";
 
-import MenuIcon from "../../../../public/menu-icon.png";
+import MenuIcon from "../../../../public/icons/menu-icon.png";
 
 const NavBar = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
