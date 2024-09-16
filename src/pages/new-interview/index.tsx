@@ -9,7 +9,6 @@ import style from "./new-interview.module.scss";
 import Image from "next/image";
 import immagine from "@/../public/nuovocolloquio.png";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
-import Select from "@/components/Atoms/Select/Select";
 import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 
 interface InterviewFormProps {
@@ -43,7 +42,7 @@ const NewInterview: React.FC<InterviewFormProps> = () => {
           alt="Interview"
           width={400}
           height={200}
-          priority
+          priority={true}
         />
       </div>
       <form onSubmit={handleSubmit}>
