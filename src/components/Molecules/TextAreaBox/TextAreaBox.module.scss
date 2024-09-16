@@ -1,0 +1,4 @@
+.textAreaBox {
+  @include flex-column(var(--gap-sm));
+  flex-grow: 1;
+}
