@@ -1,0 +1,29 @@
+.resultCard {
+	@include base-element;
+	@include flex-column(var(--gap-md));
+	align-items: flex-start;
+	background-color: var(--elements-bg);
+
+	height: fit-content;
+	transition: height 0.5s ease;
+
+	&.correct {
+		background-color: var(--correct-bg);
+	}
+	&.average {
+		background-color: var(--average-bg);
+	}
+	&.incorrect {
+		background-color: var(--incorrect-bg);
+	}
+
+	.resultCardHeader {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	& > :last-child {
+		margin: 0 auto;
+	}
+}

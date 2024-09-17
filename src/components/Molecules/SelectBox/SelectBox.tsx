@@ -5,6 +5,9 @@ import Label from "@/components/Atoms/Label/Label";
 // STYLE
 import style from "./SelectBox.module.scss";
 
+import selectIcon from "@/../public/icons/arrow-select.png";
+import Image from "next/image";
+
 export interface OptionsInterface {
 	label: string;
 	value: string;
@@ -27,6 +30,7 @@ const SelectBox = (props: SelectBoxProps) => {
 			<div className={style.selectBox}>
 				<Label label={label} name={name} />
 				<Select name={name} label={label} value={value} onChange={onChange} required={required} options={options} />
+				<Image src={selectIcon} alt='Select icon' width={20} height={20} className={style.selectIcon} />
 			</div>
 		</>
 	);

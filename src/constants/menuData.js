@@ -1,28 +1,47 @@
+
+import HomeIcon from "@/../public/icons/home.png";
+import TopicIcon from "@/../public/icons/topic.png";
+import InterviewIcon from "@/../public/icons/interview.png";
+import ProfileIcon from "@/../public/icons/profile.png";
+import SettingsIcon from "@/../public/icons/settings.png";
+import LogoutIcon from "@/../public/icons/logout.png";
+
 export const navMenu = [
-	{
-		label: "Home",
-		link: "/",
-	},
-	{
-		label: "Nuovo argomento",
-		link: "/new-topic",
-	},
-	{
-		label: "Nuovo colloquio",
-		link: "/new-interview",
-	},
-	{
-		label: "Profilo",
-		link: "/profilo",
-	},
-	{
-		label: "Impostazioni",
-		link: "/impostazioni",
-	},
-	{
-		label: "Logout",
-		link: "/logout",
-	},
+  {
+    icon: HomeIcon,
+    label: "Home",
+    link: "/",
+  },
+  {
+    icon: TopicIcon,
+    label: "Nuovo argomento",
+    link: "/topic-process",
+  },
+  {
+    icon: InterviewIcon,
+    label: "Nuovo colloquio",
+    link: "/new-interview",
+  },
+  {
+    icon: ProfileIcon,
+    label: "Profilo",
+    link: "/profilo",
+  },
+  {
+    icon: SettingsIcon,
+    label: "Impostazioni",
+    link: "/impostazioni",
+  },
+  {
+    icon: LogoutIcon,
+    label: "Logout",
+    link: "/logout",
+  },
+  {
+    icon: LogoutIcon,
+    label: "Login",
+    link: "/login",
+  },
 ];
 
 export const footerMenu = [
@@ -107,46 +126,46 @@ export const customFormLabels = {
 };
 
 export const customFormOptions = {
-	optionsLevel: [
-		{
-			label: "Base",
-			value: "Base",
-		},
-		{
-			label: "Intermedio",
-			value: "Intermedio",
-		},
-		{
-			label: "Avanzato",
-			value: "Avanzato",
-		},
-	],
-	optionsQuestion: [
-		{
-			label: "5 domande",
-			value: "5 domande",
-		},
-		{
-			label: "10 domande",
-			value: "10 domande",
-		},
-		{
-			label: "15 domande",
-			value: "15 domande",
-		},
-	],
-	optionsDuration: [
-		{
-			label: "10 minuti",
-			value: "10 minuti",
-		},
-		{
-			label: "20 minuti",
-			value: "20 minuti",
-		},
-		{
-			label: "30 minuti",
-			value: "30 minuti",
-		},
-	],
+  optionsLevel: [
+    {
+      label: "Base",
+      value: "Base",
+    },
+    {
+      label: "Intermedio",
+      value: "Intermedio",
+    },
+    {
+      label: "Avanzato",
+      value: "Avanzato",
+    },
+  ],
+  optionsQuestion: [
+    {
+      label: "5 domande",
+      value: "5 domande",
+    },
+    {
+      label: "10 domande",
+      value: "10 domande",
+    },
+    {
+      label: "15 domande",
+      value: "15 domande",
+    },
+  ],
+  optionsDuration: [
+    {
+      label: "10 minuti",
+      value: "10 minuti",
+    },
+    {
+      label: "20 minuti",
+      value: "20 minuti",
+    },
+    {
+      label: "30 minuti",
+      value: "30 minuti",
+    },
+  ],
 };

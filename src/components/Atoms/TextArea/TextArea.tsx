@@ -17,6 +17,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   return (
     <textarea
+      minLength={2}
       className={style.textarea}
       name={name}
       placeholder={placeholder}

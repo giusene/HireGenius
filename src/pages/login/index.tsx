@@ -3,6 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router"; // Importa il router di Next.js
 
 // COMPONENTS
 import LoginForm from "@/components/Organism/LoginForm/LoginForm";
@@ -13,15 +14,15 @@ import style from "./login.module.scss";
 import Hero from "../../../public/hero.png";
 
 const Login = () => {
-  // const [error, setError] = useState("");
   const { loginWithGoogle } = useAuth();
+  const router = useRouter(); // Inizializza il router
 
   const handleGoogleLogin = async () => {
     try {
       await loginWithGoogle();
       console.log("Login con Google effettuato con successo!");
+      router.push("/landing-page"); // Reindirizza alla pagina desiderata
     } catch (err) {
-      // setError("Errore durante il login con Google. Riprova.");
       console.error(err);
     }
   };
@@ -59,8 +60,6 @@ const Login = () => {
           Registrati
         </Link>
       </p>
-
-      {/* {user && <Link href='/protected'>test</Link>} */}
     </main>
   );
 };
