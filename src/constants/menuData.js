@@ -37,6 +37,7 @@ export const navMenu = [
     link: "/logout",
   },
   {
+    icon: LogoutIcon,
     label: "Login",
     link: "/login",
   },
