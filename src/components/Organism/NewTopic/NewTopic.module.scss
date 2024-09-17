@@ -4,14 +4,11 @@
 
 	.hero {
 		background-color: var(--elements-bg);
-		flex-grow: 1;
-		min-height: 168px;
-		position: relative;
 		border-radius: var(--border-radius);
 		overflow: hidden;
 
 		img {
-			object-fit: cover;
+			display: block;
 			border-bottom: 1px solid var(--light);
 		}
 	}

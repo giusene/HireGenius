@@ -1,7 +1,7 @@
 // components/Organism/NewTopic/NewTopic.tsx
 import React, { useState } from "react";
 import { customFormLabels, customFormOptions } from "@/constants/menuData";
-import style from "./new-topic.module.scss";
+import style from "./NewTopic.module.scss";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 
@@ -30,7 +30,7 @@ const NewTopic: React.FC<TopicFormProps> = ({ onSubmit }) => {
 				<h2 className={style.sectionTitle}>{customFormLabels.title}</h2>
 			</header>
 			<div className={style.hero}>
-				<Image src={topicHero} alt='Topic image' fill={true} priority={true} />
+				<Image src={topicHero} alt='Topic image' width={634} height={364} priority={true} />
 			</div>
 			<form onSubmit={handleSubmit}>
 				<InputBox type='text' name='topic' label={customFormLabels.topicLabel} value={topic} onChange={(e) => setTopic(e.target.value)} />

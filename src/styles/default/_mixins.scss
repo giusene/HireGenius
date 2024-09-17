@@ -52,6 +52,9 @@
 @mixin button {
 	font-size: var(--fs-md);
 	font-weight: var(--fw-bold);
+	color: var(--light);
+	border-radius: var(--border-radius);
+
 	cursor: pointer;
 	@include flex-center;
 
