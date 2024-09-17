@@ -1,5 +1,15 @@
 .selectBox {
-	display: flex;
-	flex-direction: column;
-	row-gap: var(--gap-sm);
+	@include flex-column(var(--gap-sm));
+	position: relative;
+
+	select {
+		appearance: none;
+	}
+
+	.selectIcon {
+		position: absolute;
+		right: var(--gap-md);
+		bottom: var(--gap-md);
+		pointer-events: none;
+	}
 }

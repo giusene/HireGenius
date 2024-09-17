@@ -19,13 +19,23 @@
 	@include flex-column(var(--gap-md));
 }
 
+@mixin header {
+	.header {
+		height: 40px;
+		@include flex-center;
+
+		.sectionTitle {
+			text-align: center;
+			color: var(--light);
+			font-size: var(--fs-md);
+		}
+	}
+}
+
 @mixin base-element {
 	padding: var(--elements-padding);
 	border-radius: var(--border-radius);
-
-	&:not(.textarea) {
-		font-size: var(--fs-md);
-	}
+	font-size: var(--fs-md);
 
 	&.select,
 	&.input,
@@ -33,13 +43,9 @@
 	&.label {
 		background: var(--elements-bg);
 		color: var(--light);
-		&::placeholder:not(.label) {
+		&::placeholder {
 			color: var(--light);
 		}
-	}
-
-	&.textarea {
-		font-size: var(--fs-sm);
 	}
 }
 
@@ -96,5 +102,35 @@
 			font-size: calc(var(--fs-md) - 1px);
 			padding: calc(var(--elements-padding) + 0.5px) var(--elements-padding);
 		}
+	}
+}
+
+@mixin form {
+	@include flex-column(var(--gap-md));
+
+	& > :last-child {
+		margin-top: var(--gap-md);
+	}
+
+	input:focus,
+	select:focus,
+	textarea:focus {
+		outline: 2px solid var(--light);
+	}
+
+	textarea:not(:placeholder-shown):valid,
+	input:not(:placeholder-shown):valid,
+	input:focus:user-valid {
+		outline: 2px solid var(--secondary);
+	}
+
+	textarea:focus:invalid,
+	input:not(:placeholder-shown):invalid {
+		outline: 2px solid var(--tertiary);
+	}
+
+	textarea:focus:placeholder-shown:invalid,
+	input:focus:invalid {
+		outline: 2px solid var(--accent);
 	}
 }

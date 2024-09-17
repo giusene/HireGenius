@@ -1,0 +1,17 @@
+.resultCard {
+	@include flex-column(var(--gap-sm));
+	@include base-element;
+	background-color: var(--elements-bg);
+
+	.resultCardHeader {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		span {
+			width: 20px;
+			height: 20px;
+			background-color: var(--secondary);
+		}
+	}
+}
