@@ -1,5 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 // COMPONENTS
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
@@ -15,6 +16,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
 
   const { login } = useAuth();
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const LoginForm = () => {
 
     try {
       await login(email, password);
+      router.push("./landing-page");
     } catch (error) {
       setError("Le credenziali inserite non sono corrette.");
     }

@@ -1,5 +1,3 @@
-
-
 export const navMenu = [
   {
     label: "Home",
@@ -24,6 +22,10 @@ export const navMenu = [
   {
     label: "Logout",
     link: "/logout",
+  },
+  {
+    label: "Login",
+    link: "/login",
   },
 ];
 
@@ -111,46 +113,47 @@ export const customFormLabels = {
   button: "Avanti",
 };
 
-
-    export const customFormOptions = {
-      optionsLevel: [ {
-        label: "Base",
-        value: "Base"
-      },
-        { 
-        label: "Intermedio",
-        value: "Intermedio"
-        },
-        {
-          label: "Avanzato",
-          value: "Avanzato",
-        }
-        ],
-        optionsQuestion: [ {
-          label: "5 domande",
-          value: "5 domande"
-        },
-        {
-          label: "10 domande",
-          value: "10 domande"
-        },
-          {
-            label: "15 domande",
-            value: "15 domande"
-          },
-          ],
-          optionsDuration: [{
-            label: "10 minuti",
-            value: "10 minuti"
-          },
-            {
-              label: "20 minuti",
-              value: "20 minuti"
-            },
-            {
-              label: "30 minuti",
-              value: "30 minuti"
-          },
-            ],
-    };
-
+export const customFormOptions = {
+  optionsLevel: [
+    {
+      label: "Base",
+      value: "Base",
+    },
+    {
+      label: "Intermedio",
+      value: "Intermedio",
+    },
+    {
+      label: "Avanzato",
+      value: "Avanzato",
+    },
+  ],
+  optionsQuestion: [
+    {
+      label: "5 domande",
+      value: "5 domande",
+    },
+    {
+      label: "10 domande",
+      value: "10 domande",
+    },
+    {
+      label: "15 domande",
+      value: "15 domande",
+    },
+  ],
+  optionsDuration: [
+    {
+      label: "10 minuti",
+      value: "10 minuti",
+    },
+    {
+      label: "20 minuti",
+      value: "20 minuti",
+    },
+    {
+      label: "30 minuti",
+      value: "30 minuti",
+    },
+  ],
+};
