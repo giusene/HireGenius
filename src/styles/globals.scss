@@ -67,6 +67,10 @@ body {
 		border: none;
 	}
 
+	::placeholder {
+		color: var(--light);
+	}
+
 	ul {
 		list-style: none;
 	}
