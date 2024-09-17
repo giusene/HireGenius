@@ -58,7 +58,7 @@ const teamMembers = [
   },
 ];
 
-export default function Home() {
+const Project = () => {
   const [blurred, setBlurred] = useState(false);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Home() {
         />
       </Head>
 
-      {/* Hero Section */}
+      
       <section className={style.heroSection}>
         <Image
           className={`${blurred ? style.blurred : ""}`}
@@ -99,7 +99,7 @@ export default function Home() {
         <p>{introLabels.description}</p>
       </section>
 
-      {/* Team Section */}
+      
       <section className={style.teamSection}>
         <h2 className={style.teamTitle}>{teamLabels.title}</h2>
         <div className={style.teamGrid}>
@@ -126,3 +126,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+export default Project;
