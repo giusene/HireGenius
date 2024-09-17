@@ -1,0 +1,35 @@
+// styles/Home.module.scss
+
+.container {
+@include main;
+}
+
+.image {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.statisticsSection {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.competenceSection {
+  width: 100%;
+  max-width: 400px;
+  gap: 50px;
+
+  h2 {
+    color: var(--light);
+    text-align: center;
+    margin-bottom: var(--gap-lg);
+  }
+
+  
+  > div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+

@@ -3,7 +3,7 @@
 export const navMenu = [
   {
     label: "Home",
-    link: "/",
+    link: "/landing-page",
   },
   {
     label: "Nuovo argomento",
