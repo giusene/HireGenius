@@ -1,0 +1,52 @@
+.features {
+  padding: 50px;
+  text-align: center;
+  @include flex-column(15px);
+  background-color: rgb(88, 63, 165);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  @include flex-column(20px);
+}
+
+.featureGridContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
+  border-radius: 10px;
+}
+
+.featureImg {
+  padding: 50px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  @include flex-center;
+}
+
+.featureText {
+  padding: 50px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  @include flex-center;
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+
+  p {
+    color: var(--light);
+  }
+}
+
+.texts {
+  border-radius: 10px;
+  @include flex-column(10px);
+}

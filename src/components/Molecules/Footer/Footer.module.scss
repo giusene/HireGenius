@@ -1,0 +1,21 @@
+.footer {
+  padding: 50px 30px;
+  width: 400vh;
+  background-color: var(--dark);
+  color: white;
+  text-align: center;
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+    &:hover {
+      color: #0070f3
+  }
+}

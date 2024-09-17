@@ -1,0 +1,36 @@
+.hero {
+  position: relative;
+  width: 400vh;
+  height: 100vh;
+  @include flex-center;
+  @include flex-column(80px);
+  background-color: var(--dark);
+
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  max-width: 800px;
+}
+
+.heroTitles {
+  @include flex-column(15px);
+  @include base-element;
+  h1 {
+    font-size: 6rem;
+    font-weight: bold;
+    color: var(--accent);
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent);
+  }
+}
+
+.ctaButton {
+  @include button;
+}
