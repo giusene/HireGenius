@@ -72,7 +72,7 @@ const Project = () => {
 			</Head>
 
 			<section className={style.heroSection}>
-				<Image className={`${blurred ? style.blurred : ""}`} src={heroImg} fill objectFit='cover' alt='Hero background' />
+				<Image className={`${blurred ? style.blurred : ""}`} src={heroImg} fill alt='Hero background' priority={true} />
 				<div className={`${style.textOverlay} ${blurred ? style.visible : ""}`}>
 					<h1 className={style.title}>{heroLabels.title}</h1>
 					<p className={style.motto}>{heroLabels.subtitle}</p>
@@ -89,7 +89,7 @@ const Project = () => {
 				<div className={style.teamGrid}>
 					{teamMembers.map((member, index) => (
 						<div key={index} className={style.card}>
-							<Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={true} />
+							<Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={false} />
 							<InterviewerBadge label={member.name} className='teamMembersName' />
 							<p className={style.memberRole}>{member.role}</p>
 							<p className={style.memberDescription}>{member.description}</p>
