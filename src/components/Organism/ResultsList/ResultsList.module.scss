@@ -47,6 +47,10 @@
 	}
 
 	.resultsList {
-		@include flex-column(var(--gap-lg));
+		@include flex-column(var(--gap-md));
+
+		.linkBtn {
+			@include button;
+		}
 	}
 }

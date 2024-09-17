@@ -2,14 +2,9 @@
 import { InterviewDetails, QuizResponse } from "@/pages/topic-process/index";
 import style from "./ResultsList.module.scss";
 import ResultCard from "@/components/Atoms/ResultCard/ResultCard";
-import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
-// interface testOverview {
-// 	evaluation: EvaluationResult;
-// 	interviewDetails: InterviewDetails;
-// }
+import Link from "next/link";
 
 export interface EvaluationResult {
 	globalEvaluation: GlobalEvaluation; // Valutazione globale (opzionale)
@@ -42,7 +37,8 @@ const ResultsList = (props: ResultsListProps) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
-	const prompt = `Valuta le seguenti risposte fornite durante un colloquio tecnico per una posizione di ${interviewDetails.topic}. Per ogni risposta, fornisci:
+	const prompt = ` Immagina di essere l'esaminatore ${interviewDetails.interviewer.name}. ${interviewDetails.interviewer.longBio}.
+		  Valuta le seguenti risposte fornite durante un colloquio tecnico per una posizione di ${interviewDetails.topic} di livello ${interviewDetails.level}. Per ogni risposta, fornisci:
 1. Uno status: correct | average | incorrect.
 2. Una valutazione con breve spiegazione.
 3. La risposta corretta.
@@ -138,7 +134,9 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 					</ul>
 				</>
 			)}
-			<CtaButton label='Torna alla home' className='ctaC' />
+			<Link href={"/landing-page"} className={`${style.linkBtn} `}>
+				Torna alla home
+			</Link>
 		</main>
 	);
 };
