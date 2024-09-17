@@ -3,20 +3,20 @@ import { heroLabels } from "@/pages/project-page/labels/labels";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import heroImg from "@/../public/hero.png";
 import Image from "next/image";
-
-
- const handleButton = () => {
-  console.log("cliccato")
- }
-
-
+import { useRouter } from "next/router";
 const Hero = () => {
+  const router = useRouter();
+
+  
+  const handleButton = () => {
+    router.push("/login");
+  };
+
   return (
     <>
-    <section className={style.hero}>
-
-    <Image
-          className="heroImg"
+      <section className={style.hero}>
+        <Image
+          className={style.heroImg}
           src={heroImg}
           alt="Hero"
           width={400}
@@ -24,18 +24,18 @@ const Hero = () => {
           priority={true}
         />
 
-      <div className={style.heroContent}>
-        <div className={style.heroTitles}>
-        <h1>{heroLabels.title}</h1>
-        <p>{heroLabels.subtitle}</p>
+        <div className={style.heroContent}>
+          <div className={style.heroTitles}>
+            <h1>{heroLabels.title}</h1>
+            <p>{heroLabels.subtitle}</p>
+          </div>
+          <CtaButton
+            onClick={handleButton}
+            className={style.ctaButton}
+            label="Comincia adesso!"
+          />
         </div>
-        <CtaButton
-        onClick={handleButton}
-        className={style.ctaButton}
-        label="Comincia adesso!"
-        />
-      </div>
-    </section>
+      </section>
     </>
   );
 };
