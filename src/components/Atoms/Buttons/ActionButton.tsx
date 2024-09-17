@@ -15,7 +15,7 @@ const ActionButton = (props: ActionButtonProps) => {
 		<>
 			<button onClick={onClick} className={`${style.button} ${style.actionButton} ${className && style[className]}`}>
 				{label && label}
-				{icon && <Image src={icon} alt='Button icon' width={14} height={14} />}
+				{icon && <Image src={icon} alt='Button icon' width={14} height={14} priority={true} />}
 			</button>
 		</>
 	);

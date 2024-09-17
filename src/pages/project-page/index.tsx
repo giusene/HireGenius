@@ -89,7 +89,7 @@ const Project = () => {
 				<div className={style.teamGrid}>
 					{teamMembers.map((member, index) => (
 						<div key={index} className={style.card}>
-							<Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={false} />
+							<Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={true} />
 							<InterviewerBadge label={member.name} className='teamMembersName' />
 							<p className={style.memberRole}>{member.role}</p>
 							<p className={style.memberDescription}>{member.description}</p>
