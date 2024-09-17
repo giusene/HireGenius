@@ -1,35 +1,33 @@
 // styles/Home.module.scss
 
 .container {
-@include main;
-}
+  @include main;
+  align-items: center;
 
-.image {
-  margin-bottom: 20px;
-  margin-right: 20px;
-  flex-shrink: 0;
-}
+  .header {
+    height: 40px;
+    @include flex-center;
 
-.statisticsSection {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
-}
+    .sectionTitle {
+      text-align: center;
+      color: var(--light);
+      font-size: var(--fs-md);
+    }
 
-.competenceSection {
-  width: 100%;
-  max-width: 400px;
-  gap: 50px;
-
-  h2 {
-    color: var(--light);
-    text-align: center;
-    margin-bottom: var(--gap-lg);
+    .boxes {
+      margin-top: 50px;
+    }
   }
 
-  
-  > div:not(:last-child) {
+  .statisticsSection {
+    width: 100%;
+    max-width: 400px;
     margin-bottom: 20px;
   }
-}
 
+  .competenceSection {
+    width: 100%;
+    max-width: 400px;
+    gap: 50px;
+  }
+}
