@@ -46,6 +46,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+
+      if (!user || !user.uid) {
+        throw new Error("Informazioni utente non disponibili dopo il login.");
+      }
+
       const userDocRef = doc(db, "users", user.uid);
 
       // Verifica se il documento esiste
@@ -54,13 +59,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (userDoc.exists()) {
         // Documento esistente, aggiorna
         await updateDoc(userDocRef, {
-          email: user.email,
+          email: user.email ?? "default@example.com", // Valore di fallback per email
         });
       } else {
         // Documento non esistente, crea
         await setDoc(userDocRef, {
           uid: user.uid,
-          email: user.email,
+          email: user.email ?? "default@example.com", // Valore di fallback per email
         });
       }
 
