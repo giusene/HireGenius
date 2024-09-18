@@ -9,9 +9,18 @@
   margin-bottom: 40px;
   border-radius: 10px;
   background-color: var(--primary);
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    padding: 30px;
+  }
 
   p {
     font-size: 1rem;
     color: var(--light);
+    white-space: pre-line;
+    line-height: 1.5;
+    margin-bottom: 1rem;
   }
 }

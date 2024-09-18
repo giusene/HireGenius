@@ -1,5 +1,6 @@
-import { introLabels } from "@/constants/labels";
+import { introLabels } from "@/constants/indexLabels";
 import style from "./Intro.module.scss";
+import InterviewerBadge from "@/components/Atoms/InterviewerBadge/InterviewerBadge";
 
 
 
@@ -7,7 +8,8 @@ const Intro = () => {
     return (
         <section className={style.hero}>
             <div className={style.introContent}>
-            <p>{introLabels.description}</p>
+                <h1>{introLabels.title}</h1>
+                <p>{introLabels.description}</p>
             </div>
         </section>
     )

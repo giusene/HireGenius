@@ -8,6 +8,13 @@ export const heroLabels = {
   start: "Comincia adesso!",
 } as const;
 
+export const introLabels = {
+  title: "Benvenuti su Interviewer!",
+  description: `Interviewer è la piattaforma per la preparazione a test e colloqui. 
+  Siamo qui per aiutarti a eccellere nelle tue competenze con un'esperienza personalizzata e coinvolgente.`,
+} as const;
+
+
 export const featureLabels = {
   quizPersonalized: "Quiz Personalizzati",
   quizBadge: "Quiz su misura per i tuoi interessi e il tuo livello di competenza.",
