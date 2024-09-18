@@ -15,8 +15,8 @@ const LoadingBar = () => {
       "Chiediamo consiglio agli esperti...",
       "Valutazione in corso... incrocia le dita!",
       "Facciamo finta di essere giudici severi...",
-      "Abbiamo quasi finito, giusto un sorso di caffè!",
-      "Stiamo sommando i punti... serve una calcolatrice?",
+      "Abbiamo quasi finito, giusto un caffè!",
+      "Stiamo sommando... serve una calcolatrice?",
     ];
     const randIdx = Math.floor(Math.random() * messages.length);
     return messages[randIdx];

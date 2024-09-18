@@ -6,8 +6,8 @@
   }
   
   .boxContainer {
-    width: 250px;
-    height: 200px;
+    width: 350px;
+    height: 250px;
     background-color: #7f5af0;
     border-radius: 20px;
     display: flex;
@@ -53,9 +53,9 @@
   
   .loadingMessage {
     font-family: "Hanken Grotesk", sans-serif;
-    font-size: 11px;
+    font-size: var(--fs-md);
     color: #fffffe;
-    margin-top: 15px;
+    margin-top: 40px;
     font-weight: bold;
     text-align: center;
   }
