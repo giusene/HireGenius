@@ -1,5 +1,5 @@
 
-  export const headLabels = {
+export const headLabels = {
     title: "Interviewer - Simulazioni di Test e Colloqui"
   }
 

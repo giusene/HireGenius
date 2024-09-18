@@ -4,7 +4,7 @@ import {
   heroLabels,
   introLabels,
   teamLabels,
-} from "@/pages/project-page/labels/labels.js";
+} from "@/constants/labels";
 import Head from "next/head";
 import Image from "next/image";
 import style from "./project-page.module.scss";
