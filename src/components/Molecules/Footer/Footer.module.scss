@@ -1,0 +1,22 @@
+.footer {
+    padding:20px;
+    margin-top: 40px;
+    background-color: var(--dark);
+    color: var(--light);
+    text-align: center;
+  
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    a {
+      color: var(--light);
+      text-decoration: none;
+  
+      &:hover {
+        color: var(--accent)
+    }
+    }
+    
+  }
