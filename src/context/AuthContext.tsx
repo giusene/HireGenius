@@ -15,7 +15,7 @@ import {
   User,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 interface AuthContextType {
   user: User | null;
@@ -56,16 +56,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       // Verifica se il documento esiste
       const userDoc = await getDoc(userDocRef);
 
-      if (userDoc.exists()) {
-        // Documento esistente, aggiorna
-        await updateDoc(userDocRef, {
-          email: user.email ?? "default@example.com", // Valore di fallback per email
-        });
-      } else {
+      if (!userDoc.exists()) {
         // Documento non esistente, crea
         await setDoc(userDocRef, {
           uid: user.uid,
-          email: user.email ?? "default@example.com", // Valore di fallback per email
+          email: user.email,
         });
       }
 
