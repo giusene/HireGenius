@@ -15,7 +15,7 @@ import {
   User,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
 
 interface AuthContextType {
   user: User | null;
@@ -46,12 +46,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+      const userDocRef = doc(db, "users", user.uid);
 
-      // Salva l'utente in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        email: user.email,
-      });
+      // Verifica se il documento esiste
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        // Documento esistente, aggiorna
+        await updateDoc(userDocRef, {
+          email: user.email,
+        });
+      } else {
+        // Documento non esistente, crea
+        await setDoc(userDocRef, {
+          uid: user.uid,
+          email: user.email,
+        });
+      }
 
       console.log("Login con Google effettuato con successo!");
     } catch (error) {
