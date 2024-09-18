@@ -1,0 +1,78 @@
+.box {
+    background-color: #7f5af0;  
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    cursor: pointer; 
+    justify-content: flex-start;
+  }
+
+  .box:hover {
+    background-color: #7e3ae4;
+  }
+
+   //h3 {
+    //font-size: 18px;
+    //margin-bottom: 10px;
+    //font-weight: bold;
+  //}
+  
+  //p {
+    //font-size: 14px;
+  //}
+  
+  .progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 250px;
+  }
+  
+  .progress-bar-inner {
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  .progress-bar-correct {
+    background-color: #4caf50;  
+  }
+  
+  .progress-bar-improvable {
+    background-color: #ffeb3b;  
+  }
+  
+  .progress-bar-errors {
+    background-color: #f44336;  
+  }
+  
+
+.hero {
+  display: flex;
+  
+  .statistics-box {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    padding: 20px;
+    width: 80%;
+    
+  }
+    
+
+    img {
+      width: 100px; 
+      height: auto; 
+      margin-right: 20px; 
+      
+    }
+  }
+  
+  .heroBox {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  }

@@ -1,0 +1,19 @@
+.main {
+	@include main;
+	@include header;
+
+	.hero {
+		background-color: var(--elements-bg);
+		border-radius: var(--border-radius);
+		overflow: hidden;
+
+		img {
+			display: block;
+			border-bottom: 1px solid var(--light);
+		}
+	}
+
+	form {
+		@include form;
+	}
+}

@@ -1,36 +1,31 @@
-.questionCard {
-  @include main;
+.main {
+	@include main;
 
-  .header {
-    height: 40px;
-    @include flex-center;
+	@include header;
 
-    .sectionTitle {
-      text-align: center;
-      color: var(--light);
-      font-size: var(--fs-md);
-    }
-  }
+	.progress {
+		@include flex-column(var(--gap-sm));
+		h3 {
+			color: var(--light);
+			font-size: var(--fs-md);
+		}
+	}
 
-  .progress {
-    @include flex-column(var(--gap-sm));
-    h3 {
-      color: var(--light);
-      font-size: var(--fs-md);
-    }
-  }
+	form {
+		@include form;
+	}
 
-  mark.invalid {
-    background: var(--tertiary);
-    color: var(--white);
-    font-weight: var(--fw-regular);
-    padding: calc(var(--elements-padding) / 2) var(--elements-padding);
-    width: fit-content;
-    font-size: var(--fs-sm);
-  }
+	mark.invalid {
+		background: var(--tertiary);
+		color: var(--white);
+		font-weight: var(--fw-regular);
+		padding: calc(var(--elements-padding) / 2) var(--elements-padding);
+		width: fit-content;
+		font-size: var(--fs-sm);
+	}
 
-  .buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
+	.buttons {
+		display: flex;
+		justify-content: flex-end;
+	}
 }

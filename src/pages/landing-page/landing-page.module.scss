@@ -1,0 +1,33 @@
+// styles/Home.module.scss
+
+.container {
+  @include main;
+  align-items: center;
+
+  .header {
+    height: 40px;
+    @include flex-center;
+
+    .sectionTitle {
+      text-align: center;
+      color: var(--light);
+      font-size: var(--fs-md);
+    }
+
+    .boxes {
+      margin-top: 50px;
+    }
+  }
+
+  .statisticsSection {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  .competenceSection {
+    width: 100%;
+    max-width: 400px;
+    gap: 50px;
+  }
+}
