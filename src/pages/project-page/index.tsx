@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  headLabels,
-  heroLabels,
-  introLabels,
-  teamLabels,
-} from "@/constants/labels";
+import { teamLabels } from "@/constants/projectLabels";
+import { headLabels, heroLabels, introLabels } from "@/constants/indexLabels";
 import Head from "next/head";
 import Image from "next/image";
 import style from "./project-page.module.scss";
