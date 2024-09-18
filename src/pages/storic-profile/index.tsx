@@ -190,7 +190,7 @@ const handleCardClick = (index: number) => {
 if (isLoading) {
     return (
     <div className={style.loadingScreen}>
-        <div className={style.spaceship}> <Image src={Rocket} alt="Loading" width={80} height={80} /></div>
+        <div className={style.spaceship}> <Image src={Rocket} alt="Loading" width={80} height={80} priority={true} /></div>
     </div>
     );
 }
