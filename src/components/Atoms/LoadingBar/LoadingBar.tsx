@@ -11,7 +11,7 @@ const LoadingBar = () => {
       "Controllando se hai barato...",
       "Esaminiamo con la lente d'ingrandimento...",
       "Consultando la sfera di cristallo...",
-      "Le risposte sono in forno, quasi pronte! ",
+      "Le risposte sono in forno, quasi pronte!",
       "Chiediamo consiglio agli esperti...",
       "Valutazione in corso... incrocia le dita!",
       "Facciamo finta di essere giudici severi...",
@@ -23,14 +23,12 @@ const LoadingBar = () => {
   };
 
   useEffect(() => {
-    const totalDuration = Math.random() * (40 - 20) + 20;
-    const interval = (totalDuration * 1000) / 100;
-
-
+    // Intervallo per cambiare il messaggio ogni 2 secondi
     const messageInterval = setInterval(() => {
       setLoadingMessage(getRandomLoadingMessage());
     }, 2000);
 
+    // Pulizia dell'intervallo alla fine del componente
     return () => {
       clearInterval(messageInterval);
     };
