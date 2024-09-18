@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./LoadingBar.module.scss";
 
 const LoadingBar = () => {
-  const [progress, setProgress] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState(
     "Controllando se hai barato..."
   );
@@ -27,22 +26,12 @@ const LoadingBar = () => {
     const totalDuration = Math.random() * (40 - 20) + 20;
     const interval = (totalDuration * 1000) / 100;
 
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
-        return prev + 1;
-      });
-    }, interval);
 
     const messageInterval = setInterval(() => {
       setLoadingMessage(getRandomLoadingMessage());
     }, 2000);
 
     return () => {
-      clearInterval(progressInterval);
       clearInterval(messageInterval);
     };
   }, []);
