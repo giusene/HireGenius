@@ -15,7 +15,7 @@ import {
   User,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 interface AuthContextType {
   user: User | null;
@@ -47,11 +47,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      // Salva l'utente in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        email: user.email,
-      });
+      if (!user || !user.uid) {
+        throw new Error("Informazioni utente non disponibili dopo il login.");
+      }
+
+      const userDocRef = doc(db, "users", user.uid);
+
+      // Verifica se il documento esiste
+      const userDoc = await getDoc(userDocRef);
+
+      if (!userDoc.exists()) {
+        // Documento non esistente, crea
+        await setDoc(userDocRef, {
+          uid: user.uid,
+          email: user.email,
+        });
+      }
 
       console.log("Login con Google effettuato con successo!");
     } catch (error) {
@@ -104,7 +115,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth deve essere usato all’interno di un AuthProvider");
+    throw new Error("useAuth deve essere usato in un AuthProvider");
   }
   return context;
 };

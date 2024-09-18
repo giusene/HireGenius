@@ -1,3 +1,5 @@
+import { useAuth } from "@/context/AuthContext";
+import { saveInterviewSession } from "@/utils/saveInterviewSession";
 import { useEffect, useState } from "react";
 import { InterviewDetails, QuizResponse } from "@/pages/topic-process/index";
 import style from "./ResultsList.module.scss";
@@ -31,6 +33,7 @@ interface ResultsListProps {
 
 const ResultsList = (props: ResultsListProps) => {
   const { quizResponses, interviewDetails } = props;
+  const { user } = useAuth(); // Otteniamo l'utente autenticato dal contesto
 
   const [evaluationResult, setEvaluationResult] =
     useState<EvaluationResult | null>(null);
@@ -76,6 +79,14 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
         await quizResponsesEvaluation.json();
       console.log("Risultato della valutazione:", evaluationResult);
       setEvaluationResult(evaluationResult);
+      if (user) {
+        await saveInterviewSession(
+          user.uid,
+          interviewDetails,
+          evaluationResult
+        );
+        console.log("Sessione salvata con successo!");
+      }
     } catch (e) {
       console.error("Errore durante la valutazione:", e);
     } finally {
