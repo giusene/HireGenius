@@ -74,10 +74,6 @@ const TopicProcess: React.FC = () => {
     };
     setInterviewDetails(newInterviewDetails); // Imposta lo stato dell'intervista
 
-    const maxRetries = 3; // Numero massimo di tentativi
-    let attempt = 0;
-    let success = false;
-
     const prompt = `
 		  Immagina di essere l'esaminatore ${newInterviewDetails.interviewer.name}. ${newInterviewDetails.interviewer.longBio}.
 		  Devi condurre un colloquio tecnico ${newInterviewDetails.level}.
@@ -86,31 +82,27 @@ const TopicProcess: React.FC = () => {
 
     // Debug del prompt
     console.log("Prompt sent to API:", prompt);
+    try {
+      const response = await fetch("/api/generate-question", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt }),
+      });
 
-    while (attempt < maxRetries && !success) {
-      try {
-        const response = await fetch("/api/generate-question", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Errore nella richiesta al server.");
-        }
-
-        const result = await response.json();
-        const parsedData = JSON.parse(result);
-        setGeneratedQuestions(parsedData);
-        success = true;
-        setStep("questionCard");
-        console.log("Questions generated successfully", parsedData);
-      } catch (e) {
-        console.error("Error generating questions", e);
-        attempt++;
+      if (!response.ok) {
+        throw new Error("Errore nella richiesta al server.");
       }
+
+      const result = await response.json();
+      const parsedData = JSON.parse(result);
+      setGeneratedQuestions(parsedData);
+
+      setStep("questionCard");
+      console.log("Questions generated successfully", parsedData);
+    } catch (e) {
+      console.error("Error generating questions", e);
     }
   };
 
