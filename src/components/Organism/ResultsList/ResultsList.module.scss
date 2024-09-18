@@ -48,9 +48,14 @@
 
 	.resultsList {
 		@include flex-column(var(--gap-md));
+	}
 
-		.linkBtn {
+	.linkBtn {
+		width: 100%;
+
+		button {
 			@include button;
+			width: 100%;
 		}
 	}
 }
