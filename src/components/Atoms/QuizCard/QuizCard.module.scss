@@ -1,19 +1,26 @@
-.quizCard {
+.quizCardContainer {
 	@include base-element;
-	@include flex(var(--gap-md));
-	background: var(--elements-bg);
-	cursor: pointer;
-	transition: transform 0.3s ease, border 0.3s ease;
+	@include flex-column(var(--gap-md));
 
-	&.selectedCard {
-		transform: scale(1.05);
-		border: 4px solid var(--dark);
-	}
+	.quizCard {
+		@include flex(var(--gap-md));
+		cursor: pointer;
+		transition: transform 0.3s ease, border 0.3s ease;
 
-	.content {
-		@include flex-column(var(--gap-sm));
-		span {
-			font-weight: var(--fw-regular);
+		&.selectedCard {
+			transform: scale(1.05);
+			border: 4px solid var(--dark);
+		}
+
+		.content {
+			@include flex-column(var(--gap-sm));
+			span {
+				font-weight: var(--fw-regular);
+			}
+		}
+
+		& > button {
+			margin-left: auto;
 		}
 	}
 }

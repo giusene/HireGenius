@@ -23,9 +23,12 @@ interface QuizCardProps {
 	topic: string;
 	score: number;
 	interviewer: string;
+	// onClick: () => void;
+	// isSelected: boolean;
 	message: string;
 }
 
+// const QuizCard: React.FC<QuizCardProps> = ({ date, topic, score, interviewer, onClick, isSelected }) => {
 const QuizCard: React.FC<QuizCardProps> = ({ date, topic, score, interviewer, message }) => {
 	const [showDetails, setShowDetails] = useState(false);
 
@@ -66,8 +69,10 @@ const QuizCard: React.FC<QuizCardProps> = ({ date, topic, score, interviewer, me
 	const dateFromNow = formatDistanceToNow(new Date(newDate), { addSuffix: true });
 
 	return (
+		// <div className={`${style.quizCard} ${isSelected ? style.selectedCard : ""}`} onClick={onClick}>
 		<div className={style.quizCardContainer}>
 			<div className={style.quizCard}>
+				{/* {avatarSrc && <Image src={avatarSrc} alt={`${interviewer} avatar`} width={50} height={50} />} */}
 				<Image src={iconSrc} className={style.icon} alt='Icon' width={80} height={80} />
 				<div className={style.content}>
 					<span>{dateFromNow}</span>

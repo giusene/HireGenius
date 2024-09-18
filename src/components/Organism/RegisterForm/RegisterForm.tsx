@@ -34,8 +34,8 @@ const RegisterForm = () => {
 				userName: userName,
 			});
 
-			alert("Registrazione completata con successo!");
-			router.push("/login"); // Reindirizza l'utente alla pagina di login
+			console.log("Registrazione completata con successo!");
+			router.push("/landing-page"); // Reindirizza l'utente alla pagina di login
 		} catch (err) {
 			setError("Errore durante la registrazione. Riprova.");
 		}

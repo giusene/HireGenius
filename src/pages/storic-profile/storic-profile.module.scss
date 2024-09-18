@@ -17,69 +17,39 @@
 	}
 }
 
-.loadingScreen {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: var(--dark);
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 1000;
+// .modal {
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	right: 0;
+// 	bottom: 0;
+// 	background: rgba(0, 0, 0, 0.5);
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	z-index: 1100;
+// }
 
-	.spaceship {
-		font-size: 50px;
-		animation: fly 2s infinite ease-in-out;
-	}
+// .modalContent {
+// 	background: #fff;
+// 	padding: 20px;
+// 	border-radius: 8px;
+// 	text-align: center;
+// 	width: 300px;
+// 	position: relative;
+// }
 
-	@keyframes fly {
-		0% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-20px); /* Effetto di volo su e giù */
-		}
-		100% {
-			transform: translateY(0);
-		}
-	}
-}
+// .modalContent button {
+// 	margin-top: 10px;
+// 	background-color: #0070f3;
+// 	color: #fff;
+// 	border: none;
+// 	border-radius: 5px;
+// 	padding: 10px;
+// 	cursor: pointer;
+// 	transition: background-color 0.3s ease;
 
-.modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1100;
-}
-
-.modalContent {
-	background: #fff;
-	padding: 20px;
-	border-radius: 8px;
-	text-align: center;
-	width: 300px;
-	position: relative;
-}
-
-.modalContent button {
-	margin-top: 10px;
-	background-color: #0070f3;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	padding: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-
-	&:hover {
-		background-color: #005bb5;
-	}
-}
+// 	&:hover {
+// 		background-color: #005bb5;
+// 	}
+// }

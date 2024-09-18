@@ -1,3 +1,5 @@
+import { useAuth } from "@/context/AuthContext";
+import { saveInterviewSession } from "@/utils/saveInterviewSession";
 import { useEffect, useState } from "react";
 import { InterviewDetails, QuizResponse } from "@/pages/topic-process/index";
 import style from "./ResultsList.module.scss";
@@ -5,6 +7,7 @@ import ResultCard from "@/components/Atoms/ResultCard/ResultCard";
 import Image from "next/image";
 import Link from "next/link";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
+import Loading from "@/components/Atoms/Loading/Loading";
 
 export interface EvaluationResult {
 	globalEvaluation: GlobalEvaluation;
@@ -32,9 +35,10 @@ interface ResultsListProps {
 
 const ResultsList = (props: ResultsListProps) => {
 	const { quizResponses, interviewDetails } = props;
+	const { user } = useAuth(); // Otteniamo l'utente autenticato dal contesto
 
 	const [evaluationResult, setEvaluationResult] = useState<EvaluationResult | null>(null);
-	const [loading, setLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
 	const prompt = `Immagina di essere l'esaminatore ${interviewDetails.interviewer.name}. ${interviewDetails.interviewer.longBio}.
@@ -46,7 +50,7 @@ const ResultsList = (props: ResultsListProps) => {
 Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su 100 e una breve frase che riassuma le prestazioni generali del candidato (ad esempio: "Hai superato il test", "Hai dimostrato buone competenze", "Devi migliorare").`;
 
 	const evaluateAnswers = async () => {
-		setLoading(true);
+		setIsLoading(true);
 		setError(null);
 
 		try {
@@ -72,10 +76,15 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 			const evaluationResult: EvaluationResult = await quizResponsesEvaluation.json();
 			console.log("Risultato della valutazione:", evaluationResult);
 			setEvaluationResult(evaluationResult);
+			if (user) {
+				await saveInterviewSession(user.uid, interviewDetails, evaluationResult);
+				console.log("Sessione salvata con successo!");
+			}
 		} catch (e) {
+			setIsLoading(false);
 			console.error("Errore durante la valutazione:", e);
 		} finally {
-			setLoading(false);
+			setIsLoading(false);
 			console.log("Fine evaluateAnswers");
 		}
 	};
@@ -85,11 +94,14 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	{
+		if (isLoading) return <Loading />;
+	}
+
 	return (
 		<main className={style.main}>
 			{/* <button onClick={evaluateAnswers}>risultati</button> */}
 			{error && <p className='error-message'>{error}</p>}
-			{loading && <p className='loading-message'>Caricamento in corso...</p>}
 
 			{interviewDetails && (
 				<>
