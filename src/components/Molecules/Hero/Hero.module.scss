@@ -1,36 +1,47 @@
 .hero {
-  position: relative;
-  width: 400vh;
-  height: 100vh;
-  @include flex-center;
-  @include flex-column(80px);
-  background-color: var(--dark);
+  text-align: center;
+  padding: var(--elements-padding);
+  border-radius: var(--border-radius);
+  background: var(--elements-bg);
+  background-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: var(--gap-lg);
+  max-width: 100%;
+  transition: transform 0.3s ease;
 
+  h1 {
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5rem;
+  }
+
+  p {
+    font-size: 2rem;
+    color: var(--accent);
+  }
+  button {
+    padding: 12px 28px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-weight: var(--fw-bold);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: var(--secondary);
+  }
+}
+
+.hero:hover {
+  transform: translateY(-10px);
 }
 
 .heroContent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 50px;
-  max-width: 800px;
-}
-
-.heroTitles {
-  @include flex-column(15px);
-  @include base-element;
-  h1 {
-    font-size: 6rem;
-    font-weight: bold;
-    color: var(--accent);
-  }
-
-  p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--accent);
-  }
-}
-
-.ctaButton {
-  @include button;
 }

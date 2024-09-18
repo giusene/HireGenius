@@ -30,7 +30,7 @@ const Hero = () => {
           </div>
           <CtaButton
             onClick={handleButton}
-            className={style.ctaButton}
+            className={style.button}
             label="Comincia adesso!"
           />
         </div>
