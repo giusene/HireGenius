@@ -1,6 +1,5 @@
 import { introLabels } from "@/constants/indexLabels";
 import style from "./Intro.module.scss";
-import InterviewerBadge from "@/components/Atoms/InterviewerBadge/InterviewerBadge";
 
 
 
