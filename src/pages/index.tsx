@@ -4,6 +4,7 @@ import { headLabels } from "@/constants/indexLabels";
 import Hero from "@/components/Molecules/Hero/Hero";
 import Features from "@/components/Molecules/Features/Feature";
 import Footer from "@/components/Molecules/Footer/Footer";
+import Intro from "@/components/Molecules/Intro/Intro";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       </Head>
       <main>
         <Hero />
+        <Intro />
         <Features />
       </main>
       <Footer />

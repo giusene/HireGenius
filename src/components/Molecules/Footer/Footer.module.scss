@@ -2,7 +2,7 @@
   padding: 50px 30px;
   width: 400vh;
   background-color: var(--dark);
-  color: white;
+  color: var(--light);
   text-align: center;
 
   nav {
@@ -11,11 +11,12 @@
     gap: 20px;
   }
   a {
-    color: white;
+    color: var(--light);
     text-decoration: none;
+
+    &:hover {
+      color: var(--accent)
+  }
   }
   
-    &:hover {
-      color: #0070f3
-  }
 }

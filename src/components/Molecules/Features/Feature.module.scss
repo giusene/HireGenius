@@ -3,6 +3,7 @@
   text-align: center;
   @include flex-column(15px);
   background-color: rgb(88, 63, 165);
+  border-radius: 10px;
 }
 
 .featuresGrid {

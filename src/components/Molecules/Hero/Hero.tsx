@@ -31,7 +31,7 @@ const Hero = () => {
           <CtaButton
             onClick={handleButton}
             className={style.button}
-            label="Comincia adesso!"
+            label={heroLabels.start}
           />
         </div>
       </section>

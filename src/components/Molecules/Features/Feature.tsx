@@ -27,7 +27,7 @@ const Features = () => {
         <div className={style.featureText}>
         <div className={style.texts}>
       <InterviewerBadge
-                label="Personalized Quizzes"
+                label={featureLabels.quizPersonalized}
                 className="personalizedQuiz"
               />
           <p>{featureLabels.quizBadge}</p>
@@ -41,7 +41,7 @@ const Features = () => {
         <div className={style.featureText}>
         <div className={style.texts}>
         <InterviewerBadge
-                label="Simulated Interviews"
+                label={featureLabels.simulatedInterviews}
                 className="simulatedInterviews"
               />
           <p>{featureLabels.simulatedBadge}</p>
@@ -79,7 +79,7 @@ const Features = () => {
         <div className={style.featureText}>
         <div className={style.texts}>
       <InterviewerBadge
-                label="AI-Powered Feedback"
+                label={featureLabels.aiFeedback}
                 className="aiPoweredFeedback"
               />
           <p>{featureLabels.aiBadge}</p>

@@ -1,12 +1,13 @@
+import { footerLabels } from "@/constants/indexLabels";
 import style from "./Footer.module.scss";
 
 const Footer = () => {
   return (
     <footer className={style.footer}>
-      <p>© 2024 Interviewer. All rights reserved.</p>
+      <p>{footerLabels.reserved}</p>
       <nav>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">{footerLabels.privacy}</a>
+        <a href="#terms">{footerLabels.terms}</a>
       </nav>
     </footer>
   );
