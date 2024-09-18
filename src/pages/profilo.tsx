@@ -1,5 +1,3 @@
-// src/pages/protected.tsx
-
 import React, { useEffect, useState } from "react";
 import withAuth from "../middleware/withAuth";
 import { getDoc, doc } from "firebase/firestore";
@@ -7,9 +5,39 @@ import { db } from "@/lib/firebaseConfig";
 import { useAuth } from "@/context/AuthContext"; // Assicurati di avere il contesto AuthContext
 import Link from "next/link";
 
+//Interfaces
+interface InterviewSession {
+  sessionId: string;
+  sessionDate: string; // ISO string
+  interviewDetails: {
+    interviewer: {
+      name: string;
+    };
+    topic: string;
+  };
+  evaluationResult: {
+    globalEvaluation: {
+      points: number;
+      outOf: number;
+      feedback: string;
+    };
+    evaluatedResponses: EvaluatedResponse[];
+  };
+}
+
+interface EvaluatedResponse {
+  q: string;
+  a: string;
+  answerFeedback: string;
+  correctAnswer: string;
+  answerStatus: string;
+}
+
 const ProtectedPage = () => {
   const { user } = useAuth(); // Ottieni l'utente dal contesto
-  const [interviewSessions, setInterviewSessions] = useState<any[]>([]);
+  const [interviewSessions, setInterviewSessions] = useState<
+    InterviewSession[]
+  >([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +50,9 @@ const ProtectedPage = () => {
           if (userDoc.exists()) {
             const userData = userDoc.data();
             if (userData.interviewSessions) {
-              setInterviewSessions(userData.interviewSessions);
+              setInterviewSessions(
+                userData.interviewSessions as InterviewSession[]
+              );
             } else {
               console.log("Nessuna sessione di intervista trovata.");
             }
@@ -60,91 +90,15 @@ const ProtectedPage = () => {
             </p>
 
             <h4>Risposte Valutate:</h4>
-            {session.evaluationResult.evaluatedResponses.map(
-              (
-                response: {
-                  q:
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | React.ReactElement<
-                        any,
-                        string | React.JSXElementConstructor<any>
-                      >
-                    | Iterable<React.ReactNode>
-                    | React.ReactPortal
-                    | Promise<React.AwaitedReactNode>
-                    | null
-                    | undefined;
-                  a:
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | React.ReactElement<
-                        any,
-                        string | React.JSXElementConstructor<any>
-                      >
-                    | Iterable<React.ReactNode>
-                    | React.ReactPortal
-                    | Promise<React.AwaitedReactNode>
-                    | null
-                    | undefined;
-                  answerFeedback:
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | React.ReactElement<
-                        any,
-                        string | React.JSXElementConstructor<any>
-                      >
-                    | Iterable<React.ReactNode>
-                    | React.ReactPortal
-                    | Promise<React.AwaitedReactNode>
-                    | null
-                    | undefined;
-                  correctAnswer:
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | React.ReactElement<
-                        any,
-                        string | React.JSXElementConstructor<any>
-                      >
-                    | Iterable<React.ReactNode>
-                    | React.ReactPortal
-                    | Promise<React.AwaitedReactNode>
-                    | null
-                    | undefined;
-                  answerStatus:
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | React.ReactElement<
-                        any,
-                        string | React.JSXElementConstructor<any>
-                      >
-                    | Iterable<React.ReactNode>
-                    | React.ReactPortal
-                    | Promise<React.AwaitedReactNode>
-                    | null
-                    | undefined;
-                },
-                i: React.Key | null | undefined
-              ) => (
-                <div key={i}>
-                  <p>Domanda: {response.q}</p>
-                  <p>Risposta: {response.a}</p>
-                  <p>Feedback: {response.answerFeedback}</p>
-                  <p>Risposta Corretta: {response.correctAnswer}</p>
-                  <p>Stato Risposta: {response.answerStatus}</p>
-                </div>
-              )
-            )}
+            {session.evaluationResult.evaluatedResponses.map((response, i) => (
+              <div key={i}>
+                <p>Domanda: {response.q}</p>
+                <p>Risposta: {response.a}</p>
+                <p>Feedback: {response.answerFeedback}</p>
+                <p>Risposta Corretta: {response.correctAnswer}</p>
+                <p>Stato Risposta: {response.answerStatus}</p>
+              </div>
+            ))}
           </div>
         ))
       ) : (
