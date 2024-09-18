@@ -1,115 +1,114 @@
-import React, { useEffect, useState } from "react";
-import withAuth from "../middleware/withAuth";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "@/lib/firebaseConfig";
-import { useAuth } from "@/context/AuthContext"; // Assicurati di avere il contesto AuthContext
-import Link from "next/link";
+// import React, { useEffect, useState } from "react";
+// import withAuth from "../middleware/withAuth";
+// import { getDoc, doc } from "firebase/firestore";
+// import { db } from "@/lib/firebaseConfig";
+// import { useAuth } from "@/context/AuthContext";
+// import Link from "next/link";
 
-//Interfaces
-interface InterviewSession {
-  sessionId: string;
-  sessionDate: string; // ISO string
-  interviewDetails: {
-    interviewer: {
-      name: string;
-    };
-    topic: string;
-  };
-  evaluationResult: {
-    globalEvaluation: {
-      points: number;
-      outOf: number;
-      feedback: string;
-    };
-    evaluatedResponses: EvaluatedResponse[];
-  };
-}
+// interface InterviewSession {
+//   sessionId: string;
+//   sessionDate: string;
+//   interviewDetails: {
+//     interviewer: {
+//       name: string;
+//     };
+//     topic: string;
+//   };
+//   evaluationResult: {
+//     globalEvaluation: {
+//       points: number;
+//       outOf: number;
+//       feedback: string;
+//     };
+//     evaluatedResponses: EvaluatedResponse[];
+//   };
+// }
 
-interface EvaluatedResponse {
-  q: string;
-  a: string;
-  answerFeedback: string;
-  correctAnswer: string;
-  answerStatus: string;
-}
+// interface EvaluatedResponse {
+//   q: string;
+//   a: string;
+//   answerFeedback: string;
+//   correctAnswer: string;
+//   answerStatus: string;
+// }
 
-const ProtectedPage = () => {
-  const { user } = useAuth(); // Ottieni l'utente dal contesto
-  const [interviewSessions, setInterviewSessions] = useState<
-    InterviewSession[]
-  >([]);
+// const ProtectedPage = () => {
+//   const { user } = useAuth();
+//   const [interviewSessions, setInterviewSessions] = useState<
+//     InterviewSession[]
+//   >([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (user) {
-        try {
-          // Riferimento al documento dell'utente autenticato
-          const userDocRef = doc(db, "users", user.uid);
-          const userDoc = await getDoc(userDocRef);
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       if (user) {
+//         try {
 
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            if (userData.interviewSessions) {
-              setInterviewSessions(
-                userData.interviewSessions as InterviewSession[]
-              );
-            } else {
-              console.log("Nessuna sessione di intervista trovata.");
-            }
-          }
-        } catch (error) {
-          console.error("Errore durante il recupero dei dati:", error);
-        }
-      }
-    };
+//           const userDocRef = doc(db, "users", user.uid);
+//           const userDoc = await getDoc(userDocRef);
 
-    fetchData();
-  }, [user]);
+//           if (userDoc.exists()) {
+//             const userData = userDoc.data();
+//             if (userData.interviewSessions) {
+//               setInterviewSessions(
+//                 userData.interviewSessions as InterviewSession[]
+//               );
+//             } else {
+//               console.log("Nessuna sessione di intervista trovata.");
+//             }
+//           }
+//         } catch (error) {
+//           console.error("Errore durante il recupero dei dati:", error);
+//         }
+//       }
+//     };
 
-  return (
-    <div>
-      <h1>Pagina Protetta</h1>
-      <p>Solo gli utenti autenticati possono vedere questo contenuto.</p>
+//     fetchData();
+//   }, [user]);
 
-      <h2>Sessioni di Intervista:</h2>
-      {interviewSessions.length > 0 ? (
-        interviewSessions.map((session, index) => (
-          <div key={index}>
-            <h3>Sessione ID: {session.sessionId}</h3>
-            <p>Data: {new Date(session.sessionDate).toLocaleString()}</p>
-            <h4>Dettagli Intervista</h4>
-            <p>Intervistatore: {session.interviewDetails.interviewer.name}</p>
-            <p>Topic: {session.interviewDetails.topic}</p>
-            <h4>Risultato Valutazione</h4>
-            <p>
-              Punti: {session.evaluationResult.globalEvaluation.points} su{" "}
-              {session.evaluationResult.globalEvaluation.outOf}
-            </p>
-            <p>
-              Feedback: {session.evaluationResult.globalEvaluation.feedback}
-            </p>
+//   return (
+//     <div>
+//       <h1>Pagina Protetta</h1>
+//       <p>Solo gli utenti autenticati possono vedere questo contenuto.</p>
 
-            <h4>Risposte Valutate:</h4>
-            {session.evaluationResult.evaluatedResponses.map((response, i) => (
-              <div key={i}>
-                <p>Domanda: {response.q}</p>
-                <p>Risposta: {response.a}</p>
-                <p>Feedback: {response.answerFeedback}</p>
-                <p>Risposta Corretta: {response.correctAnswer}</p>
-                <p>Stato Risposta: {response.answerStatus}</p>
-              </div>
-            ))}
-          </div>
-        ))
-      ) : (
-        <p>Nessuna sessione disponibile.</p>
-      )}
+//       <h2>Sessioni di Intervista:</h2>
+//       {interviewSessions.length > 0 ? (
+//         interviewSessions.map((session, index) => (
+//           <div key={index}>
+//             <h3>Sessione ID: {session.sessionId}</h3>
+//             <p>Data: {new Date(session.sessionDate).toLocaleString()}</p>
+//             <h4>Dettagli Intervista</h4>
+//             <p>Intervistatore: {session.interviewDetails.interviewer.name}</p>
+//             <p>Topic: {session.interviewDetails.topic}</p>
+//             <h4>Risultato Valutazione</h4>
+//             <p>
+//               Punti: {session.evaluationResult.globalEvaluation.points} su{" "}
+//               {session.evaluationResult.globalEvaluation.outOf}
+//             </p>
+//             <p>
+//               Feedback: {session.evaluationResult.globalEvaluation.feedback}
+//             </p>
 
-      <Link href="/logout">
-        <button>Logout</button>
-      </Link>
-    </div>
-  );
-};
+//             <h4>Risposte Valutate:</h4>
+//             {session.evaluationResult.evaluatedResponses.map((response, i) => (
+//               <div key={i}>
+//                 <p>Domanda: {response.q}</p>
+//                 <p>Risposta: {response.a}</p>
+//                 <p>Feedback: {response.answerFeedback}</p>
+//                 <p>Risposta Corretta: {response.correctAnswer}</p>
+//                 <p>Stato Risposta: {response.answerStatus}</p>
+//               </div>
+//             ))}
+//           </div>
+//         ))
+//       ) : (
+//         <p>Nessuna sessione disponibile.</p>
+//       )}
 
-export default withAuth(ProtectedPage);
+//       <Link href="/logout">
+//         <button>Logout</button>
+//       </Link>
+//     </div>
+//   );
+// };
+
+// export default withAuth(ProtectedPage);
