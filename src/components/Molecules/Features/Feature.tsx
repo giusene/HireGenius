@@ -4,7 +4,7 @@ import Image from "next/image";
 import quiz from "@/../public/icons/new-topic.png"
 import interview from "@/../public/icons/new-interview.png";
 import ai from "@/../public/hero.png"
-import {featureLabels} from "@/pages/indexLabels/indexLabels";
+import {featureLabels} from "@/constants/indexLabels";
 
 const Features = () => {
   return (

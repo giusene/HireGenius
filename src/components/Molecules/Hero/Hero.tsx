@@ -1,5 +1,5 @@
 import style from "./Hero.module.scss";
-import { heroLabels } from "@/pages/project-page/labels/labels";
+import { heroLabels } from "@/constants/indexLabels";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import heroImg from "@/../public/hero.png";
 import Image from "next/image";
@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 const Hero = () => {
   const router = useRouter();
 
-  
   const handleButton = () => {
     router.push("/login");
   };
