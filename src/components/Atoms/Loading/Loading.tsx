@@ -26,13 +26,15 @@ const Loading = (props: LoadingProps) => {
 	};
 
 	useEffect(() => {
-		const messageInterval = setInterval(() => {
-			setLoadingMessage(getRandomLoadingMessage());
-		}, 2000);
+		if (lazyLoading === true) {
+			const messageInterval = setInterval(() => {
+				setLoadingMessage(getRandomLoadingMessage());
+			}, 2000);
 
-		return () => {
-			clearInterval(messageInterval);
-		};
+			return () => {
+				clearInterval(messageInterval);
+			};
+		}
 	}, []);
 
 	return (

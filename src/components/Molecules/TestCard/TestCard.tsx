@@ -1,5 +1,5 @@
 // components/TopicBox.tsx
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./TestCard.module.scss";
 import { TestCardProps } from "@/interfaces/interfaces";

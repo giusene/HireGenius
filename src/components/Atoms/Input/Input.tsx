@@ -1,6 +1,5 @@
-import { InputBoxProps } from "@/components/Molecules/InputBox/InputBox";
-
 // STYLE
+import { InputBoxProps } from "@/interfaces/interfaces";
 import style from "./Input.module.scss";
 
 const Input = (props: InputBoxProps) => {
