@@ -2,12 +2,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styles from "./TestCard.module.scss";
-
-interface TestCardProps {
-	cardImage: StaticImageData;
-	title: string;
-	description: string;
-}
+import { TestCardProps } from "@/interfaces/interfaces";
 
 const TestCard = (props: TestCardProps) => {
 	const { cardImage, title, description } = props;

@@ -1,10 +1,6 @@
 import React from "react";
 import styles from "./ProgressBar.module.scss";
-
-interface ProgressBarProps {
-	currentStep: number;
-	totalSteps: number;
-}
+import { ProgressBarProps } from "@/interfaces/interfaces";
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) => {
 	const progressPercentage = (currentStep / totalSteps) * 100;
