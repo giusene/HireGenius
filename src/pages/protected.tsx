@@ -6,7 +6,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
-import { deleteInterviewSession } from "@/utils/deleteInterviewSession ";
+import { deleteInterviewSession } from "@/utils/deleteInterviewSession";
 
 interface InterviewSession {
   sessionId: string;
