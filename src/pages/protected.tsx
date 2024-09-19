@@ -1,9 +1,12 @@
+//Esempio per usare la funzione deleteInterviewSession
+
 import React, { useEffect, useState } from "react";
 import withAuth from "../middleware/withAuth";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { deleteInterviewSession } from "@/utils/deleteInterviewSession ";
 
 interface InterviewSession {
   sessionId: string;
@@ -64,6 +67,19 @@ const ProtectedPage = () => {
     fetchData();
   }, [user]);
 
+  const handleDelete = async (sessionId: string) => {
+    if (user) {
+      try {
+        await deleteInterviewSession(user.uid, sessionId);
+        setInterviewSessions(
+          interviewSessions.filter((session) => session.sessionId !== sessionId)
+        );
+      } catch (error) {
+        console.error("Errore durante l'eliminazione della sessione:", error);
+      }
+    }
+  };
+
   return (
     <div>
       <h1>Pagina Protetta</h1>
@@ -72,7 +88,7 @@ const ProtectedPage = () => {
       <h2>Sessioni di Intervista:</h2>
       {interviewSessions.length > 0 ? (
         interviewSessions.map((session, index) => (
-          <div key={index}>
+          <div key={index} style={{ marginBottom: "20px" }}>
             <h3>Sessione ID: {session.sessionId}</h3>
             <p>Data: {new Date(session.sessionDate).toLocaleString()}</p>
             <h4>Dettagli Intervista</h4>
@@ -87,16 +103,9 @@ const ProtectedPage = () => {
               Feedback: {session.evaluationResult.globalEvaluation.feedback}
             </p>
 
-            <h4>Risposte Valutate:</h4>
-            {session.evaluationResult.evaluatedResponses.map((response, i) => (
-              <div key={i}>
-                <p>Domanda: {response.q}</p>
-                <p>Risposta: {response.a}</p>
-                <p>Feedback: {response.answerFeedback}</p>
-                <p>Risposta Corretta: {response.correctAnswer}</p>
-                <p>Stato Risposta: {response.answerStatus}</p>
-              </div>
-            ))}
+            <button onClick={() => handleDelete(session.sessionId)}>
+              Rimuovi
+            </button>
           </div>
         ))
       ) : (
