@@ -81,9 +81,11 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 				console.log("Sessione salvata con successo!");
 			}
 		} catch (e) {
+			setError("errore");
 			setIsLoading(false);
 			console.error("Errore durante la valutazione:", e);
 		} finally {
+			setError(null);
 			setIsLoading(false);
 			console.log("Fine evaluateAnswers");
 		}
@@ -100,9 +102,6 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 
 	return (
 		<main className={style.main}>
-			{/* <button onClick={evaluateAnswers}>risultati</button> */}
-			{error && <p className='error-message'>{error}</p>}
-
 			{interviewDetails && (
 				<>
 					<header className={style.header}>
@@ -116,6 +115,9 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 					</div>
 				</>
 			)}
+
+			{error && <CtaButton label={`Ups... un attimo di distrazione e ${interviewDetails.interviewer.name} sta bevendo un caffè... Riproviamo!`} className='ctaB' onClick={evaluateAnswers} />}
+
 			{evaluationResult && (
 				<>
 					<div className={style.feedbackSection}>
