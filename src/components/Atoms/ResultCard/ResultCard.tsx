@@ -38,10 +38,12 @@ const ResultCard = (props: ResultCardProps) => {
 						<h4>Feedback sulla tua risposta</h4>
 						<p>{response.answerFeedback}</p>
 					</div>
-					<div>
-						<h4>Suggerimento di risposta corretta</h4>
-						<p>{response.correctAnswer}</p>
-					</div>
+					{response.answerStatus !== "correct" && (
+						<div>
+							<h4>Suggerimento di risposta corretta</h4>
+							<p>{response.correctAnswer}</p>
+						</div>
+					)}
 				</>
 			)}
 			<ActionButton className='round' icon={showDetails ? arrowUp : arrowSelect} onClick={() => setShowDetails(!showDetails)} />

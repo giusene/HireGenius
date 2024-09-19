@@ -24,6 +24,7 @@
 
 			.label {
 				@include base-element;
+
 				@include flex-column(var(--gap-sm));
 				justify-content: space-between;
 				align-items: flex-start;

@@ -14,6 +14,7 @@
 
 	// FONT WEIGHTS
 	--fw-regular: 400;
+	--fw-medium: 500;
 	--fw-bold: 700;
 
 	// FONT SIZES
@@ -35,9 +36,13 @@
 	// MODIFICATE
 	--background: linear-gradient(to bottom, var(--dark), var(--primary));
 	--elements-bg: rgba(211, 211, 211, 0.2);
-	--correct-bg: rgba(44, 182, 125, 0.2);
-	--average-bg: rgba(251, 255, 0, 0.2);
-	--incorrect-bg: rgba(255, 96, 144, 0.2);
+	--cards-bg: rgba(211, 211, 211);
+	// --correct-bg: rgba(139, 186, 166, 0.2);
+	// --average-bg: rgba(251, 255, 0, 0.2);
+	// --incorrect-bg: rgba(255, 96, 144, 0.2);
+	--correct-bg: rgb(174, 202, 191);
+	--average-bg: rgb(202, 204, 180);
+	--incorrect-bg: rgb(201, 177, 184);
 	--lightGrey: rgba(211, 211, 211, 0.4); //hr
 }
 
@@ -71,7 +76,7 @@ body {
 	}
 
 	::placeholder {
-		color: var(--light);
+		color: var(--dark);
 	}
 
 	ul {

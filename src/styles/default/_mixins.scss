@@ -10,6 +10,12 @@
 	align-items: center;
 }
 
+@mixin flex($gap) {
+	display: flex;
+	align-items: center;
+	column-gap: ($gap);
+}
+
 @mixin main {
 	width: 100vw;
 	max-width: 600px;
@@ -36,6 +42,9 @@
 	padding: var(--elements-padding);
 	border-radius: var(--border-radius);
 	font-size: var(--fs-md);
+	background-color: var(--cards-bg);
+	color: var(--dark);
+	font-weight: var(--fw-medium);
 
 	&.select,
 	&.input,

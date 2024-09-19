@@ -1,0 +1,29 @@
+.loadingScreen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: var(--dark);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+
+	.spaceship {
+		font-size: 50px;
+		animation: fly 2s infinite ease-in-out;
+	}
+
+	@keyframes fly {
+		0% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-20px); /* Effetto di volo su e giù */
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+}
