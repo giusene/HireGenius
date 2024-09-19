@@ -1,135 +1,55 @@
 @import "../../styles/default/mixins";
 
-.storicProfile {
-    @include main;
+.main {
+	@include main;
+	@include header;
+	color: var(--light);
 
-    h3, h2, h1 {
-        color: var(--light);
-        text-align: center;
-    }
+	.userInfo {
+		@include flex(var(--gap-md));
+		span {
+			font-weight: var(--fw-regular);
+		}
+	}
 
-    .userInfo {
-        color: var(--light);
-        text-align: center;
-    }
-
-    .card {
-        @include flex-column(var(--gap-md));
-    }
-
-    .quizCard {
-        @include base-element;
-        background: var(--elements-bg);
-        color: var(--light);
-        text-align: center;
-        color: var(--light);
-        cursor: pointer;
-        transition: transform 0.3s ease, border 0.3s ease;
-
-        // .avatarContainer {
-        //     position: relative;
-        //     display: inline-block;
-        //     border-radius: 50%;
-        //     padding: 5px;
-        //     background-color: #623ed9; /* Cerchio esterno viola */
-        //     box-shadow: 0 0 0 5px #f9c802; /* Cerchio interno giallo */
-        // }
-        
-        // .avatarImage {
-        //     display: block;
-        //     border-radius: 50%;
-        //     width: 80px; /* Larghezza dell'immagine, regola in base alle esigenze */
-        //     height: 80px; /* Altezza dell'immagine, regola in base alle esigenze */
-        //     object-fit: cover; /* Mantiene le proporzioni dell'immagine */
-        // }
-        
-
-        &.selectedCard {
-            transform: scale(1.05);
-            border: 2px solid #0070f3;
-        }
-
-        .rating {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .icon {
-            font-size: 30px;
-            margin-right: 20px;
-        }
-
-        .content {
-            flex: 1;
-        }
-    }
-    }
-
-    .loadingScreen {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: var(--dark);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        color: var(--light);
-
-        .spaceship {
-            font-size: 50px;
-            animation: fly 2s infinite ease-in-out;
-        }
-
-    @keyframes fly {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px); /* Effetto di volo su e giù */
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
+	.cardsList {
+		@include flex-column(var(--gap-md));
+	}
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1100;
-}
+// .modal {
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	right: 0;
+// 	bottom: 0;
+// 	background: rgba(0, 0, 0, 0.5);
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	z-index: 1100;
+// }
 
-.modalContent {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 300px;
-    position: relative;
-}
+// .modalContent {
+// 	background: #fff;
+// 	padding: 20px;
+// 	border-radius: 8px;
+// 	text-align: center;
+// 	width: 300px;
+// 	position: relative;
+// }
 
-.modalContent button {
-    margin-top: 10px;
-    background-color: #0070f3;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-    &:hover {
-        background-color: #005bb5;
-    }
-}
+// .modalContent button {
+// 	margin-top: 10px;
+// 	background-color: #0070f3;
+// 	color: #fff;
+// 	border: none;
+// 	border-radius: 5px;
+// 	padding: 10px;
+// 	cursor: pointer;
+// 	transition: background-color 0.3s ease;
+
+// 	&:hover {
+// 		background-color: #005bb5;
+// 	}
+// }

@@ -1,0 +1,15 @@
+.testCard {
+	@include base-element;
+	@include flex-column(var(--gap-sm));
+
+	.hero {
+		border-radius: var(--border-radius);
+		background-color: var(--primary);
+		padding-top: 50px;
+
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+}
