@@ -36,6 +36,7 @@ export interface TestCardProps {
 	cardImage: StaticImageData;
 	title: string;
 	description: string;
+	href: string;
 }
 
 // TextArea
@@ -172,6 +173,8 @@ export interface GeneratedQuestion {
 }
 
 // topic-process end
+
+// interview-process
 
 // API =================================================================//
 

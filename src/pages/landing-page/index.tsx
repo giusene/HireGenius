@@ -17,8 +17,8 @@ const LandingPage = () => {
 			<header className={styles.header}>
 				<h2 className={styles.sectionTitle}>Mettiti alla prova!</h2>
 			</header>
-			<TestCard title='Nuovo argomento' description='Destreggiati in un nuovo argomento, che sia un interrogazione o un semplice quiz.' cardImage={topicImage} />
-			<TestCard title='Nuovo colloquio' description='Testa la tua preparazione simulando un colloquio tecnico di lavoro.' cardImage={interviewImage} />
+			<TestCard href='/topic-process' title='Nuovo argomento' description='Destreggiati in un nuovo argomento, che sia un interrogazione o un semplice quiz.' cardImage={topicImage} />
+			<TestCard href='/interview-process' title='Nuovo colloquio' description='Testa la tua preparazione simulando un colloquio tecnico di lavoro.' cardImage={interviewImage} />
 		</main>
 	);
 };

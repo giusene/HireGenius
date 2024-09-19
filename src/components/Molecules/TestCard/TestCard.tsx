@@ -5,10 +5,10 @@ import styles from "./TestCard.module.scss";
 import { TestCardProps } from "@/interfaces/interfaces";
 
 const TestCard = (props: TestCardProps) => {
-	const { cardImage, title, description } = props;
+	const { cardImage, title, description, href } = props;
 
 	return (
-		<Link href='/topic-process'>
+		<Link href={href}>
 			<div className={styles.testCard}>
 				<div className={styles.hero}>
 					<Image src={cardImage} alt='Topic image' width={282} height={171} priority={true} />

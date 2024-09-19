@@ -1,0 +1,8 @@
+.main {
+	@include main;
+	@include header;
+
+	form {
+		@include form;
+	}
+}
