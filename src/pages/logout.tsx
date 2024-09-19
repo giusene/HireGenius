@@ -2,20 +2,22 @@ import React, { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
 
+import Loading from "@/components/Atoms/Loading/Loading";
+
 const LogoutPage = () => {
-  const { logout } = useAuth();
-  const router = useRouter();
+	const { logout } = useAuth();
+	const router = useRouter();
 
-  useEffect(() => {
-    const handleLogout = async () => {
-      await logout();
-      router.push("/login");
-    };
+	useEffect(() => {
+		const handleLogout = async () => {
+			await logout();
+			router.push("/login");
+		};
 
-    handleLogout();
-  }, [logout, router]);
+		handleLogout();
+	}, [logout, router]);
 
-  return <div>Logout in corso...</div>;
+	return <Loading />;
 };
 
 export default LogoutPage;
