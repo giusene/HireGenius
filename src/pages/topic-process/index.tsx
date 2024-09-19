@@ -5,41 +5,9 @@ import NewTopic from "@/components/Organism/NewTopic/NewTopic";
 import ChooseInterviewer from "@/components/Organism/ChooseInterviewer/ChooseInterviewer";
 import QuestionCard from "@/components/Organism/QuestionCard/QuestionCard";
 import ResultsList from "@/components/Organism/ResultsList/ResultsList";
-import { StaticImageData } from "next/image";
 
 import Loading from "@/components/Atoms/Loading/Loading";
-
-export interface QuizResponse {
-	q: string;
-	a: string;
-}
-
-interface InterviewOptions {
-	topic: string;
-	level: string;
-	numQuestions: string;
-}
-
-export interface InterviewDetails {
-	topic: string;
-	level: string;
-	numQuestions: string;
-	interviewer: Interviewer;
-}
-
-interface Interviewer {
-	avatarSrc: StaticImageData;
-	name: string;
-	value: string;
-	shortBio: string;
-	longBio: string;
-	level: string;
-	className: string;
-}
-
-interface GeneratedQuestion {
-	questionText: string;
-}
+import { GeneratedQuestion, InterviewDetails, Interviewer, InterviewOptions, QuizResponse } from "@/interfaces/interfaces";
 
 type Step = "newInterview" | "chooseInterviewer" | "questionCard" | "resultsList";
 

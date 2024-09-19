@@ -1,6 +1,5 @@
-import { SelectBoxProps } from "@/components/Molecules/SelectBox/SelectBox";
-
 // STYLE
+import { SelectBoxProps } from "@/interfaces/interfaces";
 import style from "./Select.module.scss";
 
 const Select = (props: SelectBoxProps) => {

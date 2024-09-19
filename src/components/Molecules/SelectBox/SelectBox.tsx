@@ -7,20 +7,7 @@ import style from "./SelectBox.module.scss";
 
 import selectIcon from "@/../public/icons/arrow-select.png";
 import Image from "next/image";
-
-export interface OptionsInterface {
-	label: string;
-	value: string;
-}
-
-export interface SelectBoxProps {
-	name: string;
-	label: string;
-	value: string;
-	onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-	required?: boolean;
-	options: Array<OptionsInterface>;
-}
+import { SelectBoxProps } from "@/interfaces/interfaces";
 
 const SelectBox = (props: SelectBoxProps) => {
 	const { name, label, value, onChange, required, options } = props;

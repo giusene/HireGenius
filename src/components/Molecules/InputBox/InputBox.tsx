@@ -4,15 +4,7 @@ import Label from "@/components/Atoms/Label/Label";
 
 // STYLE
 import style from "./InputBox.module.scss";
-
-export interface InputBoxProps {
-	type: string;
-	name: string;
-	label: string;
-	value: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	required?: boolean;
-}
+import { InputBoxProps } from "@/interfaces/interfaces";
 
 const InputBox = (props: InputBoxProps) => {
 	const { type, name, label, value, onChange, required } = props;

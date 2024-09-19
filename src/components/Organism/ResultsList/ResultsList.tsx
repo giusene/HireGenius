@@ -1,37 +1,13 @@
 import { useAuth } from "@/context/AuthContext";
 import { saveInterviewSession } from "@/utils/saveInterviewSession";
 import { useEffect, useState } from "react";
-import { InterviewDetails, QuizResponse } from "@/pages/topic-process/index";
 import style from "./ResultsList.module.scss";
 import ResultCard from "@/components/Atoms/ResultCard/ResultCard";
 import Image from "next/image";
 import Link from "next/link";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import Loading from "@/components/Atoms/Loading/Loading";
-
-export interface EvaluationResult {
-	globalEvaluation: GlobalEvaluation;
-	evaluatedResponses: EvaluatedResponse[];
-}
-
-export interface EvaluatedResponse {
-	q: string;
-	a: string;
-	correctAnswer: string;
-	answerStatus: "correct" | "average" | "incorrect";
-	answerFeedback: string;
-}
-
-interface GlobalEvaluation {
-	outOf: number;
-	points: number;
-	feedback: string;
-}
-
-interface ResultsListProps {
-	quizResponses: QuizResponse[];
-	interviewDetails: InterviewDetails;
-}
+import { EvaluationResult, ResultsListProps } from "@/interfaces/interfaces";
 
 const ResultsList = (props: ResultsListProps) => {
 	const { quizResponses, interviewDetails } = props;
@@ -97,7 +73,7 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 	}, []);
 
 	{
-		if (isLoading) return <Loading />;
+		if (isLoading) return <Loading lazyLoading={true} />;
 	}
 
 	return (
