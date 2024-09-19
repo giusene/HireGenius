@@ -7,7 +7,6 @@ import ResultsList from "@/components/Organism/ResultsList/ResultsList";
 
 import Loading from "@/components/Atoms/Loading/Loading";
 import { GeneratedQuestion, InterviewDetails, Interviewer, InterviewOptions, QuizResponse } from "@/interfaces/interfaces";
-import TextAreaBox from "@/components/Molecules/TextAreaBox/TextAreaBox";
 import InterviewRequirements from "@/components/Organism/InterviewRequirements/InterviewRequirements";
 import NewInterview from "@/components/Organism/NewInterview/NewInterview";
 
