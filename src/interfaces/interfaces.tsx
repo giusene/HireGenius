@@ -129,8 +129,19 @@ interface GlobalEvaluation {
 }
 
 export interface ResultsListProps {
-	quizResponses: QuizResponse[];
+	evaluationResult: EvaluationResult;
 	interviewDetails: InterviewDetails;
+}
+export interface ResultsListErrorProps {
+	evaluateAnswers: () => Promise<void>;
+	interviewDetails: InterviewDetails;
+}
+
+export interface InterviewSession {
+	sessionId: string;
+	sessionDate: string;
+	interviewDetails: InterviewDetails;
+	evaluationResult: EvaluationResult;
 }
 
 //  ResultsList end

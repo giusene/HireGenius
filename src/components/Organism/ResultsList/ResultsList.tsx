@@ -1,83 +1,13 @@
-import { useAuth } from "@/context/AuthContext";
-import { saveInterviewSession } from "@/utils/saveInterviewSession";
-import { useEffect, useState } from "react";
 import style from "./ResultsList.module.scss";
 import ResultCard from "@/components/Atoms/ResultCard/ResultCard";
 import Image from "next/image";
-import Link from "next/link";
-import CtaButton from "@/components/Atoms/Buttons/CtaButton";
-import Loading from "@/components/Atoms/Loading/Loading";
-import { EvaluationResult, ResultsListProps } from "@/interfaces/interfaces";
+import { ResultsListProps } from "@/interfaces/interfaces";
 
 const ResultsList = (props: ResultsListProps) => {
-	const { quizResponses, interviewDetails } = props;
-	const { user } = useAuth(); // Otteniamo l'utente autenticato dal contesto
-
-	const [evaluationResult, setEvaluationResult] = useState<EvaluationResult | null>(null);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-
-	const prompt = `Immagina di essere l'esaminatore ${interviewDetails.interviewer.name}. ${interviewDetails.interviewer.longBio}.
-  Valuta le seguenti risposte fornite durante un colloquio tecnico per una posizione di ${interviewDetails.topic} di livello ${interviewDetails.level}. Per ogni risposta, fornisci:
-1. Uno status: correct | average | incorrect.
-2. Una valutazione con breve spiegazione.
-3. La risposta corretta.
-
-Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su 100 e una breve frase che riassuma le prestazioni generali del candidato (ad esempio: "Hai superato il test", "Hai dimostrato buone competenze", "Devi migliorare").`;
-
-	const evaluateAnswers = async () => {
-		setIsLoading(true);
-		setError(null);
-
-		try {
-			const payload = { prompt, quizResponses };
-			console.log("Payload inviato:", payload);
-
-			const quizResponsesEvaluation = await fetch("/api/evaluate-answer-session", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(payload),
-			});
-
-			if (quizResponsesEvaluation.status === 429) {
-				throw new Error("Too Many Requests - Rate limit exceeded");
-			}
-
-			if (!quizResponsesEvaluation.ok) {
-				throw new Error("Errore nella richiesta di valutazione.");
-			}
-
-			const evaluationResult: EvaluationResult = await quizResponsesEvaluation.json();
-			console.log("Risultato della valutazione:", evaluationResult);
-			setEvaluationResult(evaluationResult);
-			if (user) {
-				await saveInterviewSession(user.uid, interviewDetails, evaluationResult);
-				console.log("Sessione salvata con successo!");
-			}
-		} catch (e) {
-			setError("errore");
-			setIsLoading(false);
-			console.error("Errore durante la valutazione:", e);
-		} finally {
-			setError(null);
-			setIsLoading(false);
-			console.log("Fine evaluateAnswers");
-		}
-	};
-
-	useEffect(() => {
-		evaluateAnswers();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	{
-		if (isLoading) return <Loading lazyLoading={true} />;
-	}
+	const { interviewDetails, evaluationResult } = props;
 
 	return (
-		<main className={style.main}>
+		<>
 			{interviewDetails && (
 				<>
 					<header className={style.header}>
@@ -91,8 +21,6 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 					</div>
 				</>
 			)}
-
-			{error && <CtaButton label={`Ups... un attimo di distrazione e ${interviewDetails.interviewer.name} sta bevendo un caffè... Riproviamo!`} className='ctaB' onClick={evaluateAnswers} />}
 
 			{evaluationResult && (
 				<>
@@ -111,10 +39,7 @@ Alla fine, fornisci una sintetica valutazione globale con un punteggio finale su
 					</ul>
 				</>
 			)}
-			<Link href={"/landing-page"} className={style.linkBtn}>
-				<CtaButton label='Torna alla home' className='ctaC' />
-			</Link>
-		</main>
+		</>
 	);
 };
 

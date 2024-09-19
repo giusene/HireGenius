@@ -1,0 +1,11 @@
+.main {
+	@include main;
+	.linkBtn {
+		width: 100%;
+
+		button {
+			@include button;
+			width: 100%;
+		}
+	}
+}

@@ -15,6 +15,15 @@
 	.cardsList {
 		@include flex-column(var(--gap-md));
 	}
+
+	.linkBtn {
+		width: 100%;
+
+		button {
+			@include button;
+			width: 100%;
+		}
+	}
 }
 
 // .modal {
