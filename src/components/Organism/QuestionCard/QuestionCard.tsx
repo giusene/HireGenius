@@ -6,108 +6,80 @@ import ActionButton from "@/components/Atoms/Buttons/ActionButton";
 
 import NextIcon from "@/../public/icons/arrow-right.png";
 import PrevIcon from "@/../public/icons/arrow-left.png";
+import { QuestionCardProps } from "@/interfaces/interfaces";
 
-interface Question {
-  questionText: string;
-}
+const QuestionCard: React.FC<QuestionCardProps> = ({ role, totalQuestions, questions, onComplete }) => {
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const [responses, setResponses] = useState<{ q: string; a: string }[]>([]);
+	const [currentResponse, setCurrentResponse] = useState("");
 
-interface QuestionCardProps {
-  role: string;
-  totalQuestions: number;
-  questions: Question[];
-  onComplete: (responses: { q: string; a: string }[]) => void;
-}
+	const handleNext = (e: FormEvent) => {
+		e.preventDefault();
 
-const QuestionCard: React.FC<QuestionCardProps> = ({
-  role,
-  totalQuestions,
-  questions,
-  onComplete,
-}) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [responses, setResponses] = useState<{ q: string; a: string }[]>([]);
-  const [currentResponse, setCurrentResponse] = useState("");
+		if (currentResponse.trim() === "") {
+			return; // Evita di procedere se la risposta è vuota
+		}
 
-  const handleNext = (e: FormEvent) => {
-    e.preventDefault();
+		// Aggiorna le risposte con la risposta corrente
+		const newResponses = [...responses.slice(0, currentQuestionIndex), { q: questions[currentQuestionIndex].questionText, a: currentResponse }];
+		setResponses(newResponses);
+		setCurrentResponse(""); // Resetta il campo di risposta
 
-    if (currentResponse.trim() === "") {
-      return; // Evita di procedere se la risposta è vuota
-    }
+		if (currentQuestionIndex < questions.length - 1) {
+			// Se ci sono ancora domande, passa alla prossima
+			setCurrentQuestionIndex(currentQuestionIndex + 1);
+		} else {
+			// Se siamo all'ultima domanda, completa il quiz
+			onComplete(newResponses);
+		}
+	};
 
-    // Aggiorna le risposte con la risposta corrente
-    const newResponses = [
-      ...responses.slice(0, currentQuestionIndex),
-      { q: questions[currentQuestionIndex].questionText, a: currentResponse },
-    ];
-    setResponses(newResponses);
-    setCurrentResponse(""); // Resetta il campo di risposta
+	const handlePrevious = () => {
+		if (currentQuestionIndex > 0) {
+			// Imposta la risposta precedente se esiste
+			const previousResponse = responses[currentQuestionIndex - 1]?.a || "";
+			setCurrentResponse(previousResponse);
+			setCurrentQuestionIndex(currentQuestionIndex - 1);
+		}
+	};
 
-    if (currentQuestionIndex < questions.length - 1) {
-      // Se ci sono ancora domande, passa alla prossima
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      // Se siamo all'ultima domanda, completa il quiz
-      onComplete(newResponses);
-    }
-  };
+	const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setCurrentResponse(e.target.value);
+	};
 
-  const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      // Imposta la risposta precedente se esiste
-      const previousResponse = responses[currentQuestionIndex - 1]?.a || "";
-      setCurrentResponse(previousResponse);
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-    }
-  };
+	// Calcola la percentuale di completamento in base al numero di risposte
+	const progressPercentage = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCurrentResponse(e.target.value);
-  };
+	return (
+		<main className={style.main}>
+			<header className={style.header}>
+				<h2 className={style.sectionTitle}>{role}</h2>
+			</header>
 
-  // Calcola la percentuale di completamento in base al numero di risposte
-  const progressPercentage =
-    ((currentQuestionIndex + 1) / totalQuestions) * 100;
+			<div className={style.progress}>
+				<h3>
+					{currentQuestionIndex + 1}/{totalQuestions}
+				</h3>
+				<ProgressBar currentStep={progressPercentage} totalSteps={100} />
+			</div>
 
-  return (
-    <main className={style.main}>
-      <header className={style.header}>
-        <h2 className={style.sectionTitle}>{role}</h2>
-      </header>
+			<form onSubmit={handleNext}>
+				<TextAreaBox
+					name='response'
+					label={`${currentQuestionIndex + 1}. ${questions[currentQuestionIndex].questionText}`}
+					placeholder='Scrivi la tua risposta qui...'
+					value={currentResponse}
+					onChange={handleInputChange}
+					required={true}
+				/>
 
-      <div className={style.progress}>
-        <h3>
-          {currentQuestionIndex + 1}/{totalQuestions}
-        </h3>
-        <ProgressBar currentStep={progressPercentage} totalSteps={100} />
-      </div>
-
-      <form onSubmit={handleNext}>
-        <TextAreaBox
-          name="response"
-          label={`${currentQuestionIndex + 1}. ${
-            questions[currentQuestionIndex].questionText
-          }`}
-          placeholder="Scrivi la tua risposta qui..."
-          value={currentResponse}
-          onChange={handleInputChange}
-          required={true}
-        />
-
-        <div className={style.buttons}>
-          {currentQuestionIndex > 0 && (
-            <ActionButton
-              icon={PrevIcon}
-              onClick={handlePrevious}
-              className="round"
-              type="button"
-            />
-          )}
-          <ActionButton icon={NextIcon} className="round" type="submit" />{" "}
-        </div>
-      </form>
-    </main>
-  );
+				<div className={style.buttons}>
+					{currentQuestionIndex > 0 && <ActionButton icon={PrevIcon} onClick={handlePrevious} className='round' type='button' />}
+					<ActionButton icon={NextIcon} className='round' type='submit' />{" "}
+				</div>
+			</form>
+		</main>
+	);
 };
 
 export default QuestionCard;

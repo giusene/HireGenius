@@ -1,9 +1,5 @@
+import { LabelProps } from "@/interfaces/interfaces";
 import style from "./Label.module.scss";
-
-interface LabelProps {
-	label: string;
-	name: string;
-}
 
 const Label = (props: LabelProps) => {
 	const { label, name } = props;

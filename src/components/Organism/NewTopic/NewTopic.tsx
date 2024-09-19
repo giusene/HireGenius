@@ -8,10 +8,7 @@ import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 import Image from "next/image";
 import topicHero from "@/../public/icons/new-topic2.png";
 import InputBox from "@/components/Molecules/InputBox/InputBox";
-
-interface TopicFormProps {
-	onSubmit: (details: { topic: string; level: string; numQuestions: string }) => void;
-}
+import { TopicFormProps } from "@/interfaces/interfaces";
 
 const NewTopic: React.FC<TopicFormProps> = ({ onSubmit }) => {
 	const [topic, setTopic] = useState("");

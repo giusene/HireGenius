@@ -1,14 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 
-interface BodyI {
-	prompt: string;
-}
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === "POST") {
 		try {
-			const { prompt } = req.body as BodyI;
+			const { prompt } = req.body as { prompt: string };
 
 			if (!prompt) {
 				return res.status(400).json("Missing body.");

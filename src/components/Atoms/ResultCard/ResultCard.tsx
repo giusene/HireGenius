@@ -1,4 +1,3 @@
-import { EvaluatedResponse } from "@/components/Organism/ResultsList/ResultsList";
 import style from "./ResultCard.module.scss";
 
 import Image from "next/image";
@@ -7,11 +6,7 @@ import ActionButton from "../Buttons/ActionButton";
 
 import arrowSelect from "@/../public/icons/arrow-select.png";
 import arrowUp from "@/../public/icons/arrow-up.png";
-
-interface ResultCardProps {
-	index: number;
-	response: EvaluatedResponse;
-}
+import { ResultCardProps } from "@/interfaces/interfaces";
 
 const ResultCard = (props: ResultCardProps) => {
 	const { response, index } = props;
