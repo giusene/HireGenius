@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 // COMPONENTS
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
+import Loading from "@/components/Atoms/Loading/Loading";
 
 // STYLE
 import style from "../Form.module.scss";
@@ -11,54 +12,49 @@ import InputBox from "@/components/Molecules/InputBox/InputBox";
 import Link from "next/link";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 
-  const { login } = useAuth();
-  const router = useRouter();
+	const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
+	const { login } = useAuth();
+	const router = useRouter();
 
-    try {
-      await login(email, password);
-      router.push("./landing-page");
-    } catch (error) {
-      setError("Le credenziali inserite non sono corrette.");
-    }
-  };
+	const handleLogin = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setError("");
 
-  return (
-    <form className={style.form} onSubmit={handleLogin}>
-      <InputBox
-        type="email"
-        name="userEmail"
-        label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required={true}
-      />
+		try {
+			setIsLoading(true);
+			await login(email, password);
+			setIsLoading(false);
+			router.push("./landing-page");
+		} catch (error) {
+			setIsLoading(false);
+			setError("Le credenziali inserite non sono corrette.");
+		}
+	};
 
-      <InputBox
-        type="password"
-        name="userPassword"
-        label="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required={true}
-      />
+	{
+		if (isLoading) return <Loading />;
+	}
 
-      <p className={style.forgotPassword}>
-        <Link href="/forgot-password">Hai dimenticato la password?</Link>
-      </p>
+	return (
+		<form className={style.form} onSubmit={handleLogin}>
+			<InputBox type='email' name='userEmail' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
 
-      {error && <mark className={style.invalid}>{error}</mark>}
+			<InputBox type='password' name='userPassword' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
 
-      <CtaButton label="Accedi" className="ctaA" type="submit" />
-    </form>
-  );
+			<p className={style.forgotPassword}>
+				<Link href='/forgot-password'>Hai dimenticato la password?</Link>
+			</p>
+
+			{error && <mark className={style.invalid}>{error}</mark>}
+
+			<CtaButton label='Accedi' className='ctaA' type='submit' />
+		</form>
+	);
 };
 
 export default LoginForm;
