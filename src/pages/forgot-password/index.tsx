@@ -1,13 +1,19 @@
-import { useState } from "react";
+import style from "./forgotPassword.module.scss";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { FirebaseError } from "firebase/app";
+import { forgotPasswordLabels } from "@/constants/forgotPasswordLabels";
+import Input from "@/components/Atoms/Input/Input";
+import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const { resetPassword } = useAuth();
+
+  const messageRef = useRef<HTMLDivElement>(null);
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,36 +23,68 @@ const ForgotPassword = () => {
     try {
       await resetPassword(email);
       setMessage(
-        "Email di recupero password inviata con successo. Controlla la tua casella di posta."
+        forgotPasswordLabels.setMessage
       );
     } catch (err) {
       if (err instanceof FirebaseError) {
         setError(
-          "Errore durante l'invio dell'email di recupero. Verifica l'indirizzo email."
+          forgotPasswordLabels.setError
         );
       } else {
-        setError("Errore sconosciuto durante il recupero della password.");
+        setError(forgotPasswordLabels.unknownError);
       }
     }
   };
 
+   
+   const handleClickOutside = (event: MouseEvent) => {
+    if (messageRef.current && !messageRef.current.contains(event.target as Node)) {
+      setMessage("");
+      setError("");
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
-      <h1>Recupero Password</h1>
-      <form onSubmit={handleResetPassword}>
-        <input
-          type="email"
-          placeholder="Inserisci la tua email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Recupera Password</button>
-      </form>
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <p>
-        Torna al <Link href="/login">Login</Link>
-      </p>
+    <div className={style.main}>
+      <div className={style.mainContent}>
+        <h1>{forgotPasswordLabels.title}</h1>
+        <form onSubmit={handleResetPassword} className={style.form}>
+          <Input
+            type="email"
+            name="Email"
+            label={forgotPasswordLabels.input}
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required={false}
+          />
+          <CtaButton
+            label={forgotPasswordLabels.button}
+            className="ctaA"
+            type="submit"
+          />
+        </form>
+        
+        {(message || error) && (
+        <div ref={messageRef} className={style.messageContainer}>
+        {message && <p className={style.message}>{message}</p>}
+        {error && <p className={style.error}>{error}</p>}
+      </div>
+        )}
+        
+        <p>
+          {forgotPasswordLabels.p}{" "}
+          <Link href="/login" className={style.login}>
+            {forgotPasswordLabels.login}
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
