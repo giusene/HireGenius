@@ -3,8 +3,7 @@ import { auth, db } from "../../../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-
-// COMPONENTS
+import { FirebaseError } from "firebase/app";
 
 // STYLE
 import style from "../Form.module.scss";
@@ -12,48 +11,85 @@ import InputBox from "@/components/Molecules/InputBox/InputBox";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 const RegisterForm = () => {
-	const [userName, setUserName] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-	const [error, setError] = useState("");
-	const router = useRouter();
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-	const handleRegister = async (e: React.FormEvent) => {
-		e.preventDefault();
-		setError("");
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
 
-		try {
-			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-			const user = userCredential.user;
+    // Controlla che userName non sia vuoto
+    if (!userName) {
+      setError("Il campo Username è obbligatorio.");
+      return;
+    }
 
-			// Salva l'utente su Firestore
-			await setDoc(doc(db, "users", user.uid), {
-				uid: user.uid,
-				email: user.email,
-				userName: userName,
-			});
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
 
-			console.log("Registrazione completata con successo!");
-			router.push("/landing-page"); // Reindirizza l'utente alla pagina di login
-		} catch (err) {
-			setError("Errore durante la registrazione. Riprova.");
-		}
-	};
+      console.log("Utente registrato con successo:", user);
 
-	return (
-		<form className={style.form} onSubmit={handleRegister}>
-			<InputBox type='text' name='userName' label='Username' value={userName} onChange={(e) => setUserName(e.target.value)} required={true} />
+      // Salva l'utente su Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        email: user.email,
+        userName: userName,
+      });
 
-			<InputBox type='email' name='userEmail' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
+      router.push("/landing-page"); // Reindirizza
+    } catch (err: unknown) {
+      if (err instanceof FirebaseError) {
+        console.error("Errore durante la registrazione:", err.message);
+        setError(err.message || "Errore durante la registrazione. Riprova.");
+      } else {
+        setError("Errore sconosciuto durante la registrazione.");
+      }
+    }
+  };
 
-			<InputBox type='password' name='userPassword' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+  return (
+    <form className={style.form} onSubmit={handleRegister}>
+      <InputBox
+        type="text"
+        name="userName"
+        label="Username"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+        required={true}
+      />
 
-			{error && <mark className={style.invalid}>{error}</mark>}
+      <InputBox
+        type="email"
+        name="userEmail"
+        label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required={true}
+      />
 
-			<CtaButton label='Registrati' className='ctaA' type='submit' />
-		</form>
-	);
+      <InputBox
+        type="password"
+        name="userPassword"
+        label="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required={true}
+      />
+
+      {error && <mark className={style.invalid}>{error}</mark>}
+
+      <CtaButton label="Registrati" className="ctaA" type="submit" />
+    </form>
+  );
 };
 
 export default RegisterForm;
