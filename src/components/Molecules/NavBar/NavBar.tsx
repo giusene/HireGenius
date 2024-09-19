@@ -16,7 +16,7 @@ const NavBar = () => {
 	};
 
 	// Filtra il menu in base all'autenticazione
-	const filteredNavMenu = user ? navMenu : navMenu.filter((item) => item.label === "Home" || item.label === "Login");
+	const filteredNavMenu = user ? navMenu.filter((item) => item.label !== "Login") : navMenu.filter((item) => item.label === "Login");
 
 	return (
 		<div className={style.navContainer} onMouseLeave={() => setIsOpen(false)}>

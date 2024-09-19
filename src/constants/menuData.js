@@ -2,14 +2,13 @@ import HomeIcon from "@/../public/icons/home.png";
 import TopicIcon from "@/../public/icons/topic.png";
 import InterviewIcon from "@/../public/icons/interview.png";
 import ProfileIcon from "@/../public/icons/profile.png";
-import SettingsIcon from "@/../public/icons/settings.png";
 import LogoutIcon from "@/../public/icons/logout.png";
 
 export const navMenu = [
 	{
 		icon: HomeIcon,
 		label: "Home",
-		link: "/",
+		link: "/landing-page",
 	},
 	{
 		icon: TopicIcon,
@@ -26,11 +25,7 @@ export const navMenu = [
 		label: "Profilo",
 		link: "/storic-profile",
 	},
-	{
-		icon: SettingsIcon,
-		label: "Impostazioni",
-		link: "/impostazioni",
-	},
+
 	{
 		icon: LogoutIcon,
 		label: "Logout",
@@ -46,7 +41,11 @@ export const navMenu = [
 export const footerMenu = [
 	{
 		label: "Il progetto",
-		link: "/il-progetto",
+		link: "/",
+	},
+	{
+		label: "Chi siamo",
+		link: "/chi-siamo",
 	},
 	{
 		label: "Github",
