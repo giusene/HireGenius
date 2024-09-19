@@ -1,4 +1,8 @@
 .select {
 	@include base-element;
 	cursor: pointer;
+
+	option {
+		color: var(--dark);
+	}
 }
