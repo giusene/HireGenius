@@ -70,7 +70,9 @@ const UserProfile = () => {
 	};
 
 	useEffect(() => {
-		fetchData();
+		if (user) {
+			fetchData();
+		}
 	}, [user]);
 
 	if (isLoading) {

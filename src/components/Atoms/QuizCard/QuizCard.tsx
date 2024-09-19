@@ -1,9 +1,3 @@
-import Giulia from "@/../public/avatar1.png";
-import Alessandro from "@/../public/avatar2.png";
-import Marco from "@/../public/avatar3.png";
-import Luca from "@/../public/avatar4.png";
-import Ivan from "@/../public/avatar2.png";
-import Elena from "@/../public/avatar1.png";
 import Cup from "@/../public/icons/trophy.png";
 import Silver from "@/../public/icons/silver-medal.png";
 import Bronze from "@/../public/icons/bronze-medal.png";
@@ -30,20 +24,6 @@ const QuizCard: React.FC<QuizCardProps> = ({ date, topic, score, interviewer, me
 	const [showDetails, setShowDetails] = useState(false);
 
 	let iconSrc = null;
-	let avatarSrc = null;
-
-	const avatarMap: Record<string, StaticImageData> = {
-		Giulia: Giulia,
-		Marco: Marco,
-		Alessandro: Alessandro,
-		Elena: Elena,
-		Ivan: Ivan,
-		Luca: Luca,
-	};
-
-	if (avatarMap[interviewer]) {
-		avatarSrc = avatarMap[interviewer];
-	}
 
 	const iconMap: Record<string, StaticImageData> = {
 		cup: Cup,
