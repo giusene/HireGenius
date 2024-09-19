@@ -3,7 +3,9 @@ import TextArea from "@/components/Atoms/TextArea/TextArea";
 import style from "./TextAreaBox.module.scss";
 import { TextAreaBoxProps } from "@/interfaces/interfaces";
 
-const TextAreaBox: React.FC<TextAreaBoxProps> = ({ name, label, placeholder = "", value, onChange, required = false }) => {
+const TextAreaBox = (props: TextAreaBoxProps) => {
+	const { name, label, placeholder = "", value, onChange, required = false } = props;
+
 	return (
 		<div className={style.textAreaBox}>
 			<Label label={label} name={name} />

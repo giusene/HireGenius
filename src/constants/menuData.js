@@ -19,7 +19,7 @@ export const navMenu = [
 	{
 		icon: InterviewIcon,
 		label: "Nuovo colloquio",
-		link: "/new-interview",
+		link: "/interview-process",
 	},
 	{
 		icon: ProfileIcon,
@@ -88,30 +88,56 @@ export const recoveryPasswordLabels = {
 	href: "/login",
 };
 
-export const newInterviewFormLabels = {
-	newInterviewTitle: "Nuovo colloquio",
-	roleLabel: "Ruolo",
-	seniorityLabel: "Seniority",
+export const interviewFormLabels = {
+	title: "Nuovo Colloquio",
+	interviewLabel: "Colloquio",
+	seniority: "Seniority",
 	numberOfQuestionsLabel: "Numero di domande",
-	testDurationLabel: "Durata del test",
-	buttonsNext: "Avanti",
+	button: "Avanti",
 };
 
 export const interviewFormOptions = {
-	seniority: [
-		{ label: "Junior", value: "junior" },
-		{ label: "Mid-level", value: "mid-level" },
-		{ label: "Senior", value: "senior" },
+	optionsSeniority: [
+		{
+			label: "Junior",
+			value: "Junior",
+		},
+		{
+			label: "Mid-Level",
+			value: "Mid-Level",
+		},
+		{
+			label: "Senior",
+			value: "Senior",
+		},
 	],
-	numberOfQuestions: [
-		{ label: "5", value: "5 domande" },
-		{ label: "10", value: "10 domande" },
-		{ label: "15", value: "15 domande" },
+	optionsQuestion: [
+		{
+			label: "5 domande",
+			value: "5 domande",
+		},
+		{
+			label: "10 domande",
+			value: "10 domande",
+		},
+		{
+			label: "15 domande",
+			value: "15 domande",
+		},
 	],
-	testDuration: [
-		{ label: "10", value: "10 minuti" },
-		{ label: "20", value: "20 minuti" },
-		{ label: "30", value: "30 minuti" },
+	optionsDuration: [
+		{
+			label: "10 minuti",
+			value: "10 minuti",
+		},
+		{
+			label: "20 minuti",
+			value: "20 minuti",
+		},
+		{
+			label: "30 minuti",
+			value: "30 minuti",
+		},
 	],
 };
 
