@@ -5,8 +5,6 @@ import Lose from "@/../public/icons/lose.png";
 import DeleteIcon from "@/../public/icons/delete.svg";
 import Image, { StaticImageData } from "next/image";
 import style from "./QuizCard.module.scss";
-import arrowSelect from "@/../public/icons/arrow-select.png";
-import arrowUp from "@/../public/icons/arrow-up.png";
 import { formatDistanceToNow } from "date-fns";
 import { it } from "date-fns/locale"; // Importa il locale italiano
 import { Dispatch, SetStateAction, useState } from "react";
@@ -91,53 +89,61 @@ const QuizCard: React.FC<QuizCardProps> = ({
 
   return (
     <div
+      onClick={() => setShowFeedback(!showFeedback)}
       className={`${style.quizCardContainer} ${
         showFeedback && style.selectedCard
       } `}
     >
       <div className={style.quizCard}>
-        <Image
-          src={iconSrc}
-          className={style.icon}
-          alt="Icon"
-          width={80}
-          height={80}
-        />
-        <div className={style.content}>
-          <span>{dateFromNow}</span>
-          <h4>{interviewSession.interviewDetails.topic}</h4>
-          <h4>
-            Punteggio:{" "}
+        <div className={style.quizCardImgContainer}>
+          <Image
+            src={iconSrc}
+            className={style.icon}
+            alt="Icon"
+            width={80}
+            height={80}
+          />
+          <div className={style.scoreContainer}>
             <span>
-              {interviewSession.evaluationResult.globalEvaluation.points}/100
+              {interviewSession.evaluationResult.globalEvaluation.points}%
             </span>
-          </h4>
-          <h4>
-            Intervistatore:{" "}
-            <span>{interviewSession.interviewDetails.interviewer.name}</span>
-          </h4>
+          </div>
         </div>
-        <div className={style.buttons}>
-          <ActionButton
-            className="round"
-            icon={DeleteIcon}
-            onClick={handleDelete}
-          />
-          <ActionButton
-            className="round"
-            icon={showFeedback ? arrowUp : arrowSelect}
-            onClick={() => setShowFeedback(!showFeedback)}
-          />
+        <div className={style.content}>
+          <div>
+            <h4
+              className={`${style.titleCard} ${
+                showFeedback ? style.fullText : ""
+              }`}
+            >
+              {interviewSession.interviewDetails.topic}
+            </h4>
+            <span>{dateFromNow}</span>
+          </div>
+          <div className={style.interviewerContainer}>
+            <span>{interviewSession.interviewDetails.interviewer.name}</span>
+            <div className={style.avatarInterviewer}>
+              <Image
+                src={interviewSession.interviewDetails.interviewer.avatarSrc}
+                alt={interviewSession.interviewDetails.interviewer.name}
+              ></Image>
+            </div>
+          </div>
         </div>
       </div>
       {showFeedback && (
         <>
           <p>{interviewSession.evaluationResult.globalEvaluation.feedback}</p>
-          <CtaButton
-            label="Dettagli"
-            className="ctaC"
-            onClick={() => setSelectedInterviewSession(interviewSession)}
-          />
+          <div className={style.buttonsContainer}>
+            <CtaButton
+              label="Dettagli"
+              className="ctaC"
+              onClick={() => setSelectedInterviewSession(interviewSession)}
+            />
+            <div className={style.deleteButton} onClick={handleDelete}>
+              <Image src={DeleteIcon} alt={"Delete"}></Image>
+            </div>
+          </div>
         </>
       )}
       <ConfirmDeletePopup

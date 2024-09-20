@@ -1,33 +1,35 @@
 @import "../../styles/default/mixins";
 
 .main {
-	@include main;
+  @include main;
 
-	.header {
-		@include header;
-	}
+  .header {
+    @include header;
+  }
 
-	color: var(--light);
+  color: var(--light);
 
-	.userInfo {
-		@include flex(var(--gap-md));
-		span {
-			font-weight: var(--fw-regular);
-		}
-	}
+  .userInfo {
+    @include flex(var(--gap-md));
+    justify-content: flex-end;
 
-	.cardsList {
-		@include flex-column(var(--gap-md));
-	}
+    span {
+      font-weight: var(--fw-regular);
+    }
+  }
 
-	.linkBtn {
-		width: 100%;
+  .cardsList {
+    @include flex-column(var(--gap-md));
+  }
 
-		button {
-			@include button;
-			width: 100%;
-		}
-	}
+  .linkBtn {
+    width: 100%;
+
+    button {
+      @include button;
+      width: 100%;
+    }
+  }
 }
 
 // .modal {
