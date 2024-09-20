@@ -22,23 +22,21 @@ const ForgotPassword = () => {
 
     try {
       await resetPassword(email);
-      setMessage(
-        forgotPasswordLabels.setMessage
-      );
+      setMessage(forgotPasswordLabels.setMessage);
     } catch (err) {
       if (err instanceof FirebaseError) {
-        setError(
-          forgotPasswordLabels.setError
-        );
+        setError(forgotPasswordLabels.setError);
       } else {
         setError(forgotPasswordLabels.unknownError);
       }
     }
   };
 
-   
-   const handleClickOutside = (event: MouseEvent) => {
-    if (messageRef.current && !messageRef.current.contains(event.target as Node)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      messageRef.current &&
+      !messageRef.current.contains(event.target as Node)
+    ) {
       setMessage("");
       setError("");
     }
@@ -70,16 +68,15 @@ const ForgotPassword = () => {
             type="submit"
           />
         </form>
-        
+
         {(message || error) && (
-        <div ref={messageRef} className={style.messageContainer}>
-        {message && <p className={style.message}>{message}</p>}
-        {error && <p className={style.error}>{error}</p>}
-      </div>
+          <div ref={messageRef} className={style.messageContainer}>
+            {message && <p className={style.message}>{message}</p>}
+            {error && <p className={style.error}>{error}</p>}
+          </div>
         )}
-        
+
         <p>
-          {forgotPasswordLabels.p}{" "}
           <Link href="/login" className={style.login}>
             {forgotPasswordLabels.login}
           </Link>
