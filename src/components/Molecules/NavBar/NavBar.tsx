@@ -40,7 +40,9 @@ const NavBar = () => {
 						<ul className={style.footerList}>
 							{footerMenu.map((item) => (
 								<li key={item.label}>
-									<Link href={item.link}>{item.label}</Link>
+									<Link href={item.link} onClick={() => setIsOpen(false)}>
+										{item.label}
+									</Link>
 								</li>
 							))}
 							<p>@2024 Interviewer</p>
