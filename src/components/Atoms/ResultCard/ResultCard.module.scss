@@ -4,8 +4,13 @@
 	align-items: flex-start;
 	background-color: var(--elements-bg);
 
-	height: fit-content;
-	transition: height 0.5s ease;
+	transition: transform 0.8s ease;
+
+	&.selectedResultCard {
+		transform: scale(1.05);
+		margin: var(--gap-lg) 0;
+		border: 4px solid var(--dark);
+	}
 
 	&.correct {
 		background-color: var(--correct-bg);

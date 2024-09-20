@@ -1,17 +1,18 @@
 .quizCardContainer {
 	@include base-element;
 	@include flex-column(var(--gap-md));
+	transition: transform 0.3s ease;
+
+	&.selectedCard {
+		transform: scale(1.05);
+		border: 4px solid var(--dark);
+	}
 
 	.quizCard {
 		@include flex(var(--gap-md));
 		justify-content: space-evenly;
 		cursor: pointer;
 		transition: transform 0.3s ease, border 0.3s ease;
-
-		&.selectedCard {
-			transform: scale(1.05);
-			border: 4px solid var(--dark);
-		}
 
 		.content {
 			@include flex-column(var(--gap-sm));

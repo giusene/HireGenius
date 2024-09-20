@@ -3,53 +3,53 @@
 // 	color: var(--light);
 
 .header {
-  height: 40px;
-  @include flex-center;
+	height: 40px;
+	@include flex-center;
 
-  .sectionTitle {
-    text-align: center;
-    font-size: var(--fs-md);
-    color: var(--light);
-  }
+	.sectionTitle {
+		text-align: center;
+		font-size: var(--fs-md);
+		color: var(--light);
+	}
 }
 
 .avatarContainer {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 
-  width: 140px;
-  height: 140px;
+	width: 140px;
+	height: 140px;
 
-  background-color: var(--accent);
-  border-radius: 50%;
-  border: 5px solid var(--primary);
+	background-color: var(--accent);
+	border-radius: 50%;
+	border: 5px solid var(--primary);
 
-  .avatarBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	.avatarBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-    width: 160px;
-    height: 160px;
-    // border: 1px solid red;
-    overflow: hidden;
-    border-radius: 0 0 50% 50%;
-  }
+		width: 160px;
+		height: 160px;
+		// border: 1px solid red;
+		overflow: hidden;
+		border-radius: 0 0 50% 50%;
+	}
 }
 
 .feedbackSection {
-  text-align: center;
-  color: var(--light);
+	text-align: center;
+	color: var(--light);
 
-  h3 {
-    margin-bottom: var(--gap-sm);
-  }
+	h3 {
+		margin-bottom: var(--gap-sm);
+	}
 }
 
 .resultsList {
-  @include flex-column(var(--gap-md));
+	@include flex-column(var(--gap-md));
 }
 
 // 	.linkBtn {
