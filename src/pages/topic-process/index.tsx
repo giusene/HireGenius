@@ -148,7 +148,7 @@ const TopicProcess = () => {
 	}, [quizResponses]);
 
 	{
-		if (isLoading) return <Loading />;
+		if (isLoading) return <Loading lazyLoading={true} />;
 	}
 
 	return (
