@@ -9,7 +9,9 @@ import style from "./register.module.scss";
 const Register = () => {
 	return (
 		<main className={style.main}>
-			{/* NAVBAR BUTTON */}
+			<header className={style.header}>
+				<h2 className={style.sectionTitle}>Registrati</h2>
+			</header>
 
 			<RegisterForm />
 

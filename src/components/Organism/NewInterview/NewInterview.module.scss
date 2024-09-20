@@ -1,6 +1,9 @@
 .main {
 	@include main;
-	@include header;
+
+	.header {
+		@include header;
+	}
 
 	.hero {
 		background-color: var(--elements-bg);

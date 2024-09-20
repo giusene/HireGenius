@@ -27,7 +27,7 @@ const NavBar = () => {
 					<ul className={style.menuList}>
 						{filteredNavMenu.map((item) => (
 							<li key={item.label}>
-								<Link href={item.link} className={style.menuItem}>
+								<Link href={item.link} className={style.menuItem} onClick={() => setIsOpen(false)}>
 									<Image src={item.icon} alt={`${item.label} icon`} width={20} height={20} />
 									{item.label}
 								</Link>

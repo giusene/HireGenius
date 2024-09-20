@@ -26,15 +26,13 @@
 }
 
 @mixin header {
-	.header {
-		height: 40px;
-		@include flex-center;
+	height: 40px;
+	@include flex-center;
 
-		.sectionTitle {
-			text-align: center;
-			color: var(--light);
-			font-size: var(--fs-md);
-		}
+	.sectionTitle {
+		text-align: center;
+		color: var(--light);
+		font-size: var(--fs-md);
 	}
 }
 

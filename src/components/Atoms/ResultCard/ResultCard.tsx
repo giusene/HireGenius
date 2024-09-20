@@ -15,7 +15,7 @@ const ResultCard = (props: ResultCardProps) => {
 	const statusIcon = `/icons/${response.answerStatus}.png`;
 
 	return (
-		<div className={`${style.resultCard} ${style[response.answerStatus]}`}>
+		<div className={`${style.resultCard} ${style[response.answerStatus]} ${showDetails && style.selectedResultCard}`}>
 			<div className={style.resultCardHeader}>
 				<div>
 					<h4>Domanda {index + 1}</h4>

@@ -1,6 +1,13 @@
 .testCard {
 	@include base-element;
 	@include flex-column(var(--gap-sm));
+	transition: transform 0.3s ease;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transform: scale(1.05);
+	}
 
 	.hero {
 		border-radius: var(--border-radius);
