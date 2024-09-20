@@ -3,6 +3,7 @@ import TopicIcon from "@/../public/icons/topic.png";
 import InterviewIcon from "@/../public/icons/interview.png";
 import ProfileIcon from "@/../public/icons/profile.png";
 import LogoutIcon from "@/../public/icons/logout.png";
+import LoginIcon from "@/../public/icons/login.png";
 
 export const navMenu = [
 	{
@@ -32,7 +33,7 @@ export const navMenu = [
 		link: "/logout",
 	},
 	{
-		icon: LogoutIcon,
+		icon: LoginIcon,
 		label: "Login",
 		link: "/login",
 	},
@@ -49,7 +50,7 @@ export const footerMenu = [
 	},
 	{
 		label: "Github",
-		link: "#",
+		link: "https://github.com/giusene/HireGenius",
 	},
 ];
 
