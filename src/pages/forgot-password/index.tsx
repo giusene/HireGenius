@@ -6,7 +6,6 @@ import { FirebaseError } from "firebase/app";
 import { forgotPasswordLabels } from "@/constants/forgotPasswordLabels";
 import Input from "@/components/Atoms/Input/Input";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
-import InputBox from "@/components/Molecules/InputBox/InputBox";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
