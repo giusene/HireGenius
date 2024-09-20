@@ -1,6 +1,5 @@
 import style from "./Loading.module.scss";
-import Image from "next/image";
-import Rocket from "@/../public/icons/rocket.png";
+
 import { useEffect, useState } from "react";
 import { LoadingProps } from "@/interfaces/interfaces";
 
