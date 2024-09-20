@@ -1,6 +1,9 @@
 .main {
 	@include main;
-	@include header;
+
+	.header {
+		@include header;
+	}
 
 	form {
 		@include form;

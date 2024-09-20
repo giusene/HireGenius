@@ -1,6 +1,10 @@
 .main {
 	@include main;
 
+	.header {
+		@include header;
+	}
+
 	.privacyInfo {
 		color: var(--light);
 	}

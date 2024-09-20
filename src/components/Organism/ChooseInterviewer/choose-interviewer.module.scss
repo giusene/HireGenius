@@ -2,14 +2,7 @@
 	@include main;
 
 	.header {
-		height: 40px;
-		@include flex-center;
-
-		.sectionTitle {
-			text-align: center;
-			color: var(--light);
-			font-size: var(--fs-md);
-		}
+		@include header;
 	}
 
 	.interviewerForm {

@@ -1,32 +1,34 @@
 .main {
-  @include main;
+	@include main;
 
-  @include header;
+	.header {
+		@include header;
+	}
 
-  .progress {
-    @include flex-column(var(--gap-sm));
-    h3 {
-      color: var(--light);
-      font-size: var(--fs-md);
-    }
-  }
+	.progress {
+		@include flex-column(var(--gap-sm));
+		h3 {
+			color: var(--light);
+			font-size: var(--fs-md);
+		}
+	}
 
-  form {
-    @include form;
-  }
+	form {
+		@include form;
+	}
 
-  mark.invalid {
-    background: var(--tertiary);
-    color: var(--white);
-    font-weight: var(--fw-regular);
-    padding: calc(var(--elements-padding) / 2) var(--elements-padding);
-    width: fit-content;
-    font-size: var(--fs-sm);
-  }
+	mark.invalid {
+		background: var(--tertiary);
+		color: var(--white);
+		font-weight: var(--fw-regular);
+		padding: calc(var(--elements-padding) / 2) var(--elements-padding);
+		width: fit-content;
+		font-size: var(--fs-sm);
+	}
 
-  .buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--gap-md);
-  }
+	.buttons {
+		display: flex;
+		justify-content: flex-end;
+		gap: var(--gap-md);
+	}
 }

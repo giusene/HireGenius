@@ -3,14 +3,7 @@
 // 	color: var(--light);
 
 .header {
-	height: 40px;
-	@include flex-center;
-
-	.sectionTitle {
-		text-align: center;
-		font-size: var(--fs-md);
-		color: var(--light);
-	}
+	@include header;
 }
 
 .avatarContainer {
