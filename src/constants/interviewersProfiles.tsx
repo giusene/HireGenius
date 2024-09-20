@@ -40,8 +40,7 @@ export const profiles = [
     avatarSrc: Avatar4,
     name: "Luca",
     value: "luca",
-    shortBio:
-      "Proverà a mettere in luce i tuoi punti di forza e le tue fragilità.",
+    shortBio: "Metterà in luce i tuoi punti di forza e fragilità.",
     longBio:
       "Ama mettere alla prova i candidati con domande trabocchetto, come: -Se fossi il mio capo e dovessi valutare questa tua intervista, quale aspetto ritieni sia stato il tuo punto debole?- per testare la capacità di mantenere la calma sotto pressione. Usa queste tecniche per valutare non solo la competenza. È un intervistatore che mira a mettere in luce non solo i punti di forza, ma anche le possibili fragilità.",
     level: "equo",
@@ -51,10 +50,9 @@ export const profiles = [
     avatarSrc: Avatar5,
     name: "Ivan",
     value: "ivan",
-    shortBio:
-      "Proverà a mettere in luce i tuoi punti di forza e le tue fragilità.",
+    shortBio: "Esigente e meticoloso. Ti sfiderà a ogni passo.",
     longBio:
-      "Ama mettere alla prova i candidati con domande trabocchetto, come: -Se fossi il mio capo e dovessi valutare questa tua intervista, quale aspetto ritieni sia stato il tuo punto debole?- per testare la capacità di mantenere la calma sotto pressione. Usa queste tecniche per valutare non solo la competenza. È un intervistatore che mira a mettere in luce non solo i punti di forza, ma anche le possibili fragilità.",
+      "Ivan è noto per la sua severità. Le sue domande non si limitano a situazioni standard, ma cercano di svelare i veri punti deboli dei candidati. Domande come: -Descrivimi la decisione più impopolare che hai preso e come hai gestito il fallimento- o -Quale aspetto del tuo lavoro richiede maggiori miglioramenti e cosa stai facendo al riguardo?- mettono alla prova la capacità dei candidati di pensare criticamente sotto pressione. Vuole risposte dettagliate e ben ragionate, e non si accontenta di superficialità.",
     level: "arduo",
     className: "arduo",
   },
