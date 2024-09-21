@@ -111,6 +111,10 @@
       background-color: var(--dark);
       padding: 15px;
       border-radius: 100px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
       img {
         height: 100%;
         width: 100%;

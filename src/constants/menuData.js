@@ -55,7 +55,7 @@ export const footerMenu = [
 ];
 
 export const loginLabels = {
-  appName: "interViewer",
+  appName: "HireGenius",
   tagline: "Testa le tue competenze",
   emailLabel: "Email",
   passwordLabel: "Password",

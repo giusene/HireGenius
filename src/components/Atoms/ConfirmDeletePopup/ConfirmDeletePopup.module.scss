@@ -1,24 +1,39 @@
 .overlay {
-  position: fixed;
+  position: absolute !important;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  width: 100dvw;
+  height: 100dvh;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .popup {
   @include flex-column(var(--gap-lg));
   background-color: var(--white);
-  padding: 26px;
+  padding: 60px;
   border-radius: var(--border-radius);
   text-align: center;
-  z-index: 10;
+  z-index: 1001;
   .buttons {
-    @include flex(var(--gap-lg));
+    @include flex(var(--gap-md));
     @include flex-center;
+  }
+
+  h4 {
+    color: var(--dark);
   }
 }

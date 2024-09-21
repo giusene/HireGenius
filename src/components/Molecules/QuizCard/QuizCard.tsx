@@ -87,70 +87,72 @@ const QuizCard: React.FC<QuizCardProps> = ({
   };
 
   return (
-    <div
-      onClick={() => setShowFeedback(!showFeedback)}
-      className={`${style.quizCardContainer} ${
-        showFeedback && style.selectedCard
-      } `}
-    >
-      <div className={style.quizCard}>
-        <div className={style.quizCardImgContainer}>
-          <Image
-            src={iconSrc}
-            className={style.icon}
-            alt="Icon"
-            width={80}
-            height={80}
-          />
-          <div className={style.scoreContainer}>
-            <span>
-              {interviewSession.evaluationResult.globalEvaluation.points}%
-            </span>
-          </div>
-        </div>
-        <div className={style.content}>
-          <div>
-            <h4
-              className={`${style.titleCard} ${
-                showFeedback ? style.fullText : ""
-              }`}
-            >
-              {interviewSession.interviewDetails.topic}
-            </h4>
-            <span>{dateFromNow}</span>
-          </div>
-          <div className={style.interviewerContainer}>
-            <span>{interviewSession.interviewDetails.interviewer.name}</span>
-            <div className={style.avatarInterviewer}>
-              <Image
-                src={interviewSession.interviewDetails.interviewer.avatarSrc}
-                alt={interviewSession.interviewDetails.interviewer.name}
-              ></Image>
-            </div>
-          </div>
-        </div>
-      </div>
-      {showFeedback && (
-        <>
-          <p>{interviewSession.evaluationResult.globalEvaluation.feedback}</p>
-          <div className={style.buttonsContainer}>
-            <CtaButton
-              label="Dettagli"
-              className="ctaC"
-              onClick={() => setSelectedInterviewSession(interviewSession)}
+    <>
+      <div
+        onClick={() => setShowFeedback(!showPopup ? !showFeedback : false)}
+        className={`${style.quizCardContainer} ${
+          showFeedback && style.selectedCard
+        } `}
+      >
+        <div className={style.quizCard}>
+          <div className={style.quizCardImgContainer}>
+            <Image
+              src={iconSrc}
+              className={style.icon}
+              alt="Icon"
+              width={80}
+              height={80}
             />
-            <div className={style.deleteButton} onClick={handleDelete}>
-              <Image src={DeleteIcon} alt={"Delete"}></Image>
+            <div className={style.scoreContainer}>
+              <span>
+                {interviewSession.evaluationResult.globalEvaluation.points}%
+              </span>
             </div>
           </div>
-        </>
-      )}
+          <div className={style.content}>
+            <div>
+              <h4
+                className={`${style.titleCard} ${
+                  showFeedback ? style.fullText : ""
+                }`}
+              >
+                {interviewSession.interviewDetails.topic}
+              </h4>
+              <span>{dateFromNow}</span>
+            </div>
+            <div className={style.interviewerContainer}>
+              <span>{interviewSession.interviewDetails.interviewer.name}</span>
+              <div className={style.avatarInterviewer}>
+                <Image
+                  src={interviewSession.interviewDetails.interviewer.avatarSrc}
+                  alt={interviewSession.interviewDetails.interviewer.name}
+                ></Image>
+              </div>
+            </div>
+          </div>
+        </div>
+        {showFeedback && (
+          <>
+            <p>{interviewSession.evaluationResult.globalEvaluation.feedback}</p>
+            <div className={style.buttonsContainer}>
+              <CtaButton
+                label="Dettagli"
+                className="ctaC"
+                onClick={() => setSelectedInterviewSession(interviewSession)}
+              />
+              <div className={style.deleteButton} onClick={handleDelete}>
+                <Image src={DeleteIcon} alt={"Delete"}></Image>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
       <ConfirmDeletePopup
         isOpen={showPopup}
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
       />
-    </div>
+    </>
   );
 };
 

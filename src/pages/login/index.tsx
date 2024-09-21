@@ -51,7 +51,7 @@ const Login = () => {
       </div>
 
       <div className={style.header}>
-        <h1>interViewer</h1>
+        <h1>HireGenius</h1>
         <h2>Testa le tue competenze</h2>
       </div>
 
