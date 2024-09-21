@@ -46,7 +46,11 @@
     .rocket {
       height: 250px;
       width: 250px;
-      background: linear-gradient(to bottom right, var(--tertiary) 20%, var(--dark) 80%)
+      background: linear-gradient(
+          to bottom right,
+          var(--tertiary) 20%,
+          var(--dark) 80%
+        )
         no-repeat border-box; // light e DARKEST
       border-radius: 50rem 10rem 50rem 5rem;
       transform: rotate(-45deg);
@@ -90,8 +94,12 @@
     .wingOne {
       left: 125px;
       border-radius: 1rem 8rem;
-      background: linear-gradient(to right, var(--tertiary) 45%, var(--dark) 100%) no-repeat
-        border-box; // light e DARKEST
+      background: linear-gradient(
+          to right,
+          var(--tertiary) 45%,
+          var(--dark) 100%
+        )
+        no-repeat border-box; // light e DARKEST
     }
 
     .wingTwo {
@@ -183,6 +191,23 @@
         opacity: 0%;
         transform: scale(0.3) rotate(50deg);
       }
+    }
+  }
+  .cursor {
+    display: inline-block; // Assicura che il cursore si comporti come un elemento inline
+    width: 2px; // Larghezza del cursore
+    height: 1em; // Altezza uguale all'altezza del testo
+    background-color: var(--light); // Colore del cursore
+    animation: blink 1s step-end infinite; // Animazione di lampeggio
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1; // Visibile
+    }
+    50% {
+      opacity: 0; // Invisibile
     }
   }
 }

@@ -1,68 +1,31 @@
-@import "../../styles/default/mixins";
-
 .main {
-	@include main;
+  @include main;
 
-	.header {
-		@include header;
-	}
+  .header {
+    @include header;
+  }
 
-	color: var(--light);
+  color: var(--light);
 
-	.userInfo {
-		@include flex(var(--gap-md));
-		span {
-			font-weight: var(--fw-regular);
-		}
-	}
+  .userInfo {
+    @include flex(var(--gap-md));
+    justify-content: flex-end;
 
-	.cardsList {
-		@include flex-column(var(--gap-md));
-	}
+    span {
+      font-weight: var(--fw-regular);
+    }
+  }
 
-	.linkBtn {
-		width: 100%;
+  .cardsList {
+    @include flex-column(var(--gap-md));
+  }
 
-		button {
-			@include button;
-			width: 100%;
-		}
-	}
+  .linkBtn {
+    width: 100%;
+
+    button {
+      @include button;
+      width: 100%;
+    }
+  }
 }
-
-// .modal {
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	right: 0;
-// 	bottom: 0;
-// 	background: rgba(0, 0, 0, 0.5);
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	z-index: 1100;
-// }
-
-// .modalContent {
-// 	background: #fff;
-// 	padding: 20px;
-// 	border-radius: 8px;
-// 	text-align: center;
-// 	width: 300px;
-// 	position: relative;
-// }
-
-// .modalContent button {
-// 	margin-top: 10px;
-// 	background-color: #0070f3;
-// 	color: #fff;
-// 	border: none;
-// 	border-radius: 5px;
-// 	padding: 10px;
-// 	cursor: pointer;
-// 	transition: background-color 0.3s ease;
-
-// 	&:hover {
-// 		background-color: #005bb5;
-// 	}
-// }
