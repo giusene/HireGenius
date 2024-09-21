@@ -8,7 +8,6 @@ import style from "./QuizCard.module.scss";
 import { formatDistanceToNow } from "date-fns";
 import { it } from "date-fns/locale"; // Importa il locale italiano
 import { Dispatch, SetStateAction, useState } from "react";
-import ActionButton from "../../Atoms/Buttons/ActionButton";
 import { deleteInterviewSession } from "@/utils/deleteInterviewSession";
 import { useAuth } from "@/context/AuthContext";
 import { EvaluationResult, InterviewDetails } from "@/interfaces/interfaces";

@@ -16,8 +16,6 @@ import ResultsList from "@/components/Organism/ResultsList/ResultsList";
 import Link from "next/link";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
-// import ResultsList from "@/components/Organism/ResultsList/ResultsList";
-
 const UserProfile = () => {
   const { user } = useAuth();
   const [interviewSessions, setInterviewSessions] = useState<
