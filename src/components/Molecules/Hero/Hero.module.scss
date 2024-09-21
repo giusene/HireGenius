@@ -1,16 +1,18 @@
 .hero {
 	background-color: var(--primary);
+	color: var(--light);
 
 	.heroContainer {
-		margin: 0 auto;
 		height: 100vh;
-		max-width: 1300px;
-		color: var(--light);
+
 		@include flex-column(0);
-		justify-content: space-between;
+		justify-content: center;
 
 		@media (min-width: 1025px) {
+			margin: 0 auto;
+			max-width: 1300px;
 			flex-direction: row;
+			justify-content: space-between;
 			align-items: center;
 		}
 
@@ -62,6 +64,8 @@
 			height: auto;
 			width: 80%;
 			align-self: end;
+			max-height: 585px;
+			max-width: 444px;
 
 			@media (min-width: 1025px) {
 				order: 1;

@@ -16,8 +16,8 @@ export default function Home() {
 			</Head>
 			<main className={style.main}>
 				<Hero />
-				{/* <Intro />
-				<Features /> */}
+				<Features />
+				{/* <Intro />*/}
 			</main>
 			{/* <Footer /> */}
 		</div>

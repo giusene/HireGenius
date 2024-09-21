@@ -1,73 +1,51 @@
-import InterviewerBadge from "@/components/Atoms/InterviewerBadge/InterviewerBadge";
 import style from "./Features.module.scss";
 import Image from "next/image";
-import quiz from "@/../public/icons/new-topic.png";
-import interview from "@/../public/icons/new-interview.png";
-import hero from "@/../public/hero/hero.png";
+import quiz from "@/../public/hero/quiz.png";
+import interview from "@/../public/hero/interviews.png";
+import feedback from "@/../public/hero/feedback.png";
 import { featureLabels } from "@/constants/indexLabels";
+import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 
 const Features = () => {
 	return (
 		<section id='features' className={style.features}>
-			<div className={style.featuresGrid}>
-				<div className={style.featureGridContent}>
-					<div className={style.featureImg}>
-						<div className={style.image}>
-							<Image className='featureImg' src={quiz} alt='Quiz' width={400} height={200} priority={true} />
-						</div>
-					</div>
+			<div className={style.featuresContainer}>
+				<div className={style.featuresHeader}>
+					<h2>
+						Le nostre
+						<span className={style.bold}> features</span>
+					</h2>
+					<p>{featureLabels.description}</p>
+				</div>
 
-					<div className={style.featureText}>
-						<div className={style.texts}>
-							<InterviewerBadge label={featureLabels.quizPersonalized} className='personalizedQuiz' />
+				<div className={style.featuresRow}>
+					<div className={style.featureCard1}>
+						<Image src={quiz} alt='Quiz' width={137} height={137} priority={true} />
+						<div className={style.featureContent}>
+							<h3>{featureLabels.quizPersonalized}</h3>
 							<p>{featureLabels.quizBadge}</p>
 						</div>
 					</div>
-				</div>
-
-				<div className={style.featureGridContent}>
-					<div className={style.featureText}>
-						<div className={style.texts}>
-							<InterviewerBadge label={featureLabels.simulatedInterviews} className='simulatedInterviews' />
+					<div className={style.featureCard2}>
+						<Image src={interview} alt='Interview' width={137} height={137} priority={true} />
+						<div className={style.featureContent}>
+							<h3>{featureLabels.simulatedInterviews}</h3>
 							<p>{featureLabels.simulatedBadge}</p>
 						</div>
 					</div>
-					<div className={style.featureImg}>
-						<div className={style.image}>
-							<Image className='featureImg' src={interview} alt='Quiz' width={400} height={200} priority={true} />
-						</div>
-					</div>
-				</div>
-
-				<div className={style.featureGridContent}>
-					<div className={style.featureImg}>
-						<div className={style.image}>
-							<Image className='featureImg' src={hero} alt='AI' width={400} height={200} priority={true} />
-						</div>
-					</div>
-
-					<div className={style.featureText}>
-						<div className={style.texts}>
-							<InterviewerBadge label={featureLabels.aiFeedback} className='aiPoweredFeedback' />
+					<div className={style.featureCard3}>
+						<Image src={feedback} alt='Quiz' width={137} height={137} priority={true} />
+						<div className={style.featureContent}>
+							<h3>{featureLabels.aiFeedback}</h3>
 							<p>{featureLabels.aiBadge}</p>
 						</div>
 					</div>
 				</div>
+
+				<CtaButton className='ctaC' label={featureLabels.start} />
 			</div>
 		</section>
 	);
 };
 
 export default Features;
-
-// // Le nostre features:
-// Affronta test e colloqui con sicurezza grazie a un sistema completo che ti offre esperienze di apprendimento personalizzate, simulate e arricchite da suggerimenti intelligenti. Sviluppa le tue abilità in modo mirato e efficace!
-
-// Quiz Personalizzati
-//  Sviluppa le tue competenze con quiz su misura, progettati per adattarsi ai tuoi interessi e al tuo livello di preparazione.
-
-// Interviste Simulate
-//  Esercitati con colloqui realistici e ricevi feedback immediati per migliorare la tua performance e aumentare la tua sicurezza.
-
-// Suggerimenti Potenziati dall'AI
-// Ottieni feedback dettagliati e suggerimenti pratici grazie all'intelligenza artificiale, per affinare ulteriormente le tue abilità.
