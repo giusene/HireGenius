@@ -13,66 +13,57 @@ import Loading from "@/components/Atoms/Loading/Loading";
 
 // STYLE
 import style from "./login.module.scss";
-import Hero from "../../../public/hero.png";
+import LoginHero from "../../../public/login-hero.png";
 
 const Login = () => {
-  const { loginWithGoogle } = useAuth();
+	const { loginWithGoogle } = useAuth();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+	const [isLoading, setIsLoading] = useState(false);
+	const router = useRouter();
 
-  const handleGoogleLogin = async () => {
-    try {
-      setIsLoading(true);
-      await loginWithGoogle();
-      console.log("Login con Google effettuato con successo!");
-      setIsLoading(false);
-      router.push("/landing-page");
-    } catch (err) {
-      setIsLoading(false);
-      console.error(err);
-    }
-  };
+	const handleGoogleLogin = async () => {
+		try {
+			setIsLoading(true);
+			await loginWithGoogle();
+			console.log("Login con Google effettuato con successo!");
+			setIsLoading(false);
+			router.push("/landing-page");
+		} catch (err) {
+			setIsLoading(false);
+			console.error(err);
+		}
+	};
 
-  {
-    if (isLoading) return <Loading />;
-  }
+	{
+		if (isLoading) return <Loading />;
+	}
 
-  return (
-    <main className={style.main}>
-      <div className={style.hero}>
-        <Image
-          src={Hero}
-          alt="Hero image"
-          width={545}
-          height={204}
-          priority={true}
-        />
-      </div>
+	return (
+		<div className={style.container}>
+			<div className={style.hero}>
+				<Image className={style.heroImg} src={LoginHero} alt='Hero image' fill={true} priority={true} />
+			</div>
+			<main className={style.main}>
+				<div className={style.header}>
+					<h1>HireGenius</h1>
+					<h2>Testa le tue competenze</h2>
+				</div>
 
-      <div className={style.header}>
-        <h1>HireGenius</h1>
-        <h2>Testa le tue competenze</h2>
-      </div>
+				<LoginForm />
 
-      <LoginForm />
+				<hr />
 
-      <hr />
+				<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
 
-      <CtaButton
-        label="Accedi con Google"
-        className="ctaB"
-        onClick={handleGoogleLogin}
-      />
-
-      <p className={style.register}>
-        Non hai un account?{" "}
-        <Link className={style.registerLink} href="/register">
-          Registrati
-        </Link>
-      </p>
-    </main>
-  );
+				<p className={style.register}>
+					Non hai un account?
+					<Link className={style.registerLink} href='/register'>
+						Registrati
+					</Link>
+				</p>
+			</main>
+		</div>
+	);
 };
 
 export default Login;
