@@ -6,7 +6,7 @@ import DeleteIcon from "@/../public/icons/delete.svg";
 import Image, { StaticImageData } from "next/image";
 import style from "./QuizCard.module.scss";
 import { formatDistanceToNow } from "date-fns";
-import { it } from "date-fns/locale"; // Importa il locale italiano
+import { it } from "date-fns/locale";
 import { Dispatch, SetStateAction, useState } from "react";
 import { deleteInterviewSession } from "@/utils/deleteInterviewSession";
 import { useAuth } from "@/context/AuthContext";
