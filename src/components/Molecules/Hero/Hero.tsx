@@ -5,6 +5,7 @@ import heroImg from "@/../public/hero/hero.png";
 
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Hero = () => {
 	const router = useRouter();
@@ -26,7 +27,9 @@ const Hero = () => {
 							come un professionista
 						</h1>
 						<p>{heroLabels.subtitle}</p>
-						<CtaButton onClick={handleButton} className='ctaA' label={heroLabels.start} />
+						<Link href={"/#features"}>
+							<CtaButton onClick={handleButton} className='ctaA' label={heroLabels.start} />
+						</Link>
 					</div>
 
 					<Image className={style.heroImg} src={heroImg} alt='Hero' width={444} height={585} priority={true} />

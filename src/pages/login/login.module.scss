@@ -14,6 +14,22 @@
 		.heroImg {
 			object-fit: contain;
 		}
+
+		@media (min-width: 1025px) {
+			position: relative;
+			width: unset;
+			aspect-ratio: unset;
+			height: 630px;
+			width: auto;
+
+			.heroImg {
+				order: 1;
+				margin-top: unset;
+				height: 100%;
+				width: 100%;
+				align-self: flex-start;
+			}
+		}
 	}
 
 	.main {
