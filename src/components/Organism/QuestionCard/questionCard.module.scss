@@ -1,37 +1,55 @@
 .main {
-  @include main;
+	@include main;
 
-  .header {
-    @include header;
-  }
+	.container {
+		@include flex-column(var(--gap-lg));
 
-  .progress {
-    @include flex-column(var(--gap-sm));
-    h3 {
-      color: var(--light);
-      font-size: var(--fs-md);
-    }
-  }
+		@media (min-width: 1025px) {
+			flex-direction: row;
+			column-gap: var(--page-padding);
+			align-items: start;
+			min-height: 600px;
 
-  form {
-    @include form;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 100%;
-  }
+			& > div {
+				width: 50%;
+			}
+		}
 
-  mark.invalid {
-    background: var(--tertiary);
-    color: var(--white);
-    font-weight: var(--fw-regular);
-    padding: calc(var(--elements-padding) / 2) var(--elements-padding);
-    width: fit-content;
-    font-size: var(--fs-sm);
-  }
+		.header {
+			@include header;
+		}
 
-  .buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--gap-md);
-  }
+		.progress {
+			@include flex-column(var(--gap-sm));
+			h3 {
+				color: var(--light);
+				font-size: var(--fs-md);
+			}
+		}
+
+		& > div {
+			@include flex-column(var(--gap-lg));
+			flex-grow: 1;
+
+			form {
+				flex-grow: 1;
+				@include form;
+			}
+		}
+
+		mark.invalid {
+			background: var(--tertiary);
+			color: var(--white);
+			font-weight: var(--fw-regular);
+			padding: calc(var(--elements-padding) / 2) var(--elements-padding);
+			width: fit-content;
+			font-size: var(--fs-sm);
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: flex-end;
+			gap: var(--gap-md);
+		}
+	}
 }

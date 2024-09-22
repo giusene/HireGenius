@@ -42,7 +42,7 @@ const Login = () => {
 	return (
 		<>
 			<section className={style.login}>
-				<div className={style.container}>
+				<div className={style.loginContainer}>
 					<Image className={style.heroImg} src={LoginHeroLG} alt='Hero image' width={444} height={585} priority={true} />
 
 					<main className={style.main}>

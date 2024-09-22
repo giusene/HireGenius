@@ -2,6 +2,10 @@
 	background-color: var(--primary);
 	color: var(--light);
 
+	@media (min-width: 1025px) {
+		padding-top: 0 !important;
+	}
+
 	.heroContainer {
 		min-height: 100vh;
 
@@ -14,6 +18,8 @@
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
+
+			padding-top: calc(100px + var(--page-padding)) !important;
 		}
 
 		.heroContent {

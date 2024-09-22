@@ -8,28 +8,29 @@ const ResultsList = (props: ResultsListProps) => {
 
 	return (
 		<>
-			{interviewDetails && (
+			{interviewDetails && evaluationResult && (
 				<>
 					<header className={style.header}>
 						<h2 className={style.sectionTitle}>{interviewDetails.topic}</h2>
-					</header>
 
-					<div className={style.avatarContainer}>
-						<div className={style.avatarBox}>
-							<Image src={interviewDetails.interviewer.avatarSrc} alt='Interviewer Avatar' width={160} height={160} priority />
+						<div className={style.avatarContainer}>
+							<div className={style.avatarBox}>
+								<Image src={interviewDetails.interviewer.avatarSrc} alt='Interviewer Avatar' width={160} height={160} priority />
+							</div>
 						</div>
-					</div>
+
+						<div className={style.feedbackSection}>
+							<h3>
+								{evaluationResult.globalEvaluation.points}/{evaluationResult.globalEvaluation.outOf}
+							</h3>
+							<p>{evaluationResult.globalEvaluation.feedback}</p>
+						</div>
+					</header>
 				</>
 			)}
 
 			{evaluationResult && (
 				<>
-					<div className={style.feedbackSection}>
-						<h3>
-							{evaluationResult.globalEvaluation.points}/{evaluationResult.globalEvaluation.outOf}
-						</h3>
-						<p>{evaluationResult.globalEvaluation.feedback}</p>
-					</div>
 					<ul className={style.resultsList}>
 						{evaluationResult.evaluatedResponses.map((response, index) => (
 							<li key={index}>

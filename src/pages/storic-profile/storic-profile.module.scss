@@ -1,31 +1,58 @@
 .main {
-  @include main;
+	@include main;
+	padding: var(--page-padding);
+	@include flex-column(var(--gap-md));
 
-  .header {
-    @include header;
-  }
+	@media (min-width: 1025px) {
+		padding-left: 0;
+		padding-right: 0;
+	}
 
-  color: var(--light);
+	.container {
+		@include flex-column(var(--gap-lg));
+		padding: 0;
 
-  .userInfo {
-    @include flex(var(--gap-md));
-    justify-content: flex-end;
+		@media (min-width: 1025px) {
+			flex-direction: row;
+			column-gap: var(--page-padding);
+			align-items: start;
+		}
+	}
 
-    span {
-      font-weight: var(--fw-regular);
-    }
-  }
+	.header {
+		@include header;
+	}
 
-  .cardsList {
-    @include flex-column(var(--gap-md));
-  }
+	color: var(--light);
 
-  .linkBtn {
-    width: 100%;
+	.userInfo {
+		@include flex(var(--gap-md));
+		justify-content: flex-end;
+		padding-bottom: var(--gap-lg);
+		border-bottom: 1px solid var(--light);
 
-    button {
-      @include button;
-      width: 100%;
-    }
-  }
+		span {
+			font-weight: var(--fw-regular);
+		}
+	}
+
+	.cardsList {
+		@include flex-column(var(--gap-md));
+		@media (min-width: 1025px) {
+			width: 50%;
+		}
+	}
+
+	.linkBtn {
+		width: 100%;
+
+		@media (min-width: 1025px) {
+			width: unset;
+		}
+
+		button {
+			@include button;
+			width: 100%;
+		}
+	}
 }

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import style from "@/styles/Home.module.scss";
 import { headLabels } from "@/constants/indexLabels";
 import Hero from "@/components/Molecules/Hero/Hero";
 import Features from "@/components/Molecules/Features/Features";
@@ -13,7 +12,7 @@ export default function Home() {
 				<meta name='description' content='Skillup - Enhance your skills with personalized quizzes and interviews.' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className={style.main}>
+			<main>
 				<Hero />
 				<Features />
 				<Interviewers />

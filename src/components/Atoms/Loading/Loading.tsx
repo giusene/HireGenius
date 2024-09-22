@@ -89,7 +89,11 @@ const Loading = (props: LoadingProps) => {
 					<div className={style.flame2}></div>
 				</div>
 			</div>
-			<p>{lazyLoading && loadingMessage.replace(/undefined/g, "") && <span className={style.cursor}>|</span>}</p>
+			{lazyLoading && (
+				<p>
+					loadingMessage.replace(/undefined/g, "") && <span className={style.cursor}>|</span>
+				</p>
+			)}
 		</div>
 	);
 };

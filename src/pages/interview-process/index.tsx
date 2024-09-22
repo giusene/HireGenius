@@ -170,10 +170,13 @@ const InterviewProcess = () => {
 			{step === "questionCard" && interviewDetails && (
 				<QuestionCard role={interviewDetails.topic} totalQuestions={generatedQuestions.length} questions={generatedQuestions} onComplete={handleQuestionsComplete} />
 			)}
+
 			{error && interviewDetails && <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} />}
 			{step === "resultsList" && evaluationResult && interviewDetails && (
 				<main className={style.main}>
-					<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
+					<div className={style.container}>
+						<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
+					</div>
 					<Link href={"/landing-page"} className={style.linkBtn}>
 						<CtaButton label='Torna alla home' className='ctaC' />
 					</Link>

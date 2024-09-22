@@ -21,7 +21,8 @@ const ResultsListError = (props: ResultsListErrorProps) => {
 					</div>
 				</>
 			)}
-			<CtaButton label={`Ups... un attimo di distrazione e ${interviewDetails.interviewer.name} sta bevendo un caffè... Riproviamo!`} className='ctaB' onClick={evaluateAnswers} />
+			<p>{`Ups... un attimo di distrazione e ${interviewDetails.interviewer.name} è in pausa caffè...!`}</p>
+			<CtaButton label='Riproviamo!' className='ctaB' onClick={evaluateAnswers} />
 		</main>
 	);
 };

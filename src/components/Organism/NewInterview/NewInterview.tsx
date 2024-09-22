@@ -23,35 +23,41 @@ const NewInterview: React.FC<TopicFormProps> = ({ onSubmit }) => {
 
 	return (
 		<main className={style.main}>
-			<header className={style.header}>
-				<h2 className={style.sectionTitle}>{interviewFormLabels.title}</h2>
-			</header>
-			<div className={style.hero}>
-				<Image src={interviewHero} alt='Interview image' width={634} height={364} priority={true} />
+			<div className={style.container}>
+				<header className={style.header}>
+					<h2 className={style.sectionTitle}>{interviewFormLabels.title}</h2>
+
+					<div className={style.hero}>
+						<Image src={interviewHero} alt='Interview image' width={634} height={364} priority={true} />
+					</div>
+				</header>
+
+				<div>
+					<form onSubmit={handleSubmit}>
+						<InputBox type='text' name='interview' label={interviewFormLabels.interviewLabel} value={interview} onChange={(e) => setInterview(e.target.value)} />
+
+						<SelectBox
+							name='seniority'
+							label={interviewFormLabels.seniority}
+							value={seniority}
+							onChange={(e) => setSeniority(e.target.value)}
+							required={false}
+							options={interviewFormOptions.optionsSeniority}
+						/>
+
+						<SelectBox
+							label={interviewFormLabels.numberOfQuestionsLabel}
+							name='numQuestions'
+							value={numQuestions}
+							onChange={(e) => setNumQuestions(e.target.value)}
+							required={false}
+							options={interviewFormOptions.optionsQuestion}
+						/>
+
+						<CtaButton type='submit' label={interviewFormLabels.button} className='ctaB' />
+					</form>
+				</div>
 			</div>
-			<form onSubmit={handleSubmit}>
-				<InputBox type='text' name='interview' label={interviewFormLabels.interviewLabel} value={interview} onChange={(e) => setInterview(e.target.value)} />
-
-				<SelectBox
-					name='seniority'
-					label={interviewFormLabels.seniority}
-					value={seniority}
-					onChange={(e) => setSeniority(e.target.value)}
-					required={false}
-					options={interviewFormOptions.optionsSeniority}
-				/>
-
-				<SelectBox
-					label={interviewFormLabels.numberOfQuestionsLabel}
-					name='numQuestions'
-					value={numQuestions}
-					onChange={(e) => setNumQuestions(e.target.value)}
-					required={false}
-					options={interviewFormOptions.optionsQuestion}
-				/>
-
-				<CtaButton type='submit' label={interviewFormLabels.button} className='ctaB' />
-			</form>
 		</main>
 	);
 };

@@ -1,9 +1,11 @@
 .login {
-	.container {
+	.loginContainer {
 		min-height: 100dvh;
 		@include flex-column(var(--gap-md));
 
 		@media (min-width: 1025px) {
+			padding-top: calc(100px + var(--page-padding)) !important;
+
 			margin: 0 auto;
 			max-width: 1300px;
 			flex-direction: row;
@@ -82,18 +84,6 @@
 						color: var(--dark);
 					}
 				}
-			}
-		}
-	}
-
-	footer {
-		display: none;
-
-		@media (min-width: 1025px) {
-			display: block;
-
-			img {
-				display: none;
 			}
 		}
 	}

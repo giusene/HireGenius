@@ -1,6 +1,6 @@
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import TextAreaBox from "@/components/Molecules/TextAreaBox/TextAreaBox";
-import { customFormLabels } from "@/constants/menuData";
+import { interviewFormLabels } from "@/constants/menuData";
 
 import style from "./InterviewRequirements.module.scss";
 import { useState } from "react";
@@ -22,21 +22,25 @@ const InterviewRequirements = (props: InterviewRequirementsProps) => {
 
 	return (
 		<main className={style.main}>
-			<header className={style.header}>
-				<h2 className={style.sectionTitle}>{customFormLabels.title}</h2>
-			</header>
+			<div className={style.container}>
+				<header className={style.header}>
+					<h2 className={style.sectionTitle}>{interviewFormLabels.title}</h2>
+				</header>
 
-			<form onSubmit={handleSubmit}>
-				<TextAreaBox
-					name='interviewDetails'
-					label='Puoi scrivere qui i requisiti specifici per il colloquio che vuoi affrontare.'
-					placeholder='I requisiti sono...'
-					value={requirements}
-					onChange={(e) => setRequirements(e.target.value)}
-					required={false}
-				/>
-				<CtaButton type='submit' label={customFormLabels.button} className='ctaB' />
-			</form>
+				<div>
+					<form onSubmit={handleSubmit}>
+						<TextAreaBox
+							name='interviewDetails'
+							label='Puoi scrivere qui i requisiti specifici per il colloquio che vuoi affrontare.'
+							placeholder='I requisiti sono...'
+							value={requirements}
+							onChange={(e) => setRequirements(e.target.value)}
+							required={false}
+						/>
+						<CtaButton type='submit' label={interviewFormLabels.button} className='ctaB' />
+					</form>
+				</div>
+			</div>
 		</main>
 	);
 };

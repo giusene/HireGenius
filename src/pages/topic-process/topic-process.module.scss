@@ -1,7 +1,30 @@
 .main {
 	@include main;
+	padding: var(--page-padding);
+	@include flex-column(var(--gap-md));
+
+	@media (min-width: 1025px) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.container {
+		@include flex-column(var(--gap-lg));
+		padding: 0;
+
+		@media (min-width: 1025px) {
+			flex-direction: row;
+			column-gap: var(--page-padding);
+
+			align-items: stretch;
+		}
+	}
 	.linkBtn {
 		width: 100%;
+
+		@media (min-width: 1025px) {
+			width: unset;
+		}
 
 		button {
 			@include button;
