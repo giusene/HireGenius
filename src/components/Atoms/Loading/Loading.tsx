@@ -91,8 +91,6 @@ const Loading = (props: LoadingProps) => {
       </div>
       <p>
         {lazyLoading && loadingMessage.replace(/undefined/g, "")} {/* Rimuove 'undefined' */}
-        {/* Scommenta sotto per abilitare l'effetto cursore se desiderato */}
-        {/* <span className={style.cursor}></span> */}
       </p>
     </div>
   );
