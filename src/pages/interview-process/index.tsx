@@ -8,24 +8,43 @@ import ChooseInterviewer from "@/components/Organism/ChooseInterviewer/ChooseInt
 import QuestionCard from "@/components/Organism/QuestionCard/QuestionCard";
 import ResultsList from "@/components/Organism/ResultsList/ResultsList";
 import Loading from "@/components/Atoms/Loading/Loading";
-import { EvaluationResult, GeneratedQuestion, InterviewDetails, Interviewer, InterviewOptions, QuizResponse } from "@/interfaces/interfaces";
+import {
+  EvaluationResult,
+  GeneratedQuestion,
+  InterviewDetails,
+  Interviewer,
+  InterviewOptions,
+  QuizResponse,
+} from "@/interfaces/interfaces";
 import InterviewRequirements from "@/components/Organism/InterviewRequirements/InterviewRequirements";
 import NewInterview from "@/components/Organism/NewInterview/NewInterview";
 import Link from "next/link";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import style from "./interview-process.module.scss";
 
-type Step = "newInterview" | "interviewRequirements" | "chooseInterviewer" | "questionCard" | "resultsList";
+type Step =
+  | "newInterview"
+  | "interviewRequirements"
+  | "chooseInterviewer"
+  | "questionCard"
+  | "resultsList";
 
 const InterviewProcess = () => {
   const { user } = useAuth(); // Otteniamo l'utente autenticato dal contesto
-  const [interviewOptions, setInterviewOptions] = useState<InterviewOptions | null>(null);
+  const [interviewOptions, setInterviewOptions] =
+    useState<InterviewOptions | null>(null);
   const [interviewRequirements, setInterviewRequirements] = useState("");
-  const [interviewDetails, setInterviewDetails] = useState<InterviewDetails | null>(null);
+  const [interviewDetails, setInterviewDetails] =
+    useState<InterviewDetails | null>(null);
   const [step, setStep] = useState<Step>("newInterview");
-  const [generatedQuestions, setGeneratedQuestions] = useState<GeneratedQuestion[]>([]);
-  const [quizResponses, setQuizResponses] = useState<QuizResponse[] | null>(null);
-  const [evaluationResult, setEvaluationResult] = useState<EvaluationResult | null>(null);
+  const [generatedQuestions, setGeneratedQuestions] = useState<
+    GeneratedQuestion[]
+  >([]);
+  const [quizResponses, setQuizResponses] = useState<QuizResponse[] | null>(
+    null
+  );
+  const [evaluationResult, setEvaluationResult] =
+    useState<EvaluationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -109,13 +128,16 @@ const InterviewProcess = () => {
         const payload = { prompt, quizResponses };
         console.log("Payload inviato:", payload);
 
-        const quizResponsesEvaluation = await fetch("/api/evaluate-answer-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
+        const quizResponsesEvaluation = await fetch(
+          "/api/evaluate-answer-session",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
 
         if (quizResponsesEvaluation.status === 429) {
           throw new Error("Too Many Requests - Rate limit exceeded");
@@ -130,11 +152,16 @@ const InterviewProcess = () => {
           throw new Error("Errore nella richiesta di valutazione.");
         }
 
-        const evaluationResult: EvaluationResult = await quizResponsesEvaluation.json();
+        const evaluationResult: EvaluationResult =
+          await quizResponsesEvaluation.json();
         console.log("Risultato della valutazione:", evaluationResult);
         setEvaluationResult(evaluationResult);
         if (user) {
-          await saveInterviewSession(user.uid, interviewDetails, evaluationResult);
+          await saveInterviewSession(
+            user.uid,
+            interviewDetails,
+            evaluationResult
+          );
           console.log("Sessione salvata con successo!");
         }
         setError(null);
@@ -173,16 +200,35 @@ const InterviewProcess = () => {
 
   return (
     <>
-      {step === "newInterview" && <NewInterview onSubmit={handleInterviewOptionsSubmit} />}
-      {step === "interviewRequirements" && <InterviewRequirements onSubmit={handleInterviewRequirementsSubmit} />}
-      {step === "chooseInterviewer" && interviewOptions && <ChooseInterviewer onInterviewerSelect={handleInterviewerSelect} />}
-      {step === "questionCard" && interviewDetails && (
-        <QuestionCard role={interviewDetails.topic} totalQuestions={generatedQuestions.length} questions={generatedQuestions} onComplete={handleQuestionsComplete} />
+      {step === "newInterview" && (
+        <NewInterview onSubmit={handleInterviewOptionsSubmit} />
       )}
-      {error && interviewDetails && <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} />}
+      {step === "interviewRequirements" && (
+        <InterviewRequirements onSubmit={handleInterviewRequirementsSubmit} />
+      )}
+      {step === "chooseInterviewer" && interviewOptions && (
+        <ChooseInterviewer onInterviewerSelect={handleInterviewerSelect} />
+      )}
+      {step === "questionCard" && interviewDetails && (
+        <QuestionCard
+          role={interviewDetails.topic}
+          totalQuestions={generatedQuestions.length}
+          questions={generatedQuestions}
+          onComplete={handleQuestionsComplete}
+        />
+      )}
+      {error && interviewDetails ? (
+        <ResultsListError
+          evaluateAnswers={evaluateAnswers}
+          interviewDetails={interviewDetails}
+        />
+      ) : null}
       {step === "resultsList" && evaluationResult && interviewDetails && (
         <main className={style.main}>
-          <ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
+          <ResultsList
+            evaluationResult={evaluationResult}
+            interviewDetails={interviewDetails}
+          />
           <Link href={"/landing-page"} className={style.linkBtn}>
             <CtaButton label="Torna alla home" className="ctaC" />
           </Link>

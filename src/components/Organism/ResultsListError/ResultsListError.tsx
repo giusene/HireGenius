@@ -6,6 +6,8 @@ import { ResultsListErrorProps } from "@/interfaces/interfaces";
 const ResultsListError = (props: ResultsListErrorProps) => {
   const { interviewDetails, evaluateAnswers } = props;
 
+  
+    
   return (
     <main className={style.main}>
       {interviewDetails && (
@@ -16,13 +18,19 @@ const ResultsListError = (props: ResultsListErrorProps) => {
 
           <div className={style.avatarContainer}>
             <div className={style.avatarBox}>
-              <Image src={interviewDetails.interviewer.avatarSrc} alt="Interviewer Avatar" width={160} height={160} priority />
+              <Image
+                src={interviewDetails.interviewer.avatarSrc}
+                alt="Interviewer Avatar"
+                width={160}
+                height={160}
+                priority
+              />
             </div>
           </div>
         </>
       )}
-      <CtaButton label={`Ups... un attimo di distrazione. ${interviewDetails.interviewer.name} sta bevendo un caffè...`} className="ctaB" />
-      <CtaButton className="ctaA" label="Riproviamo!" onClick={evaluateAnswers} />
+      <p>{`Ups... un attimo di distrazione e ${interviewDetails.interviewer.name} è in pausa caffè...!`}</p>
+      <CtaButton label='Riproviamo!' className='ctaB' onClick={evaluateAnswers} />
     </main>
   );
 };
