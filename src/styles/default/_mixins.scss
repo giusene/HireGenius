@@ -151,30 +151,36 @@
 
 	&.ctaButton {
 		border-radius: var(--border-radius);
-		transition: box-shadow 0.35s ease, opacity 0.35s ease, font-size 0.3ms 0.05s, padding 0.3ms 0.05s;
+		&:not(:disabled) {
+			transition: box-shadow 0.35s ease, opacity 0.35s ease, font-size 0.3ms 0.05s, padding 0.3ms 0.05s;
+		}
 
-		&.ctaA {
+		&.ctaA:not(:disabled) {
 			background: var(--accent);
 			color: var(--dark);
 		}
 
-		&.ctaB {
+		&.ctaB:not(:disabled) {
 			background: var(--light);
 			color: var(--dark);
 		}
 
-		&.ctaC {
+		&.ctaC:not(:disabled) {
 			background: var(--dark);
 			color: var(--light);
 		}
 
-		&:active,
-		&:focus,
-		&:hover {
+		&:active:not(:disabled),
+		&:focus:not(:disabled),
+		&:hover:not(:disabled) {
 			opacity: 0.9;
 			box-shadow: inset 4px 4px 3px 0px rgba(0, 0, 0, 0.2);
 			font-size: calc(var(--fs-md) - 1px);
 			padding: calc(var(--elements-padding) + 0.5px) var(--elements-padding);
+		}
+
+		&:disabled {
+			opacity: 0.2;
 		}
 	}
 }
