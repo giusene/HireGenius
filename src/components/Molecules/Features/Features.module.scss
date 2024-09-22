@@ -3,8 +3,9 @@
 	color: var(--dark);
 
 	.featuresContainer {
-		min-height: 100vh;
-		padding: var(--page-padding);
+		// min-height: 100vh;
+		min-height: fit-content;
+		padding: calc(var(--page-padding) * 2) var(--page-padding);
 		@include flex-column(var(--gap-lg));
 		justify-content: space-between;
 		align-items: center;
@@ -40,13 +41,13 @@
 			}
 
 			.featureCard1 {
-				background-color: var(--card1);
+				background-color: var(--featureCard1);
 			}
 			.featureCard2 {
-				background-color: var(--card2);
+				background-color: var(--featureCard2);
 			}
 			.featureCard3 {
-				background-color: var(--card3);
+				background-color: var(--featureCard3);
 			}
 
 			.featureCard1,
@@ -73,6 +74,10 @@
 				}
 			}
 		}
+	}
+
+	.hr {
+		text-align: center;
 	}
 }
 

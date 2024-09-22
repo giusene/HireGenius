@@ -5,6 +5,7 @@ import interview from "@/../public/hero/interviews.png";
 import feedback from "@/../public/hero/feedback.png";
 import { featureLabels } from "@/constants/indexLabels";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
+import hr from "@/../public/hero/decorative-hr.png";
 
 const Features = () => {
 	return (
@@ -43,6 +44,9 @@ const Features = () => {
 				</div>
 
 				<CtaButton className='ctaC' label={featureLabels.start} />
+			</div>
+			<div className={style.hr}>
+				<Image src={hr} alt='Decorative horizontal rule' width={995} height={28} priority={true} />
 			</div>
 		</section>
 	);

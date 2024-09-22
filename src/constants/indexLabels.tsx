@@ -8,10 +8,10 @@ export const heroLabels = {
 	start: "Comincia adesso!",
 } as const;
 
-export const introLabels = {
-	title: "Benvenuti su Interviewer!",
-	description: `Interviewer è la piattaforma per la preparazione a test e colloqui. 
-    Siamo qui per aiutarti a eccellere nelle tue competenze con un'esperienza personalizzata e coinvolgente.`,
+export const interviewersLabels = {
+	title: "I nostri recruiter",
+	description: `Sperimenta colloqui realistici con profili professionali generati dall'AI. Ogni intervistatore si adatterà al tuo settore e livello di esperienza. Preparati con un'esperienza su misura, proprio come se fossi davanti a un vero recruiter!`,
+	start: "Vieni a conoscerli",
 } as const;
 
 export const featureLabels = {
