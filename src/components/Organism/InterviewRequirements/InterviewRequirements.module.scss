@@ -1,11 +1,12 @@
 .main {
-	@include main;
+  @include main;
 
-	.header {
-		@include header;
-	}
+  .header {
+    @include header;
+  }
 
-	form {
-		@include form;
-	}
+  form {
+    @include form;
+    flex: 1;
+  }
 }
