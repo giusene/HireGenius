@@ -50,6 +50,25 @@ const NavBar = () => {
 					</footer>
 				</nav>
 			)}
+
+			<nav className={style.navbar}>
+				<h4>HireGenius</h4>
+				<ul className={style.menuList}>
+					{filteredNavMenu.map((item) => (
+						<li key={item.label}>
+							<Link href={item.link} className={style.menuItem}>
+								{item.label}
+							</Link>
+						</li>
+					))}
+					{!user &&
+						footerMenu.map((item) => (
+							<li key={item.label}>
+								<Link href={item.link}>{item.label}</Link>
+							</li>
+						))}
+				</ul>
+			</nav>
 		</div>
 	);
 };

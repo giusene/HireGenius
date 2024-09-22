@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { teamLabels } from "@/constants/projectLabels";
-import { headLabels, heroLabels, introLabels } from "@/constants/indexLabels";
+import { headLabels, heroLabels, interviewersLabels } from "@/constants/indexLabels";
 import Head from "next/head";
 import Image from "next/image";
 import style from "./chi-siamo.module.scss";
-import heroImg from "@/../public/hero.png";
+// import heroImg from "@/../public/hero.png";
 import Avatar1 from "@/../public/avatar1.png";
 import Avatar2 from "@/../public/avatar2.png";
 import InterviewerBadge from "@/components/Atoms/InterviewerBadge/InterviewerBadge";
@@ -73,7 +73,7 @@ const Project = () => {
 			</Head>
 
 			<section className={style.heroSection}>
-				<Image className={`${blurred ? style.blurred : ""}`} src={heroImg} fill alt='Hero background' priority={true} />
+				{/* <Image className={`${blurred ? style.blurred : ""}`} src={heroImg} fill alt='Hero background' priority={true} /> */}
 				<div className={`${style.textOverlay} ${blurred ? style.visible : ""}`}>
 					<h1 className={style.title}>{heroLabels.title}</h1>
 					<p className={style.motto}>{heroLabels.subtitle}</p>
@@ -81,8 +81,8 @@ const Project = () => {
 			</section>
 
 			<section className={style.heroIntro}>
-				<h1 className={style.heroIntroTitle}>{introLabels.title}</h1>
-				<p>{introLabels.description}</p>
+				<h1 className={style.heroIntroTitle}>{interviewersLabels.title}</h1>
+				<p>{interviewersLabels.description}</p>
 			</section>
 
 			<section className={style.teamSection}>

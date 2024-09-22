@@ -1,9 +1,15 @@
 import { footerLabels } from "@/constants/indexLabels";
-import { footerMenu } from "@/constants/menuData";
+import { footerMenu, navMenu } from "@/constants/menuData";
 import style from "./Footer.module.scss";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 const Footer = () => {
+	const { user } = useAuth(); // Usa il contesto di autenticazione
+
+	// Filtra il menu in base all'autenticazione
+	const filteredNavMenu = user ? navMenu.filter((item) => item.label !== "Login") : navMenu.filter((item) => item.label === "Login");
+
 	return (
 		<footer className={style.footer}>
 			<div className={style.footerContainer}>
@@ -13,14 +19,14 @@ const Footer = () => {
 				</div>
 				<div className={style.footerMenu}>
 					<nav>
-						<Link href={"/topic-process"}>Nuovo Argomento</Link>
-						<Link href={"/interview-process"}>Nuovo Colloquio</Link>
-						<Link href={"/storic-profile"}>Profilo</Link>
+						{filteredNavMenu.map((item) => (
+							<Link href={item.link}>{item.label}</Link>
+						))}
 					</nav>
 					<nav>
-						{footerMenu.map((item) => {
-							return <Link href={item.link}>{item.label}</Link>;
-						})}
+						{footerMenu.map((item) => (
+							<Link href={item.link}>{item.label}</Link>
+						))}
 					</nav>
 				</div>
 			</div>

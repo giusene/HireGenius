@@ -21,6 +21,12 @@
 			text-align: start;
 		}
 
+		.footerHeader {
+			h4 {
+				font-size: var(--fs-lg);
+			}
+		}
+
 		.footerHeader,
 		nav {
 			@include flex-column(var(--gap-sm));
