@@ -17,12 +17,12 @@ const Interviewers = () => {
 				</div>
 
 				<div className={style.interviewersRow}>
-					{profiles.map((interviewer) => {
+					{profiles.map((interviewer, index) => {
 						return (
-							<div className={style.interviewerCard}>
+							<div key={index} className={style.interviewerCard}>
 								<div className={style.avatarContainer}>
 									<div className={style.avatarBox}>
-										<Image src={interviewer.avatarSrc} alt='Interviewer Avatar' width={160} height={160} priority />
+										<Image src={interviewer.avatarSrc} alt='Interviewer Avatar' width={160} height={160} priority={true} />
 									</div>
 								</div>
 								<div className={style.interviewerContent}>

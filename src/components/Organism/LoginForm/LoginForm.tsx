@@ -42,9 +42,11 @@ const LoginForm = () => {
 
 	return (
 		<form className={style.form} onSubmit={handleLogin}>
-			<InputBox type='email' name='userEmail' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
+			<div className={style.inputs}>
+				<InputBox type='email' name='userEmail' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
 
-			<InputBox type='password' name='userPassword' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+				<InputBox type='password' name='userPassword' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+			</div>
 
 			<p className={style.forgotPassword}>
 				<Link href='/forgot-password'>Hai dimenticato la password?</Link>

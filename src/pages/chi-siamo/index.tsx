@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { teamLabels } from "@/constants/projectLabels";
 import { headLabels, heroLabels, interviewersLabels } from "@/constants/indexLabels";
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import style from "./chi-siamo.module.scss";
 // import heroImg from "@/../public/hero.png";
 import Avatar1 from "@/../public/avatar1.png";
@@ -90,7 +90,7 @@ const Project = () => {
 				<div className={style.teamGrid}>
 					{teamMembers.map((member, index) => (
 						<div key={index} className={style.card}>
-							<Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={true} />
+							{/* <Image className={style.avatar} src={member.avatar} alt={member.name} width={100} height={100} priority={true} /> */}
 							<InterviewerBadge label={member.name} className='teamMembersName' />
 							<p className={style.memberRole}>{member.role}</p>
 							<p className={style.memberDescription}>{member.description}</p>

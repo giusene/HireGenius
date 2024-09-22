@@ -13,7 +13,8 @@ import Loading from "@/components/Atoms/Loading/Loading";
 
 // STYLE
 import style from "./login.module.scss";
-import LoginHero from "../../../public/login-hero.png";
+// import LoginHeroSM from "@/../public/login-hero.png";
+import LoginHeroLG from "@/../public/hero/hero.png";
 
 const Login = () => {
 	const { loginWithGoogle } = useAuth();
@@ -39,30 +40,29 @@ const Login = () => {
 	}
 
 	return (
-		<div className={style.container}>
-			<div className={style.hero}>
-				<Image className={style.heroImg} src={LoginHero} alt='Hero image' fill={true} priority={true} />
+		<section className={style.login}>
+			<div className={style.container}>
+				<Image className={style.heroImg} src={LoginHeroLG} alt='Hero image' width={444} height={585} priority={true} />
+
+				<main className={style.main}>
+					<div className={style.header}>
+						<h1>HireGenius</h1>
+						<h2>Testa le tue competenze</h2>
+					</div>
+
+					<LoginForm />
+
+					<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
+
+					<p className={style.register}>
+						Non hai un account?{" "}
+						<Link className={style.registerLink} href='/register'>
+							Registrati
+						</Link>
+					</p>
+				</main>
 			</div>
-			<main className={style.main}>
-				<div className={style.header}>
-					<h1>HireGenius</h1>
-					<h2>Testa le tue competenze</h2>
-				</div>
-
-				<LoginForm />
-
-				<hr />
-
-				<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
-
-				<p className={style.register}>
-					Non hai un account?
-					<Link className={style.registerLink} href='/register'>
-						Registrati
-					</Link>
-				</p>
-			</main>
-		</div>
+		</section>
 	);
 };
 
