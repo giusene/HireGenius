@@ -25,8 +25,6 @@ const Loading = (props: LoadingProps) => {
 
 	const getRandomLoadingMessage = () => {
 		const availableMessages = messages.filter((_, index) => index !== lastMessageIndex);
-  const getRandomLoadingMessage = () => {
-    const availableMessages = messages.filter((_, index) => index !== lastMessageIndex);
 
 		if (availableMessages.length === 0) return ""; // Gestisci il caso in cui non ci siano messaggi disponibili
 
@@ -74,28 +72,28 @@ const Loading = (props: LoadingProps) => {
 		}
 	}, [lazyLoading]);
 
-  return (
-    <div className={style.loadingScreen}>
-      <div className={style.box}>
-        <div className={style.rocketContainer}>
-          <div className={style.tip}></div>
-          <div className={style.rocket}></div>
-          <div className={style.window}></div>
-          <div className={style.dots}></div>
-          <div className={style.bum}></div>
-          <div className={`${style.wing} ${style.wingOne}`}></div>
-          <div className={`${style.wing} ${style.wingTwo}`}></div>
-          <div className={style.light}></div>
-          <div className={style.light2}></div>
-          <div className={style.flame}></div>
-          <div className={style.flame2}></div>
-        </div>
-      </div>
-      <p>
-        {lazyLoading && loadingMessage.replace(/undefined/g, "")} {/* Rimuove 'undefined' */}
-      </p>
-    </div>
-  );
+	return (
+		<div className={style.loadingScreen}>
+			<div className={style.box}>
+				<div className={style.rocketContainer}>
+					<div className={style.tip}></div>
+					<div className={style.rocket}></div>
+					<div className={style.window}></div>
+					<div className={style.dots}></div>
+					<div className={style.bum}></div>
+					<div className={`${style.wing} ${style.wingOne}`}></div>
+					<div className={`${style.wing} ${style.wingTwo}`}></div>
+					<div className={style.light}></div>
+					<div className={style.light2}></div>
+					<div className={style.flame}></div>
+					<div className={style.flame2}></div>
+				</div>
+			</div>
+			<p>
+				{lazyLoading && loadingMessage.replace(/undefined/g, "")} {/* Rimuove 'undefined' */}
+			</p>
+		</div>
+	);
 };
 
 export default Loading;
