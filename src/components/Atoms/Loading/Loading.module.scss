@@ -1,6 +1,8 @@
 .loadingScreen {
-	@include main;
-	@include flex-center;
+	width: 100vw;
+	max-width: 600px;
+	min-height: 100dvh;
+	margin: 0 auto;
 	position: relative;
 	color: var(--light);
 	font-weight: var(--fw-bold);
@@ -30,6 +32,10 @@
 			margin-top: 100px;
 			margin-left: -100px;
 			animation: flight 2.5s infinite;
+
+			@media (min-width: 1025px) {
+				margin-top: calc(100px + 100px + var(--page-padding));
+			}
 		}
 
 		.tip {
