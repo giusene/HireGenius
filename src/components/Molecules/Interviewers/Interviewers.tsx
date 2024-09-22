@@ -1,7 +1,7 @@
 import style from "./Interviewers.module.scss";
 import Image from "next/image";
 import { interviewersLabels } from "@/constants/indexLabels";
-import CtaButton from "@/components/Atoms/Buttons/CtaButton";
+// import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import { profiles } from "@/constants/interviewersProfiles";
 import hr from "@/../public/hero/decorative-hr.png";
 

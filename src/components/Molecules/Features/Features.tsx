@@ -4,7 +4,7 @@ import quiz from "@/../public/hero/quiz.png";
 import interview from "@/../public/hero/interviews.png";
 import feedback from "@/../public/hero/feedback.png";
 import { featureLabels } from "@/constants/indexLabels";
-import CtaButton from "@/components/Atoms/Buttons/CtaButton";
+// import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import hr from "@/../public/hero/decorative-hr.png";
 
 const Features = () => {
