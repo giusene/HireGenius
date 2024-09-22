@@ -5,6 +5,7 @@
   color: var(--light);
   font-weight: var(--fw-bold);
   font-size: var(--fs-lg);
+  overflow: hidden;
 
   // display: flex;
   // flex-direction: column;
@@ -46,12 +47,7 @@
     .rocket {
       height: 250px;
       width: 250px;
-      background: linear-gradient(
-          to bottom right,
-          var(--tertiary) 20%,
-          var(--dark) 80%
-        )
-        no-repeat border-box; // light e DARKEST
+      background: linear-gradient(to bottom right, var(--tertiary) 20%, var(--dark) 80%) no-repeat border-box; // light e DARKEST
       border-radius: 50rem 10rem 50rem 5rem;
       transform: rotate(-45deg);
       box-shadow: inset var(--tertiary) 20px 2px 10px; // light
@@ -94,12 +90,7 @@
     .wingOne {
       left: 125px;
       border-radius: 1rem 8rem;
-      background: linear-gradient(
-          to right,
-          var(--tertiary) 45%,
-          var(--dark) 100%
-        )
-        no-repeat border-box; // light e DARKEST
+      background: linear-gradient(to right, var(--tertiary) 45%, var(--dark) 100%) no-repeat border-box; // light e DARKEST
     }
 
     .wingTwo {

@@ -24,9 +24,7 @@ const Loading = (props: LoadingProps) => {
   const typingInterval = useRef<NodeJS.Timeout | null>(null);
 
   const getRandomLoadingMessage = () => {
-    const availableMessages = messages.filter(
-      (_, index) => index !== lastMessageIndex
-    );
+    const availableMessages = messages.filter((_, index) => index !== lastMessageIndex);
 
     if (availableMessages.length === 0) return ""; // Gestisci il caso in cui non ci siano messaggi disponibili
 
@@ -92,9 +90,9 @@ const Loading = (props: LoadingProps) => {
         </div>
       </div>
       <p>
-        {lazyLoading && loadingMessage.replace(/undefined/g, "")}{" "}
-        {/* Rimuove 'undefined' */}
-        <span className={style.cursor}>|</span>
+        {lazyLoading && loadingMessage.replace(/undefined/g, "")} {/* Rimuove 'undefined' */}
+        {/* Scommenta sotto per abilitare l'effetto cursore se desiderato */}
+        {/* <span className={style.cursor}></span> */}
       </p>
     </div>
   );
