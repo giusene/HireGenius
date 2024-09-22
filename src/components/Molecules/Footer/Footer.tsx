@@ -22,15 +22,17 @@ const Footer = () => {
 				</div>
 				<div className={style.footerMenu}>
 					<nav>
-						{filteredNavMenu.map((item, index) => (
-							<Link key={index} href={item.link}>
+						{filteredNavMenu.map((item) => (
+							<Link key={item.label} href={item.link}>
 								{item.label}
 							</Link>
 						))}
 					</nav>
 					<nav>
 						{footerMenu.map((item) => (
-							<Link href={item.link}>{item.label}</Link>
+							<Link key={item.label} href={item.link}>
+								{item.label}
+							</Link>
 						))}
 					</nav>
 				</div>
