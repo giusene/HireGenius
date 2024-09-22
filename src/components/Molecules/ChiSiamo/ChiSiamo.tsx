@@ -106,8 +106,8 @@ const ChiSiamo = () => {
 				</div>
 
 				<div className={style.teamRow}>
-					{teamMembers.map((member) => (
-						<div className={style.memberCard}>
+					{teamMembers.map((member, index) => (
+						<div key={index} className={style.memberCard}>
 							<div className={style.memberImg}>
 								<Image src={member.avatar} alt='Team member picture' width={137} height={137} priority={true} />
 							</div>
