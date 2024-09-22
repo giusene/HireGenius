@@ -42,7 +42,7 @@ const ChooseInterviewer: React.FC<ChooseInterviewerProps> = ({ onInterviewerSele
 							))}
 						</div>
 
-						<CtaButton label='Cominciamo!' className='ctaA' type='submit' />
+						<CtaButton label='Cominciamo!' className='ctaA' type='submit' disabled={selectedInterviewer == null} />
 					</form>
 				</div>
 			</div>

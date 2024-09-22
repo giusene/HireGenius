@@ -54,7 +54,7 @@ const NewInterview: React.FC<TopicFormProps> = ({ onSubmit }) => {
 							options={interviewFormOptions.optionsQuestion}
 						/>
 
-						<CtaButton type='submit' label={interviewFormLabels.button} className='ctaB' />
+						<CtaButton type='submit' label={interviewFormLabels.button} className='ctaB' disabled={interview == ""} />
 					</form>
 				</div>
 			</div>

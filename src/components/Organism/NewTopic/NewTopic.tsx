@@ -47,7 +47,7 @@ const NewTopic: React.FC<TopicFormProps> = ({ onSubmit }) => {
 							options={customFormOptions.optionsQuestion}
 						/>
 
-						<CtaButton type='submit' label={customFormLabels.button} className='ctaB' />
+						<CtaButton type='submit' label={customFormLabels.button} className='ctaB' disabled={topic === ""} />
 					</form>
 				</div>
 			</div>
