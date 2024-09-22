@@ -10,6 +10,7 @@
 		align-items: center;
 
 		@media (min-width: 1025px) {
+			overflow: hidden;
 			margin: 0 auto;
 			max-width: 1300px;
 			justify-content: center;
@@ -59,17 +60,19 @@
 					transition: flex-grow 1s ease;
 
 					& > * {
+						visibility: hidden;
 						opacity: 0;
-						translate: 0 100%;
+						transform: translate(0, 100%);
 					}
 
 					&:hover {
 						flex-grow: 5;
 
 						& > * {
+							visibility: visible;
 							opacity: 1;
-							translate: 0 0;
-							transition: opacity 2s ease-in-out 0.2s;
+							transform: translate(0, 0);
+							transition: opacity 3s ease-in-out 0.2s;
 						}
 					}
 				}
@@ -117,7 +120,9 @@
 
 					p {
 						margin-top: var(--gap-sm);
+						font-size: var(--fs-lg);
 						color: var(--dark);
+						// font-weight: var(--fw-bold);
 						max-width: 40ch;
 					}
 				}
