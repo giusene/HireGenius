@@ -31,7 +31,9 @@ export const featureLabels = {
 // Ottieni feedback dettagliati e suggerimenti pratici grazie all'intelligenza artificiale, per affinare ulteriormente le tue abilità.
 
 export const footerLabels = {
-	reserved: "© 2024 Interviewer. All rights reserved.",
+	title: "HireGenius",
+	subtitle: "Metti alla prova le tue competenze con un'esperienza personalizzata e coinvolgente.",
+	reserved: "©2024 HireGenius. All rights reserved.",
 	privacy: "Privacy Policy",
 	terms: "Terms of Service",
 } as const;
