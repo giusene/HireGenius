@@ -24,16 +24,10 @@ interface InterviewSession {
 interface QuizCardProps {
   interviewSession: InterviewSession;
   onDelete: (sessionId: string) => void;
-  setSelectedInterviewSession: Dispatch<
-    SetStateAction<InterviewSession | null>
-  >;
+  setSelectedInterviewSession: Dispatch<SetStateAction<InterviewSession | null>>;
 }
 
-const QuizCard: React.FC<QuizCardProps> = ({
-  interviewSession,
-  onDelete,
-  setSelectedInterviewSession,
-}) => {
+const QuizCard: React.FC<QuizCardProps> = ({ interviewSession, onDelete, setSelectedInterviewSession }) => {
   const { user } = useAuth(); // Recupera l'utente autenticato dal contesto
   const [showFeedback, setShowFeedback] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -88,45 +82,23 @@ const QuizCard: React.FC<QuizCardProps> = ({
 
   return (
     <>
-      <div
-        onClick={() => setShowFeedback(!showPopup ? !showFeedback : false)}
-        className={`${style.quizCardContainer} ${
-          showFeedback && style.selectedCard
-        } `}
-      >
+      <div onClick={() => setShowFeedback(!showPopup ? !showFeedback : false)} className={`${style.quizCardContainer} ${showFeedback && style.selectedCard} `}>
         <div className={style.quizCard}>
           <div className={style.quizCardImgContainer}>
-            <Image
-              src={iconSrc}
-              className={style.icon}
-              alt="Icon"
-              width={80}
-              height={80}
-            />
+            <Image src={iconSrc} className={style.icon} alt="Icon" width={80} height={80} />
             <div className={style.scoreContainer}>
-              <span>
-                {interviewSession.evaluationResult.globalEvaluation.points}%
-              </span>
+              <span>{interviewSession.evaluationResult.globalEvaluation.points}%</span>
             </div>
           </div>
           <div className={style.content}>
             <div>
-              <h4
-                className={`${style.titleCard} ${
-                  showFeedback ? style.fullText : ""
-                }`}
-              >
-                {interviewSession.interviewDetails.topic}
-              </h4>
+              <h4 className={`${style.titleCard} ${showFeedback ? style.fullText : ""}`}>{interviewSession.interviewDetails.topic}</h4>
               <span>{dateFromNow}</span>
             </div>
             <div className={style.interviewerContainer}>
               <span>{interviewSession.interviewDetails.interviewer.name}</span>
               <div className={style.avatarInterviewer}>
-                <Image
-                  src={interviewSession.interviewDetails.interviewer.avatarSrc}
-                  alt={interviewSession.interviewDetails.interviewer.name}
-                ></Image>
+                <Image src={interviewSession.interviewDetails.interviewer.avatarSrc} alt={interviewSession.interviewDetails.interviewer.name}></Image>
               </div>
             </div>
           </div>
@@ -135,11 +107,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
           <>
             <p>{interviewSession.evaluationResult.globalEvaluation.feedback}</p>
             <div className={style.buttonsContainer}>
-              <CtaButton
-                label="Dettagli"
-                className="ctaC"
-                onClick={() => setSelectedInterviewSession(interviewSession)}
-              />
+              <CtaButton label="Dettagli" className="ctaC" onClick={() => setSelectedInterviewSession(interviewSession)} />
               <div className={style.deleteButton} onClick={handleDelete}>
                 <Image src={DeleteIcon} alt={"Delete"}></Image>
               </div>
@@ -147,11 +115,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
           </>
         )}
       </div>
-      <ConfirmDeletePopup
-        isOpen={showPopup}
-        onConfirm={confirmDelete}
-        onCancel={cancelDelete}
-      />
+      <ConfirmDeletePopup message="Sicuro di voler eliminare la sessione?" isOpen={showPopup} onConfirm={confirmDelete} onCancel={cancelDelete} />
     </>
   );
 };

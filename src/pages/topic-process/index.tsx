@@ -85,6 +85,9 @@ const TopicProcess = () => {
 	};
 
 	const evaluateAnswers = async () => {
+		setIsLoading(true);
+		setError(null);
+
 		if (interviewDetails && quizResponses) {
 			const prompt = `Immagina di essere l'esaminatore ${interviewDetails.interviewer.name}. ${interviewDetails.interviewer.longBio}.
 			Valuta le seguenti risposte fornite durante un colloquio tecnico per una posizione di ${interviewDetails.topic} di livello ${interviewDetails.level}. Per ogni risposta, fornisci:
@@ -109,6 +112,11 @@ const TopicProcess = () => {
 					throw new Error("Too Many Requests - Rate limit exceeded");
 				}
 
+				if (quizResponsesEvaluation.status >= 500) {
+					setError("Error");
+					throw new Error("Internal Server Error - Server error");
+				}
+
 				if (!quizResponsesEvaluation.ok) {
 					throw new Error("Errore nella richiesta di valutazione.");
 				}
@@ -128,6 +136,10 @@ const TopicProcess = () => {
 				console.error("Errore durante la valutazione:", e);
 			} finally {
 				console.log("Fine evaluateAnswers");
+				// ================================================================
+				// Scommenta per testare l'errore
+				// setError("Error");
+				// ================================================================
 			}
 		}
 	};
@@ -158,19 +170,14 @@ const TopicProcess = () => {
 			{step === "questionCard" && interviewDetails && (
 				<QuestionCard role={interviewDetails.topic} totalQuestions={generatedQuestions.length} questions={generatedQuestions} onComplete={handleQuestionsComplete} />
 			)}
-			{error && interviewDetails && <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} />}
+			{error && interviewDetails ? <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} /> : null}
 			{step === "resultsList" && evaluationResult && interviewDetails && (
-				<>
-					<main className={style.main}>
-						<div className={style.container}>
-							<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
-						</div>
-
-						<Link href={"/landing-page"} className={style.linkBtn}>
-							<CtaButton label='Torna alla home' className='ctaC' />
-						</Link>
-					</main>
-				</>
+				<main className={style.main}>
+					<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
+					<Link href={"/landing-page"} className={style.linkBtn}>
+						<CtaButton label='Torna alla home' className='ctaC' />
+					</Link>
+				</main>
 			)}
 		</>
 	);

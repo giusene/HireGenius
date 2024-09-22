@@ -1,15 +1,11 @@
 .loadingScreen {
-	width: 100vw;
-	max-width: 600px;
-	margin: 0 auto;
-	min-height: 100dvh;
-	padding: var(--page-padding);
-	@include flex-column(var(--gap-md));
+	@include main;
 	@include flex-center;
 	position: relative;
 	color: var(--light);
 	font-weight: var(--fw-bold);
 	font-size: var(--fs-lg);
+	overflow: hidden;
 
 	// display: flex;
 	// flex-direction: column;

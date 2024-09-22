@@ -121,6 +121,11 @@ const InterviewProcess = () => {
 					throw new Error("Too Many Requests - Rate limit exceeded");
 				}
 
+				if (quizResponsesEvaluation.status >= 500) {
+					setError("Error");
+					throw new Error("Internal Server Error - Server error");
+				}
+
 				if (!quizResponsesEvaluation.ok) {
 					throw new Error("Errore nella richiesta di valutazione.");
 				}
@@ -140,6 +145,10 @@ const InterviewProcess = () => {
 				console.error("Errore durante la valutazione:", e);
 			} finally {
 				console.log("Fine evaluateAnswers");
+				// ================================================================
+				// Scommenta per testare l'errore
+				// setError("Error");
+				// ================================================================
 			}
 		}
 	};
@@ -170,13 +179,10 @@ const InterviewProcess = () => {
 			{step === "questionCard" && interviewDetails && (
 				<QuestionCard role={interviewDetails.topic} totalQuestions={generatedQuestions.length} questions={generatedQuestions} onComplete={handleQuestionsComplete} />
 			)}
-
-			{error && interviewDetails && <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} />}
+			{error && interviewDetails ? <ResultsListError evaluateAnswers={evaluateAnswers} interviewDetails={interviewDetails} /> : null}
 			{step === "resultsList" && evaluationResult && interviewDetails && (
 				<main className={style.main}>
-					<div className={style.container}>
-						<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
-					</div>
+					<ResultsList evaluationResult={evaluationResult} interviewDetails={interviewDetails} />
 					<Link href={"/landing-page"} className={style.linkBtn}>
 						<CtaButton label='Torna alla home' className='ctaC' />
 					</Link>

@@ -5,19 +5,19 @@ import { useRouter } from "next/router";
 import Loading from "@/components/Atoms/Loading/Loading";
 
 const LogoutPage = () => {
-	const { logout } = useAuth();
-	const router = useRouter();
+  const { logout } = useAuth();
+  const router = useRouter();
 
-	useEffect(() => {
-		const handleLogout = async () => {
-			await logout();
-			router.push("/login");
-		};
+  useEffect(() => {
+    const handleLogout = async () => {
+      await logout();
+      router.push("/login");
+    };
 
-		handleLogout();
-	}, [logout, router]);
+    handleLogout();
+  }, [logout, router]);
 
-	return <Loading />;
+  return <Loading />;
 };
 
 export default LogoutPage;
