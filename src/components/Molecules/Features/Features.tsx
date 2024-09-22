@@ -43,7 +43,7 @@ const Features = () => {
 					</div>
 				</div>
 
-				<CtaButton className='ctaC' label={featureLabels.start} />
+				{/* <CtaButton className='ctaC' label={featureLabels.start} /> */}
 			</div>
 			<div className={style.hr}>
 				<Image src={hr} alt='Decorative horizontal rule' width={995} height={28} priority={true} />

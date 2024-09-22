@@ -3,6 +3,7 @@ import Image from "next/image";
 import { interviewersLabels } from "@/constants/indexLabels";
 import CtaButton from "@/components/Atoms/Buttons/CtaButton";
 import { profiles } from "@/constants/interviewersProfiles";
+import hr from "@/../public/hero/decorative-hr.png";
 
 const Interviewers = () => {
 	return (
@@ -34,7 +35,10 @@ const Interviewers = () => {
 					})}
 				</div>
 
-				<CtaButton className='ctaC' label={interviewersLabels.start} />
+				{/* <CtaButton className='ctaC' label={interviewersLabels.start} /> */}
+			</div>
+			<div className={style.hr}>
+				<Image src={hr} alt='Decorative horizontal rule' width={995} height={28} priority={true} />
 			</div>
 		</section>
 	);

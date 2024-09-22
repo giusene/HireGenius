@@ -69,6 +69,7 @@ body {
 	background: var(--background);
 
 	scroll-behavior: smooth;
+	scroll-padding-top: calc(100px + var(--page-padding));
 
 	a {
 		color: inherit;

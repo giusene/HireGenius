@@ -8,6 +8,8 @@
 	font-weight: var(--fw-bold);
 	font-size: var(--fs-lg);
 	overflow: hidden;
+	@include flex-center;
+	padding: var(--page-padding);
 
 	// display: flex;
 	// flex-direction: column;

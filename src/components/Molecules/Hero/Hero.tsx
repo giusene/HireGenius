@@ -27,7 +27,7 @@ const Hero = () => {
 						</h1>
 						<p>{heroLabels.subtitle}</p>
 
-						<CtaButton onClick={handleButton} className='ctaA' label={heroLabels.start} />
+						<CtaButton onClick={handleButton} className='ctaA' label='Scopri di più' />
 					</div>
 
 					<Image className={style.heroImg} src={heroImg} alt='Hero' width={444} height={585} priority={true} />
