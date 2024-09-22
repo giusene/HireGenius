@@ -40,29 +40,31 @@ const Login = () => {
 	}
 
 	return (
-		<section className={style.login}>
-			<div className={style.container}>
-				<Image className={style.heroImg} src={LoginHeroLG} alt='Hero image' width={444} height={585} priority={true} />
+		<>
+			<section className={style.login}>
+				<div className={style.container}>
+					<Image className={style.heroImg} src={LoginHeroLG} alt='Hero image' width={444} height={585} priority={true} />
 
-				<main className={style.main}>
-					<div className={style.header}>
-						<h1>HireGenius</h1>
-						<h2>Testa le tue competenze</h2>
-					</div>
+					<main className={style.main}>
+						<div className={style.header}>
+							<h1>HireGenius</h1>
+							<h2>Testa le tue competenze</h2>
+						</div>
 
-					<LoginForm />
+						<LoginForm />
 
-					<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
+						<CtaButton label='Accedi con Google' className='ctaB' onClick={handleGoogleLogin} />
 
-					<p className={style.register}>
-						Non hai un account?{" "}
-						<Link className={style.registerLink} href='/register'>
-							Registrati
-						</Link>
-					</p>
-				</main>
-			</div>
-		</section>
+						<p className={style.register}>
+							Non hai un account?{" "}
+							<Link className={style.registerLink} href='/register'>
+								Registrati
+							</Link>
+						</p>
+					</main>
+				</div>
+			</section>
+		</>
 	);
 };
 

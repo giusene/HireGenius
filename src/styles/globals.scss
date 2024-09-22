@@ -105,4 +105,12 @@ body {
 			padding-top: 100px;
 		}
 	}
+
+	footer {
+		display: none;
+
+		@media (min-width: 1025px) {
+			display: block;
+		}
+	}
 }

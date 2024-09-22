@@ -85,4 +85,16 @@
 			}
 		}
 	}
+
+	footer {
+		display: none;
+
+		@media (min-width: 1025px) {
+			display: block;
+
+			img {
+				display: none;
+			}
+		}
+	}
 }

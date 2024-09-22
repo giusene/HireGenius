@@ -35,19 +35,16 @@ const NavBar = () => {
 						))}
 					</ul>
 
-					<footer className={style.footer}>
-						<hr />
-						<ul className={style.footerList}>
-							{footerMenu.map((item) => (
-								<li key={item.label}>
-									<Link href={item.link} onClick={() => setIsOpen(false)}>
-										{item.label}
-									</Link>
-								</li>
-							))}
-							<p>@2024 Interviewer</p>
-						</ul>
-					</footer>
+					<ul className={style.footerList}>
+						{footerMenu.map((item) => (
+							<li key={item.label}>
+								<Link href={item.link} onClick={() => setIsOpen(false)}>
+									{item.label}
+								</Link>
+							</li>
+						))}
+						<p>@2024 Interviewer</p>
+					</ul>
 				</nav>
 			)}
 
