@@ -1,0 +1,84 @@
+.main {
+	@include main;
+
+	@media (min-width: 1025px) {
+		align-items: stretch;
+	}
+
+	.container {
+		@include flex-column(var(--gap-lg));
+
+		.header {
+			@include header;
+		}
+
+		.interviewerForm {
+			@include form;
+			@include flex-column(var(--gap-md));
+			flex-grow: 1;
+
+			@media (min-width: 1025px) {
+				height: 100%;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.avatarGrid {
+				display: grid;
+				grid-gap: var(--gap-md);
+				grid-template-columns: repeat(2, 1fr);
+				flex-grow: 1;
+
+				@media (min-width: 1025px) {
+					grid-template-columns: repeat(4, 1fr);
+					grid-gap: var(--gap-lg);
+				}
+
+				.label {
+					@include base-element;
+
+					@include flex-column(var(--gap-sm));
+					justify-content: space-between;
+					align-items: flex-start;
+					cursor: pointer;
+					transition: all 0.35s ease;
+					color: var(--light);
+
+					& > div:first-child {
+						@include flex-column(var(--gap-sm));
+
+						.avatar {
+							border-bottom: 1px solid var(--lightGrey);
+							height: max-content;
+
+							.avatarImg {
+								display: block;
+								width: 100%;
+								height: 100%;
+								object-fit: contain;
+							}
+						}
+
+						.avatarName,
+						.avatarBio {
+							width: 100%;
+							font-size: var(--fs-md);
+						}
+					}
+
+					&:active,
+					&:focus,
+					&:hover,
+					&.selected {
+						background-color: var(--light);
+						color: var(--dark);
+					}
+
+					.radio {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

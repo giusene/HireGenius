@@ -1,40 +1,93 @@
 .navContainer {
-	position: absolute;
+	position: fixed;
 	padding: var(--page-padding);
 	z-index: 10;
-}
 
-.sidebar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 250px;
-	height: 100vh;
-	padding: var(--page-padding);
-	background-color: var(--primary);
-	color: var(--light);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+	.navbar {
+		display: none;
+	}
 
-.footerList {
-	margin-top: var(--gap-md);
-}
+	@media (min-width: 1025px) {
+		position: fixed;
 
-.menuItem {
-	display: flex;
-	align-items: center;
-	column-gap: var(--gap-md);
-}
+		height: 100px;
+		width: 100%;
+		background-color: var(--lighter);
+		color: var(--dark);
 
-.menuList,
-.footerList {
-	@include flex-column(var(--gap-md));
-	font-size: var(--fs-md);
+		& > button {
+			display: none;
+		}
 
-	& > li:hover {
-		font-weight: var(--fw-bold);
+		.navbar {
+			width: 100%;
+			max-width: 1300px;
+			margin: 0 auto;
+
+			display: flex;
+			justify-content: space-between;
+
+			h4 {
+				font-size: var(--fs-lg);
+			}
+
+			.menuList {
+				@include flex-center;
+				column-gap: (var(--gap-md));
+
+				& a {
+					padding: calc(var(--elements-padding) / 2) var(--elements-padding);
+					border-radius: var(--border-radius);
+					font-weight: var(--fw-bold);
+				}
+
+				& a:hover {
+					color: var(--light);
+					background-color: var(--primary);
+					border: 2px solid var(--primary);
+				}
+
+				& a:not(:hover) {
+					color: var(--dark);
+					border: 2px solid var(--dark);
+				}
+			}
+		}
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 250px;
+		height: 100vh;
+		padding: var(--page-padding);
+		background-color: var(--primary);
+		color: var(--light);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+		.footerList {
+			padding-top: var(--gap-md);
+			border-top: 1px solid var(--light);
+		}
+
+		.menuList,
+		.footerList {
+			@include flex-column(var(--gap-md));
+			font-size: var(--fs-md);
+
+			& > li:hover {
+				font-weight: var(--fw-bold);
+			}
+
+			.menuItem {
+				display: flex;
+				align-items: center;
+				column-gap: var(--gap-md);
+			}
+		}
 	}
 }

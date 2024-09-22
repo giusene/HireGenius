@@ -2,7 +2,35 @@
 
 .main {
 	@include main;
-	@include flex-column(var(--gap-lg));
+
+	@media (min-width: 1025px) {
+		align-items: stretch;
+
+		.container {
+			@include flex-column(var(--gap-lg));
+			align-items: center;
+		}
+	}
+
+	&,
+	.cards {
+		@include flex-column(var(--gap-lg));
+	}
+
+	.cards {
+		flex-grow: 1;
+
+		@media (min-width: 1025px) {
+			flex-grow: unset;
+
+			margin: 0 auto;
+			max-width: 1300px;
+			flex-direction: row;
+			column-gap: var(--page-padding);
+			justify-content: center;
+			align-items: center;
+		}
+	}
 
 	.header {
 		@include header;

@@ -28,28 +28,44 @@ const NavBar = () => {
 						{filteredNavMenu.map((item) => (
 							<li key={item.label}>
 								<Link href={item.link} className={style.menuItem} onClick={() => setIsOpen(false)}>
-									<Image src={item.icon} alt={`${item.label} icon`} width={20} height={20} />
+									<Image src={item.icon} alt={`${item.label} icon`} width={20} height={20} priority={false} />
 									{item.label}
 								</Link>
 							</li>
 						))}
 					</ul>
 
-					<footer className={style.footer}>
-						<hr />
-						<ul className={style.footerList}>
-							{footerMenu.map((item) => (
-								<li key={item.label}>
-									<Link href={item.link} onClick={() => setIsOpen(false)}>
-										{item.label}
-									</Link>
-								</li>
-							))}
-							<p>@2024 Interviewer</p>
-						</ul>
-					</footer>
+					<ul className={style.footerList}>
+						{footerMenu.map((item) => (
+							<li key={item.label}>
+								<Link href={item.link} onClick={() => setIsOpen(false)}>
+									{item.label}
+								</Link>
+							</li>
+						))}
+						<p>@2024 Interviewer</p>
+					</ul>
 				</nav>
 			)}
+
+			<nav className={style.navbar}>
+				<h4>HireGenius</h4>
+				<ul className={style.menuList}>
+					{filteredNavMenu.map((item) => (
+						<li key={item.label}>
+							<Link href={item.link} className={style.menuItem}>
+								{item.label}
+							</Link>
+						</li>
+					))}
+					{!user &&
+						footerMenu.map((item) => (
+							<li key={item.label}>
+								<Link href={item.link}>{item.label}</Link>
+							</li>
+						))}
+				</ul>
+			</nav>
 		</div>
 	);
 };

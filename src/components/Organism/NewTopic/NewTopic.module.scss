@@ -1,22 +1,42 @@
 .main {
-  @include main;
+	@include main;
 
-  .header {
-    @include header;
-  }
+	.container {
+		@include flex-column(var(--gap-lg));
 
-  .hero {
-    background-color: var(--elements-bg);
-    border-radius: var(--border-radius);
-    overflow: hidden;
+		@media (min-width: 1025px) {
+			flex-direction: row;
+			column-gap: var(--page-padding);
 
-    img {
-      display: block;
-      // border-bottom: 1px solid var(--light);
-    }
-  }
+			align-items: stretch;
+		}
 
-  form {
-    @include form;
-  }
+		.header {
+			@include header;
+
+			.hero {
+				background-color: var(--elements-bg);
+				border-radius: var(--border-radius);
+				overflow: hidden;
+
+				display: flex;
+				align-items: end;
+
+				img {
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+
+		form {
+			@include form;
+
+			@media (min-width: 1025px) {
+				height: 100%;
+				justify-content: space-between;
+			}
+		}
+	}
 }

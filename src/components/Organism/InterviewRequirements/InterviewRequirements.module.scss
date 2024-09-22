@@ -1,12 +1,38 @@
 .main {
-  @include main;
+	@include main;
 
-  .header {
-    @include header;
-  }
+	.container {
+		@include flex-column(var(--gap-lg));
 
-  form {
-    @include form;
-    flex: 1;
-  }
+		@media (min-width: 1025px) {
+			flex-direction: row;
+			column-gap: var(--page-padding);
+			align-items: start;
+			min-height: 600px;
+
+			& > div {
+				width: 50%;
+			}
+		}
+
+		.header {
+			@include header;
+		}
+
+		& > div {
+			@include flex-column(var(--gap-lg));
+			flex-grow: 1;
+
+			form {
+				flex-grow: 1;
+				@include form;
+
+				@media (min-width: 1025px) {
+					button {
+						align-self: flex-end;
+					}
+				}
+			}
+		}
+	}
 }

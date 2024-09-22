@@ -1,204 +1,212 @@
 .loadingScreen {
-  @include main;
-  @include flex-center;
-  position: relative;
-  color: var(--light);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-lg);
-  overflow: hidden;
+	width: 100vw;
+	max-width: 600px;
+	min-height: 100dvh;
+	margin: 0 auto;
+	position: relative;
+	color: var(--light);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-lg);
+	overflow: hidden;
+	@include flex-center;
+	padding: var(--page-padding);
 
-  // display: flex;
-  // flex-direction: column;
-  text-align: center;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // height: 100vh;
-  // background-color: var(--dark);
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // z-index: 1000;
+	// display: flex;
+	// flex-direction: column;
+	text-align: center;
+	// display: flex;
+	// justify-content: center;
+	// align-items: center;
+	// height: 100vh;
+	// background-color: var(--dark);
+	// position: fixed;
+	// top: 0;
+	// left: 0;
+	// width: 100%;
+	// z-index: 1000;
 
-  .box {
-    @include flex-center;
-    height: 100%;
+	.box {
+		@include flex-center;
+		height: 100%;
 
-    .rocketContainer {
-      position: absolute;
-      margin-top: 100px;
-      margin-left: -100px;
-      animation: flight 2.5s infinite;
-    }
+		.rocketContainer {
+			position: absolute;
+			margin-top: 100px;
+			margin-left: -100px;
+			animation: flight 2.5s infinite;
 
-    .tip {
-      position: absolute;
-      height: 20px;
-      width: 40px;
-      background: var(--dark); // DARKEST
-      box-shadow: inset var(--tertiary) 10px 2px 10px; // light
-      left: 105px;
-      top: -50px;
-      z-index: 1;
-      border-radius: 10rem 10rem 4rem 4rem;
-    }
+			@media (min-width: 1025px) {
+				margin-top: calc(100px + 100px + var(--page-padding));
+			}
+		}
 
-    .rocket {
-      height: 250px;
-      width: 250px;
-      background: linear-gradient(to bottom right, var(--tertiary) 20%, var(--dark) 80%) no-repeat border-box; // light e DARKEST
-      border-radius: 50rem 10rem 50rem 5rem;
-      transform: rotate(-45deg);
-      box-shadow: inset var(--tertiary) 20px 2px 10px; // light
-    }
+		.tip {
+			position: absolute;
+			height: 20px;
+			width: 40px;
+			background: var(--dark); // DARKEST
+			box-shadow: inset var(--tertiary) 10px 2px 10px; // light
+			left: 105px;
+			top: -50px;
+			z-index: 1;
+			border-radius: 10rem 10rem 4rem 4rem;
+		}
 
-    .dots {
-      position: absolute;
-      height: 20px;
-      width: 20px;
-      background: var(--tertiary); // light
-      opacity: 50%;
-      box-shadow: var(--tertiary) 0px -40px;
-      border-radius: 50%;
-      left: 115px;
-      top: 215px;
-    }
+		.rocket {
+			height: 250px;
+			width: 250px;
+			background: linear-gradient(to bottom right, var(--tertiary) 20%, var(--dark) 80%) no-repeat border-box; // light e DARKEST
+			border-radius: 50rem 10rem 50rem 5rem;
+			transform: rotate(-45deg);
+			box-shadow: inset var(--tertiary) 20px 2px 10px; // light
+		}
 
-    .window {
-      position: absolute;
-      background: var(--tertiary); // light
-      height: 100px;
-      width: 100px;
-      opacity: 50%;
-      top: 25px;
-      left: 75px;
-      border-radius: 100rem;
-      box-shadow: 2pt 1pt 5pt 1pt var(--dark); // DARKEST
-    }
+		.dots {
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			background: var(--tertiary); // light
+			opacity: 50%;
+			box-shadow: var(--tertiary) 0px -40px;
+			border-radius: 50%;
+			left: 115px;
+			top: 215px;
+		}
 
-    .wing {
-      position: absolute;
-      z-index: -1;
-      background: #9e0059; // DARK
-      height: 150px;
-      width: 100px;
-      top: 175px;
-      box-shadow: inset var(--tertiary) 20px 2px 10px; // light
-    }
+		.window {
+			position: absolute;
+			background: var(--tertiary); // light
+			height: 100px;
+			width: 100px;
+			opacity: 50%;
+			top: 25px;
+			left: 75px;
+			border-radius: 100rem;
+			box-shadow: 2pt 1pt 5pt 1pt var(--dark); // DARKEST
+		}
 
-    .wingOne {
-      left: 125px;
-      border-radius: 1rem 8rem;
-      background: linear-gradient(to right, var(--tertiary) 45%, var(--dark) 100%) no-repeat border-box; // light e DARKEST
-    }
+		.wing {
+			position: absolute;
+			z-index: -1;
+			background: #9e0059; // DARK
+			height: 150px;
+			width: 100px;
+			top: 175px;
+			box-shadow: inset var(--tertiary) 20px 2px 10px; // light
+		}
 
-    .wingTwo {
-      left: 25px;
-      border-radius: 8rem 1rem;
-    }
+		.wingOne {
+			left: 125px;
+			border-radius: 1rem 8rem;
+			background: linear-gradient(to right, var(--tertiary) 45%, var(--dark) 100%) no-repeat border-box; // light e DARKEST
+		}
 
-    .bum {
-      position: absolute;
-      background: var(--dark); // DARKEST
-      height: 20px;
-      width: 50px;
-      left: 100px;
-      top: 275px;
-      border-radius: 1rem 1rem 4rem 4rem;
-      box-shadow: inset var(--tertiary) 20px 2px 10px; // light
-    }
+		.wingTwo {
+			left: 25px;
+			border-radius: 8rem 1rem;
+		}
 
-    .light {
-      position: absolute;
-      background: linear-gradient(var(--accent), rgba(255, 255, 255, 0));
-      height: 120px;
-      width: 40px;
-      left: 105px;
-      top: 250px;
-      z-index: -5;
-    }
+		.bum {
+			position: absolute;
+			background: var(--dark); // DARKEST
+			height: 20px;
+			width: 50px;
+			left: 100px;
+			top: 275px;
+			border-radius: 1rem 1rem 4rem 4rem;
+			box-shadow: inset var(--tertiary) 20px 2px 10px; // light
+		}
 
-    .light2 {
-      background: linear-gradient(#ff5400, rgba(255, 255, 255, 0));
-      position: absolute;
-      width: 25px;
-      top: 220px;
-      left: 112px;
-    }
+		.light {
+			position: absolute;
+			background: linear-gradient(var(--accent), rgba(255, 255, 255, 0));
+			height: 120px;
+			width: 40px;
+			left: 105px;
+			top: 250px;
+			z-index: -5;
+		}
 
-    .flame {
-      position: absolute;
-      height: 50px;
-      width: 50px;
-      background-color: #ff5400; // ORANGE
-      border-radius: 50% 50% 50% 0;
-      left: 100px;
-      top: 290px;
-      opacity: 10%;
-      animation: glow 3s infinite;
-      z-index: -1;
-    }
+		.light2 {
+			background: linear-gradient(#ff5400, rgba(255, 255, 255, 0));
+			position: absolute;
+			width: 25px;
+			top: 220px;
+			left: 112px;
+		}
 
-    .flame2 {
-      position: absolute;
-      height: 20px;
-      width: 20px;
-      opacity: 20%;
-      left: 115px;
-    }
+		.flame {
+			position: absolute;
+			height: 50px;
+			width: 50px;
+			background-color: #ff5400; // ORANGE
+			border-radius: 50% 50% 50% 0;
+			left: 100px;
+			top: 290px;
+			opacity: 10%;
+			animation: glow 3s infinite;
+			z-index: -1;
+		}
 
-    @keyframes glow {
-      0% {
-        transform: rotate(-45deg) scale(1.3);
-      }
-      50% {
-        transform: rotate(-45deg) scale(0.8);
-      }
-      100% {
-        transform: rotate(-45deg) scale(1.3);
-      }
-    }
+		.flame2 {
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			opacity: 20%;
+			left: 115px;
+		}
 
-    @keyframes flight {
-      0% {
-        top: 500px;
-        left: 0px;
-        opacity: 0%;
-        transform: scale(0.1) rotate(50deg);
-      }
-      2% {
-        opacity: 0%;
-      }
-      20% {
-        top: 220px;
-        left: 230px;
-        opacity: 100%;
-        transform: scale(0.4) rotate(50deg);
-      }
-      100% {
-        top: 0px;
-        left: 500px;
-        opacity: 0%;
-        transform: scale(0.3) rotate(50deg);
-      }
-    }
-  }
-  .cursor {
-    display: inline-block; // Assicura che il cursore si comporti come un elemento inline
-    width: 2px; // Larghezza del cursore
-    height: 1em; // Altezza uguale all'altezza del testo
-    background-color: var(--light); // Colore del cursore
-    animation: blink 1s step-end infinite; // Animazione di lampeggio
-  }
+		@keyframes glow {
+			0% {
+				transform: rotate(-45deg) scale(1.3);
+			}
+			50% {
+				transform: rotate(-45deg) scale(0.8);
+			}
+			100% {
+				transform: rotate(-45deg) scale(1.3);
+			}
+		}
 
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1; // Visibile
-    }
-    50% {
-      opacity: 0; // Invisibile
-    }
-  }
+		@keyframes flight {
+			0% {
+				top: 500px;
+				left: 0px;
+				opacity: 0%;
+				transform: scale(0.1) rotate(50deg);
+			}
+			2% {
+				opacity: 0%;
+			}
+			20% {
+				top: 220px;
+				left: 230px;
+				opacity: 100%;
+				transform: scale(0.4) rotate(50deg);
+			}
+			100% {
+				top: 0px;
+				left: 500px;
+				opacity: 0%;
+				transform: scale(0.3) rotate(50deg);
+			}
+		}
+	}
+	.cursor {
+		display: inline-block; // Assicura che il cursore si comporti come un elemento inline
+		width: 2px; // Larghezza del cursore
+		height: 1em; // Altezza uguale all'altezza del testo
+		background-color: var(--light); // Colore del cursore
+		animation: blink 1s step-end infinite; // Animazione di lampeggio
+	}
+
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 1; // Visibile
+		}
+		50% {
+			opacity: 0; // Invisibile
+		}
+	}
 }

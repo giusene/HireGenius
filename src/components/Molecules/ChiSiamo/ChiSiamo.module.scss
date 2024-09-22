@@ -1,0 +1,132 @@
+.team {
+	background-color: var(--lighter);
+	color: var(--dark);
+
+	.teamContainer {
+		// min-height: 100vh;
+		min-height: fit-content;
+		padding: calc(var(--page-padding) * 2) var(--page-padding);
+		@include flex-column(var(--gap-lg));
+		justify-content: space-between;
+		align-items: center;
+
+		@media (min-width: 1025px) {
+			padding-left: 0;
+			padding-right: 0;
+			margin: 0 auto;
+			max-width: 1300px;
+			justify-content: center;
+		}
+
+		.teamHeader {
+			text-align: center;
+			max-width: 70ch;
+
+			h2 {
+				font-size: calc(var(--fs-lg) * 1.3);
+
+				.bold {
+					color: var(--primary);
+				}
+			}
+			p {
+				margin-top: var(--gap-sm);
+				color: var(--medium);
+			}
+		}
+
+		.teamRow {
+			@include flex-column(var(--gap-lg));
+			@media (min-width: 1025px) {
+				flex-direction: row;
+				column-gap: var(--gap-lg);
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.memberCard {
+				background-color: var(--featureCard1);
+				border-radius: var(--border-radius);
+				padding: var(--page-padding);
+				@include flex-column(var(--gap-md));
+				justify-content: space-between;
+
+				@media (min-width: 1025px) {
+					width: calc((1300px - var(--gap-lg) - var(--gap-lg)) / 3);
+				}
+
+				.memberImg {
+					align-self: flex-end;
+					border-radius: 50%;
+					overflow: hidden;
+					border: 4px solid transparent;
+
+					&:hover {
+						animation: rotateQuarter 2s infinite;
+						border: 4px solid var(--primary);
+					}
+
+					img {
+						margin: 0 auto;
+						display: block;
+					}
+				}
+
+				.memberContent {
+					h3 {
+						font-size: calc(var(--fs-lg) * 1.2);
+					}
+
+					p {
+						margin-top: var(--gap-sm);
+						color: var(--dark);
+					}
+				}
+
+				.memberLinks {
+					display: flex;
+					column-gap: var(--gap-md);
+
+					a {
+						display: flex;
+						align-items: center;
+						column-gap: var(--gap-sm);
+
+						color: var(--primary);
+						font-weight: var(--fw-bold);
+
+						&:hover {
+							color: var(--dark);
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.hr {
+		text-align: center;
+	}
+}
+
+// @media (min-width: 1025px) {
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+@keyframes rotateQuarter {
+	0% {
+		transform: rotate(0);
+	}
+	25% {
+		transform: rotate(-45deg);
+	}
+	50% {
+		transform: rotate(30deg);
+	}
+	100% {
+		transform: rotate(0);
+	}
+}

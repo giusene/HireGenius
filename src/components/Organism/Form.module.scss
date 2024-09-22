@@ -1,5 +1,20 @@
 .form {
 	@include form;
+	padding-bottom: var(--gap-md);
+	border-bottom: 1px solid var(--lightGrey);
+
+	.inputs {
+		@include flex-column(var(--gap-md));
+	}
+
+	@media (min-width: 1025px) {
+		width: 100%;
+
+		.inputs {
+			flex-direction: row;
+			column-gap: var(--gap-md);
+		}
+	}
 
 	.forgotPassword {
 		color: var(--light);

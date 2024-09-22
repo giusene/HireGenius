@@ -1,4 +1,8 @@
 .testCard {
+	flex-grow: 1;
+	height: 100%;
+	max-height: 370px;
+
 	@include base-element;
 	@include flex-column(var(--gap-sm));
 	transition: transform 0.3s ease;
@@ -9,7 +13,12 @@
 		transform: scale(1.05);
 	}
 
+	@media (min-width: 1025px) {
+		max-width: 400px;
+	}
+
 	.hero {
+		margin-bottom: auto;
 		border-radius: var(--border-radius);
 		background-color: var(--primary);
 		padding-top: 50px;
