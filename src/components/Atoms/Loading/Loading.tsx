@@ -92,9 +92,10 @@ const Loading = (props: LoadingProps) => {
         </div>
       </div>
       <p>
-        {lazyLoading && loadingMessage.replace(/undefined/g, "")}{" "}
+        {lazyLoading && loadingMessage.replace(/undefined/g, "")
+         && <span className={style.cursor}>|</span>}{" "}
         {/* Rimuove 'undefined' */}
-        <span className={style.cursor}>|</span>
+        
       </p>
     </div>
   );
