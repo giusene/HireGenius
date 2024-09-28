@@ -2,6 +2,25 @@
 
 Nato come parte del Final Project per il **Full-Time Coding Bootcamp di Edgemony** (CB10/2024), _HireGenius_ ha come obiettivo quello di automatizzare e migliorare il processo di apprendimento e test delle competenze, fornendo un'interfaccia semplice e intuitiva per simulare interviste tecniche, colloqui, selezioni e interrogazioni.
 
+## Demo 📽️
+
+> Ti offriamo un'anteprima delle funzionalità di _HireGenius_.
+> Visita il link qui sotto per scoprire come può rivoluzionare la tua preparazione ai colloqui:
+
+<p align="center">
+  <a href="https://hire-genius.vercel.app" style="text-decoration: none;">
+    <strong>🌟🌟🌟  Inizia il tuo primo colloquio!  🌟🌟🌟</strong>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://hire-genius.vercel.app">
+    <img src="./public/docs-media/subscribe.gif" alt="Prova HireGenius!" />
+  </a>
+</p>
+
+---
+
 <p align="center">
     <img src="public/docs-media/screenshot1.png" alt="Login" width="200"/>
     <img src="public/docs-media/screenshot2.png" alt="Interviewers" width="200"/>
@@ -10,22 +29,22 @@ Nato come parte del Final Project per il **Full-Time Coding Bootcamp di Edgemony
 
 ## Table of Contents
 
-1. [Panoramica](#panoramica)
-   - [Caratteristiche Principali](#caratteristiche-principali)
-   - [Obiettivi](#obiettivi)
-2. [Demo](#demo)
-   - [Utilizzo](#utilizzo)
-3. [Dietro le Quinte](#dietro-le-quinte)
-   - [Stack Tecnologico](#stack-tecnologico)
-   - [Struttura del Progetto](#struttura-del-progetto)
-   - [Prompt Engineering e JSON](#prompt-engineering-e-json)
-   - [Logica di Frontend](#logica-di-frontend)
-4. [Contribuisci](#contribuisci)
-   - [Prerequisiti](#prerequisiti)
-   - [Come Contribuire](#come-contribuire)
-5. [Future Implementazioni](#future-implementazioni)
-6. [Licenza](#licenza)
-7. [Team di Sviluppo E Contatti](#team-di-sviluppo-e-contatti)
+1. [Panoramica](#1-panoramica-)
+   - [Caratteristiche Principali](#caratteristiche-principali-)
+   - [Obiettivi](#obiettivi-)
+2. [Demo](#demo-️)
+   - [Utilizzo](#utilizzo-️)
+3. [Dietro le Quinte](#dietro-le-quinte-)
+   - [Stack Tecnologico](#stack-tecnologico-️)
+   - [Struttura del Progetto](#struttura-del-progetto-)
+   - [Prompt Engineering e JSON](#prompt-engineering-e-json-️)
+   - [Logica di Frontend](#logica-di-frontend-)
+4. [Contribuisci](#contribuisci-)
+   - [Prerequisiti](#prerequisiti-)
+   - [Come Contribuire](#come-contribuire-)
+5. [Future Implementazioni](#future-implementazioni-)
+6. [Licenza](#licenza-)
+7. [Team di Sviluppo E Contatti](#team-di-sviluppo-e-contatti-)
 
 ## 1. Panoramica 🌐
 
@@ -66,27 +85,6 @@ Adottare _HireGenius_ offre numerosi vantaggi che migliorano significativamente 
 > Utilizzare _HireGenius_ significa dotarsi di uno strumento potente e
 > versatile, in grado di trasformare la preparazione ai colloqui in un
 > processo efficace, sicuro e altamente personalizzato.
-
-## Demo 📽️
-
-Per offrirti un'anteprima delle funzionalità di _HireGenius_, abbiamo preparato una demo interattiva. Visita il link qui sotto per esplorare l'applicazione e scoprire come può rivoluzionare la tua preparazione ai colloqui:
-
-<div>
-
-</div>
-
-### [**Inizia il tuo primo colloquio**](https://hire-genius.vercel.app)
-
-> > > > > > ClicK Now
-
-<a href="https://link-alla-demo.com" target="_blank">
- 
-   <a href="https://hire-genius.vercel.app" target="_blank" style="display: inline-block; padding: 15px 25px; font-size: 18px; font-weight: bold; color: white; background-color: #FF1493; border: solid 2px #FFD700; text-align: center; border-radius: 8px; text-decoration: none;">
-  Prova HireGenius
-
-</a>
-  </div>
-</a>
 
 ### Utilizzo 🛠️
 
@@ -202,43 +200,45 @@ Il prompt engineering è l'arte di progettare i prompt che vengono forniti ai mo
 
 Negli esempi di codice, gli schemi sono definiti attraverso il costrutto `responseSchema`, che specifica la forma dell'output atteso dal modello. Qui, alcuni dettagli tecnici sugli schemi utilizzati:
 
-```typescript
-//...
+Ecco il codice indented secondo le linee guida di Prettier per una migliore leggibilità:
+
+```javascript
 generationConfig: {
-responseMimeType: "application/json",
-responseSchema: {
-type: SchemaType.OBJECT, // Definisce che l'output è un oggetto JSON
-properties: {
-evaluatedResponses: {
-type: SchemaType.ARRAY,
-items: {
-type: SchemaType.OBJECT,
-properties: {
-q: { type: SchemaType.STRING }, // Una proprietà per la domanda
-a: { type: SchemaType.STRING }, // Una proprietà per la risposta fornita
-correctAnswer: { type: SchemaType.STRING }, // La risposta corretta
-answerStatus: {
-type: SchemaType.STRING,
-enum: ["correct", "incorrect", "average"], // Enum per lo stato della risposta
-},
-answerFeedback: { type: SchemaType.STRING }, // Feedback sulla risposta
-},
-required: ["q", "a", "correctAnswer", "answerStatus", "answerFeedback"], // Proprietà obbligatorie
-},
-},
-globalEvaluation: {
-type: SchemaType.OBJECT,
-properties: {
-feedback: { type: SchemaType.STRING }, // Feedback globale
-points: { type: SchemaType.INTEGER }, // Punti totali
-outOf: { type: SchemaType.INTEGER }, // Massimo punteggio
-},
-required: ["feedback", "points", "outOf"], // Proprietà obbligatorie
-},
-},
-required: ["evaluatedResponses", "globalEvaluation"], // Proprietà obbligatorie per l'output finale
-},
+    responseMimeType: "application/json",
+    responseSchema: {
+        type: SchemaType.OBJECT, // Definisce che l'output è un oggetto JSON
+        properties: {
+            evaluatedResponses: {
+                type: SchemaType.ARRAY,
+                items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                        q: { type: SchemaType.STRING }, // Una proprietà per la domanda
+                        a: { type: SchemaType.STRING }, // Una proprietà per la risposta fornita
+                        correctAnswer: { type: SchemaType.STRING }, // La risposta corretta
+                        answerStatus: {
+                            type: SchemaType.STRING,
+                            enum: ["correct", "incorrect", "average"], // Enum per lo stato della risposta
+                        },
+                        answerFeedback: { type: SchemaType.STRING }, // Feedback sulla risposta
+                    },
+                    required: ["q", "a", "correctAnswer", "answerStatus", "answerFeedback"], // Proprietà obbligatorie
+                },
+            },
+            globalEvaluation: {
+                type: SchemaType.OBJECT,
+                properties: {
+                    feedback: { type: SchemaType.STRING }, // Feedback globale
+                    points: { type: SchemaType.INTEGER }, // Punti totali
+                    outOf: { type: SchemaType.INTEGER }, // Massimo punteggio
+                },
+                required: ["feedback", "points", "outOf"], // Proprietà obbligatorie
+            },
+        },
+        required: ["evaluatedResponses", "globalEvaluation"], // Proprietà obbligatorie per l'output finale
+    },
 }
+
 ```
 
 #### Struttura del JSON di Input
@@ -246,18 +246,16 @@ required: ["evaluatedResponses", "globalEvaluation"], // Proprietà obbligatorie
 Quando si inviano richieste al server, i dati vengono formattati in modo coerente. Nella funzione `handler` per l'API, il payload JSON è strutturato come da esempio:
 
 ```json
-//...
 {
-"prompt": "Immagina di essere l'esaminatore ...",
-"quizResponses": [
-{
-"q": "Qual è la capitale della Francia?",
-"a": "Parigi"
-},
-...
-]
+    "prompt": "Immagina di essere l'esaminatore ...",
+    "quizResponses": [
+        {
+            "q": "Qual è la capitale della Francia?",
+            "a": "Parigi"
+        },
+        ...
+    ]
 }
-//...
 ```
 
 Questa struttura aiuta il modello a comprendere il contesto e a generare risposte adeguate.
@@ -375,9 +373,30 @@ Il progetto _HireGenius_ è distribuito sotto licenza MIT. Puoi trovare ulterior
 
 ## Team di Sviluppo e Contatti 👥
 
-- [**Giuseppe Senettone**](https://github.com/giusene) - _Technical Project Manager_
-- [**Bruna Alamia**](https://www.linkedin.com/in/brunaalamia/) - _Developer_
-- [**Chiara Corvitto**](https://github.com/Birdofillome) - _Developer_
-- [**Silvia Melia**](https://github.com/meliasil) - _Developer_
-- [**Giovanni Raniolo**](https://github.com/GiovanniRaniolo) - _Developer_
-- [**Ivan Giuseppe Saltaformaggio**](https://github.com/Nikeandros) - _Developer_
+<p align="center">
+  <a href="https://github.com/giusene" style="text-decoration: none; color: #0366d6;">
+    <strong>Giuseppe Senettone</strong>
+  </a> <small> - technical project manager</small><br> 
+  <a href="https://www.linkedin.com/in/brunaalamia/" style="text-decoration: none; color: #0366d6;">
+    <strong>Bruna Alamia</strong>
+  </a> <small> - developer</small> <br>
+  <a href="https://github.com/Birdofillome" style="text-decoration: none; color: #0366d6;">
+    <strong>Chiara Corvitto</strong>
+  </a> <small> - developer</small> <br> 
+  <a href="https://github.com/meliasil" style="text-decoration: none; color: #0366d6;">
+    <strong>Silvia Melia</strong>
+  </a> <small> - developer</small> <br> 
+  <a href="https://github.com/GiovanniRaniolo" style="text-decoration: none; color: #0366d6;">
+    <strong>Giovanni Raniolo</strong>
+  </a> <small> - developer</small><br> 
+  <a href="https://github.com/Nikeandros" style="text-decoration: none; color: #0366d6;">
+    <strong>Ivan Giuseppe Saltaformaggio</strong>
+  </a> <small> - developer</small> <br>
+  <hr>
+</p>
+
+<p align="center">
+  <a href="https://hire-genius.vercel.app">
+    <img src="./public/docs-media/banner.png" alt="Footer Image" width= "100%"; max-width="900px"; border-radius= "5px";>
+  </a>
+</p>
